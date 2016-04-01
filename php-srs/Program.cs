@@ -10,7 +10,7 @@ namespace php_srs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("tst for initial branch");
+            Console.WriteLine("test for initial branch");
         }
     }
 }
