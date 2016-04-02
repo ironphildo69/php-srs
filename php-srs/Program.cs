@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.IO;
 
 namespace php_srs
 {
@@ -17,7 +18,15 @@ namespace php_srs
         
         static void checkDatabaseFile()
         {
-            SQLiteConnection.CreateFile("MyDatabase.sqlite");
+            if (File.Exists("php-srs_database.sqlite"))
+            {
+                Console.WriteLine("Database found!");
+            }
+            else
+            {
+                SQLiteConnection.CreateFile("php-srs_database.sqlite");
+            }
+
         }
 
     }
