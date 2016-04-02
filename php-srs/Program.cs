@@ -16,7 +16,7 @@ namespace php_srs
             checkDatabaseFile();
         }
         
-        static void checkDatabaseFile()
+        static void checkDatabaseFile() //method that checks for the database file and if it doesnt exist creates it.
         {
             if (File.Exists("php-srs_database.sqlite"))
             {
@@ -29,5 +29,9 @@ namespace php_srs
 
         }
 
+        static void addSalesRecord() //Needs work, also needs to accept a enumorated type and send it to the SQL database. Phil will do SQL statements.
+        {
+
+        }
     }
 }
