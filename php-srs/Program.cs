@@ -31,7 +31,7 @@ namespace php_srs
 
         static void addSalesRecord() //Needs work, also needs to accept a enumorated type and send it to the SQL database. Phil will do SQL statements.
         {
-
+            //code here
         }
     }
 }
