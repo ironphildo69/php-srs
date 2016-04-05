@@ -11,6 +11,11 @@ namespace php_srs
     class Program
     {
 
+        public static class globalVariables()
+        {
+            public static String databaseName = "php-srs_database.sqlite";
+        }
+
         static void checkDatabaseFile() //method that checks for the database file and if it doesnt exist creates it.
         {
             if (File.Exists("php-srs_database.sqlite"))
