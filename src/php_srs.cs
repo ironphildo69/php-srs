@@ -1,7 +1,7 @@
 using System;
 using SwinGameSDK;
 
-namespace MyGame
+namespace php_srs
 {
     public class GameMain
     {
