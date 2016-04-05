@@ -10,6 +10,12 @@ namespace php_srs
 {
     class Program
     {
+
+        public static class globalVariables()
+        {
+            public static String databaseName = "php-srs_database.sqlite"
+        }
+
         static void checkDatabaseFile() //method that checks for the database file and if it doesnt exist creates it.
         {
             if (File.Exists("php-srs_database.sqlite"))
@@ -21,6 +27,16 @@ namespace php_srs
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
             }
 
+        }
+
+        //Database statement connection, pass statement to this to have it write to the database.
+
+        static void writeDatabaseFile()
+        {
+            SQLiteConnection dbConnection;
+            dbConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            dbConnection.Open();
+            dbConnection.Close();
         }
 
         static void addSalesRecord() //Needs work, also needs to accept a enumorated type and send it to the SQL database. Phil will do SQL statements.
