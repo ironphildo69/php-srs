@@ -33,6 +33,12 @@ namespace php_srs
             }
         }
 
+        //Global Variables
+        public static void globalVariables()
+        {
+            SQLiteConnection databaseConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+        }
+
         //Database creation logic, checks if file exists.
         public static bool createDatabase()
         {
@@ -42,7 +48,8 @@ namespace php_srs
             }
             else
             {
-                SQLiteConnection.CreateFile("php-srs_Database.sqlite");
+                SQLiteConnection.CreateFile("php-srs_database.sqlite");
+
             }
             return true;
         }
