@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using SwinGameSDK;
+using System.Data.SQLite;
 
 namespace php_srs
 {
@@ -7,7 +9,12 @@ namespace php_srs
     {
         public static void Main()
         {
+            //Pre initalisation logic
+
+            createDatabase();
+
             //Open the game window
+            
             SwinGame.OpenGraphicsWindow("GameMain", 800, 600);
             SwinGame.ShowSwinGameSplashScreen();
             
@@ -25,5 +32,22 @@ namespace php_srs
                 SwinGame.RefreshScreen(60);
             }
         }
+
+        //Database creation logic, checks if file exists.
+        public static bool createDatabase()
+        {
+            if (File.Exists("php-srs_database.sqlite"))
+            {
+                Console.WriteLine("Database found!");
+            }
+            else
+            {
+                SQLiteConnection.CreateFile("php-srs_Database.sqlite");
+            }
+            return true;
+        }
+
+
+
     }
 }
