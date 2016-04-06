@@ -36,6 +36,7 @@ namespace php_srs
         //Global Variables
         public static void globalVariables()
         {
+            //Global SQL Connection to Database
             SQLiteConnection databaseConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
         }
 
@@ -54,7 +55,13 @@ namespace php_srs
             return true;
         }
 
+        //Start of sales record function
 
+        //CODE HERE
+
+        //Startof CSV Export function from local SQL Database
+
+        //CODE HERE
 
     }
 }
