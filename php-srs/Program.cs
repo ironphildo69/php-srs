@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
+using System.IO;
 
 namespace php_srs
 {
@@ -25,7 +27,6 @@ namespace php_srs
             else
             {
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
-
             }
             return true;
         }
