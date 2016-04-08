@@ -25,7 +25,7 @@ namespace php_srs
 
         public Medicine()
         {
-            _id = "";
+            //_id = "";
             _name = "";
             _quantity = 0;
             _pprice = 0;
