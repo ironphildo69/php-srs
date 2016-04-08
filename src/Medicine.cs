@@ -9,14 +9,14 @@ namespace php_srs
 {
     class Medicine
     {
-        private enum MedKind
+        private enum MedKind        //Enum for the types of medicine that will be sold
         {
             Tablet,
             Ointment,
             Syrup
         }
 
-        private string _id;
+        //private string _id;
         private string _name;
         private int _quantity;
         private double _pprice;         //purchase price of medicine
@@ -32,17 +32,17 @@ namespace php_srs
             _sprice = 0;
         }
 
-        public string ID
-        {
-            get
-            {
-                return _id;
-            }
-            set
-            {
-                _id = value;
-            }
-        }
+        //public string ID
+        //{
+            //get
+            //{
+                //return _id;
+            //}
+            //set
+            //{
+                //_id = value;
+            //}
+        //}
 
         public string Name
         {
