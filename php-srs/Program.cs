@@ -99,27 +99,7 @@ namespace php_srs
                     case 2:
                         Console.WriteLine("Viewing Stock Selected.");        //relevant methods will be called depending on the users selection
 
-                        var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
-                        php_srsConnection.Open();
-
-                        string sql = "insert into Medicine (id, name, description) values (1, 'Panadol', 'For headaches')";
-                        SQLiteCommand command = new SQLiteCommand(sql, php_srsConnection);
-                        command.ExecuteNonQuery();
-
-                        string selectQuery = "select * from Medicine order by id desc";
-                        SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
-
-                        SQLiteDataReader reader = selectCommand.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Console.WriteLine("ID: " + reader["id"] + "\tName: " + reader["name"] + "\tDescription: " + reader["description"]);
-                        }
-
-                        string dropTableQuery = "drop table if exists 'Medicine'";
-                        SQLiteCommand dropTableCommand = new SQLiteCommand(dropTableQuery, php_srsConnection);
-                        dropTableCommand.ExecuteNonQuery();
-
-                        php_srsConnection.Close();
+                        StockTake.SelectFromTable();
 
                         break;
                     case 3:
