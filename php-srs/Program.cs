@@ -87,7 +87,8 @@ namespace php_srs
                         break;
 
                     default:
-                        Console.WriteLine("That is not a valid input.");
+                        Console.Clear();
+                        Console.WriteLine("That input is an invalid.");
                         break;
                 }
             }
