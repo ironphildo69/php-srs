@@ -68,12 +68,14 @@ namespace php_srs
                 {
                     case 1:
                         Console.WriteLine("Please input the details of the item: ");      //relevant methods will be called depending on the users selection
+                        Console.Clear();
                         AddItem.AddSalesRecord();
                         break;
 
                     case 2:
                         Console.WriteLine("Viewing Stock Selected.");        //relevant methods will be called depending on the users selection
-                        StockTake.SelectAllFromTable();
+                        Console.Clear();
+                        StockTake.CheckingFunction();
                         break;
 
                     case 3:
@@ -82,6 +84,10 @@ namespace php_srs
 
                     case 4:
                         Console.WriteLine("log out");       //relevant methods will be called depending on the users selection
+                        break;
+
+                    default:
+                        Console.WriteLine("That is not a valid input.");
                         break;
                 }
             }

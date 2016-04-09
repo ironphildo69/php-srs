@@ -48,8 +48,7 @@ namespace php_srs
         }
 
         public static void AddSalesRecord()
-        {
-            Console.Clear();
+        {            
             Console.WriteLine("ID: ");
             int responseID = int.Parse(Console.ReadLine());
 
