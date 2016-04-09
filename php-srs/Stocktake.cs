@@ -55,7 +55,7 @@ namespace php_srs
 
                     int convID = 0;
 
-                    Int32.TryParse(idValue, out convID);
+                    int.TryParse(idValue, out convID);
 
                     if (!(convID >= 0))
                     {
