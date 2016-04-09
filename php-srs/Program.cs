@@ -22,7 +22,7 @@ namespace php_srs
         {
             if (File.Exists("php-srs_database.sqlite"))
             {
-                Console.WriteLine("Database found!");
+                Console.WriteLine("Database successfully located.");
             }
             else
             {
@@ -46,7 +46,8 @@ namespace php_srs
         public static void Main(string[] args)
         {
             //Pre initalisation logic
-            //createDatabase();
+
+            createDatabase();
 
             int selection = 0;
 
@@ -78,7 +79,11 @@ namespace php_srs
                         break;
 
                     case 2:
-                        Console.WriteLine("view stock");        //relevant methods will be called depending on the users selection
+                        Console.WriteLine("View Stock Selected.");        //relevant methods will be called depending on the users selection
+
+                        string sql = "create table medicine (id int, name varchar(20), description )";
+
+
                         break;
                     case 3:
 
