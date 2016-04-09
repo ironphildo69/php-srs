@@ -32,9 +32,26 @@ namespace php_srs
         }
 
         //Start of sales record function
-        static void addSalesRecord() //Needs work, also needs to accept a enumorated type and send it to the SQL database. Phil will do SQL statements.
+        static void addSalesRecord() //Needs work, also needs to accept a enumorated type and send it to the SQL database. 
         {
-            // code here
+            Console.WriteLine("ID: ");
+            int responseID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Name: ");
+            string responseName = Console.ReadLine();
+
+            Console.WriteLine("Description: ");
+            string responseDescription = Console.ReadLine();
+
+            Console.WriteLine("Attribute: ");
+            string responseAttribute = Console.ReadLine();
+
+            Console.WriteLine("Quantity: ");
+            int responseQuantity = int.Parse(Console.ReadLine());
+
+            AddItem.InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity);
+
+
         }
 
         //CODE HERE
@@ -68,14 +85,15 @@ namespace php_srs
                 Console.WriteLine("* 5:  Quit                           *");
                 Console.WriteLine("*                                    *");
                 Console.WriteLine("**************************************");
-                Console.WriteLine("Please Enter Option :  ");
+                Console.WriteLine("Please Enter Option:  ");
 
                 selection = int.Parse(Console.ReadLine());
 
                 switch (selection)
                 {
                     case 1:
-                        Console.WriteLine("add sales record");      //relevant methods will be called depending on the users selection
+                        Console.WriteLine("Please input the details of the item: ");      //relevant methods will be called depending on the users selection
+                        addSalesRecord();
                         break;
 
                     case 2:
@@ -84,21 +102,8 @@ namespace php_srs
                         var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
                         php_srsConnection.Open();
 
-                        string createTableQuery = "create table if not exists Medicine (id int, name varchar(20), description varchar(30))";
-
-                        SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);               
-                        createMedicineTable.ExecuteNonQuery();
-
                         string sql = "insert into Medicine (id, name, description) values (1, 'Panadol', 'For headaches')";
                         SQLiteCommand command = new SQLiteCommand(sql, php_srsConnection);
-                        command.ExecuteNonQuery();
-
-                        sql = "insert into Medicine (id, name, description) values (2, 'Paracetamol', 'For toothaches')";
-                        command = new SQLiteCommand(sql, php_srsConnection);
-                        command.ExecuteNonQuery();
-
-                        sql = "insert into Medicine (id, name, description) values (3, 'Ibuprofen', 'For feeling good')";
-                        command = new SQLiteCommand(sql, php_srsConnection);
                         command.ExecuteNonQuery();
 
                         string selectQuery = "select * from Medicine order by id desc";
