@@ -81,7 +81,7 @@ namespace php_srs
                     case 2:
                         Console.WriteLine("View Stock Selected.");        //relevant methods will be called depending on the users selection
 
-                        string sql = "create table medicine (id int, name varchar(20), description )";
+                        string sql = "create table medicine (id int, name varchar(20), description varchar(30))";
 
 
                         break;
