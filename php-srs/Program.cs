@@ -79,10 +79,42 @@ namespace php_srs
                         break;
 
                     case 2:
-                        Console.WriteLine("View Stock Selected.");        //relevant methods will be called depending on the users selection
+                        Console.WriteLine("Viewing Stock Selected.");        //relevant methods will be called depending on the users selection
 
-                        string sql = "create table medicine (id int, name varchar(20), description varchar(30))";
+                        var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+                        php_srsConnection.Open();
 
+                        string createTableQuery = "create table if not exists Medicine (id int, name varchar(20), description varchar(30))";
+
+                        SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);               
+                        createMedicineTable.ExecuteNonQuery();
+
+                        string sql = "insert into Medicine (id, name, description) values (1, 'Panadol', 'For headaches')";
+                        SQLiteCommand command = new SQLiteCommand(sql, php_srsConnection);
+                        command.ExecuteNonQuery();
+
+                        sql = "insert into Medicine (id, name, description) values (2, 'Paracetamol', 'For toothaches')";
+                        command = new SQLiteCommand(sql, php_srsConnection);
+                        command.ExecuteNonQuery();
+
+                        sql = "insert into Medicine (id, name, description) values (3, 'Ibuprofen', 'For feeling good')";
+                        command = new SQLiteCommand(sql, php_srsConnection);
+                        command.ExecuteNonQuery();
+
+                        string selectQuery = "select * from Medicine order by id desc";
+                        SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+
+                        SQLiteDataReader reader = selectCommand.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Console.WriteLine("ID: " + reader["id"] + "\tName: " + reader["name"] + "\tDescription: " + reader["description"]);
+                        }
+
+                        string dropTableQuery = "drop table if exists 'Medicine'";
+                        SQLiteCommand dropTableCommand = new SQLiteCommand(dropTableQuery, php_srsConnection);
+                        dropTableCommand.ExecuteNonQuery();
+
+                        php_srsConnection.Close();
 
                         break;
                     case 3:
