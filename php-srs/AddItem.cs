@@ -46,5 +46,30 @@ namespace php_srs
 
             php_srsConnection.Close();
         }
+
+        public static void AddSalesRecord()
+        {
+            Console.Clear();
+            Console.WriteLine("ID: ");
+            int responseID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Name: ");
+            string responseName = Console.ReadLine();
+
+            Console.WriteLine("Description: ");
+            string responseDescription = Console.ReadLine();
+
+            Console.WriteLine("Attribute: ");
+            string responseAttribute = Console.ReadLine();
+
+            Console.WriteLine("Quantity: ");
+            int responseQuantity = int.Parse(Console.ReadLine());
+
+            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity);
+
+            Console.WriteLine("The information has been added to the database.");
+            Console.Clear();
+        }
+
     }
 }
