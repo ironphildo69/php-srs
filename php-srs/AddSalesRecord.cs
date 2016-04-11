@@ -49,7 +49,7 @@ namespace php_srs
         public static void AddSalesRecords()
         {
             Console.WriteLine("ID: ");
-            2int responseID = int.Parse(Console.ReadLine());
+            int responseID = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Name: ");
             string responseName = Console.ReadLine();
