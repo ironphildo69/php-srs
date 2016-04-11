@@ -39,7 +39,7 @@ namespace php_srs
             CreateTable();
 
             string insertQuery = "INSERT INTO SalesRecords (ID, Name, Description, Attribute, Quantity) VALUES (" + id + ", '" + name + "', '" + description +
-                "', '" + attribute + "', " + quantity + ", '" + date + "')";
+                "', '" + attribute + "', " + quantity + ")";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
 
