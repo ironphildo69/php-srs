@@ -12,7 +12,7 @@ namespace php_srs
     {
         public static void SelectFromTable(string selectQuery)
         {
-            Console.WriteLine("________________________________________________________________________________________________________");
+            Console.WriteLine("_____________________________________________________________________________________________________");
             Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
 
             Console.WriteLine("________________________________________________________________________________________________________");
@@ -30,90 +30,66 @@ namespace php_srs
 
             php_srsConnection.Close();  //Closes the connection
 
-            Console.WriteLine("________________________________________________________________________________________________________");
+            Console.WriteLine("____________________________________________________________________________________________________");
             Console.WriteLine(" ");
             Console.WriteLine("Press any key to continue . . . ");
             Console.ReadLine();
             Console.Clear();
         }
 
-        public static void StockSalesCheck()
+        public static void StockSalesAll()
         {
-            Console.WriteLine("Are you looking for anything in particular? (Y/N)");
-            string input = Console.ReadLine();
-            switch (input)
+            Console.Clear();
+            Console.WriteLine("ALL STOCK: ");
+            SelectFromTable("SELECT * FROM SalesRecords");
+        }
+
+        public static void StockSalesID()
+        {
+            Console.Clear();
+            string idValue = Console.ReadLine();
+            int value = 0;
+
+            if (int.TryParse(idValue, out value))
             {
-                case "y":
-                    Console.Clear();
+                Console.Clear();
+                Console.WriteLine("ID SPECIFIED STOCK: ");
+                SelectFromTable("SELECT * FROM SalesRecords WHERE" + idValue);
 
-                    Console.WriteLine("Input an ID (Leave blank if you want all results): ");
-                    string idValue = Console.ReadLine();
-
-                    int convID = 0;
-
-                    int.TryParse(idValue, out convID);
-
-                    if (!(convID >= 0))
-                    {
-                        Console.WriteLine("That input is invalid. Leaving ID blank.");
-                        idValue = "";
-                    }
-
-                    if (idValue != "")
-                    {
-                        idValue = "ID = " + idValue;
-                    }
-
-                    Console.WriteLine("Input a Medicine: ");
-                    string nameValue = Console.ReadLine();
-
-                    if (nameValue != "" && idValue != "")
-                    {
-                        nameValue = "AND Name = " + "'" + nameValue + "'";
-                    }
-                    else if (nameValue != "")
-                    {
-                        nameValue = "Name = " + "'" + nameValue + "'";
-                    }
-
-                    Console.WriteLine("Input an Attribute: ");
-                    string attrValue = Console.ReadLine();
-
-                    if (attrValue != "" && nameValue != "")
-                    {
-                        attrValue = "AND Attribute = " + "'" + attrValue + "'";
-                    }
-                    else if (attrValue != "")
-                    {
-                        attrValue = "Attribute = " + "'" + attrValue + "'";
-                    }
-
-                    if (idValue == "" && nameValue == "" && attrValue == "")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("ALL STOCK (Nothing input): ");
-                        SelectFromTable("SELECT * FROM SalesRecords");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("SPECIFIED STOCK: ");
-                        Console.WriteLine("SELECT * FROM SalesRecords WHERE " + idValue + "" + nameValue + "" + attrValue);
-                        SelectFromTable("SELECT * FROM SalesRecords WHERE " + idValue + "" + nameValue + "" + attrValue);
-                    }
-                    break;
-
-                case "n":
-                    Console.Clear();
-                    Console.WriteLine("ALL STOCK: ");
-                    SelectFromTable("SELECT * FROM SalesRecords");
-                    break;
-
-                default:
-                    Console.WriteLine("That input is an invalid.");
-                    break;
-
+            } else {
+                Console.Clear();
+                Console.WriteLine("That input is an invalid.");
             }
+        }
+
+        public static void StockSalesName()
+        {
+            Console.Clear();
+            string nameValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("NAME SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + nameValue + "'");
+        }
+
+        public static void StockSalesAttribute()
+        {
+            Console.Clear();
+            string attrValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("ATTRIBUTE SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + attrValue + "'");
+        }
+
+        public static void StockSalesDate()
+        {
+            Console.Clear();
+            string dateValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("DATE SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + dateValue + "'");
         }
 
     }

@@ -36,79 +36,64 @@ namespace php_srs
             Console.ReadLine();
             Console.Clear();
         }
-
-        public static void CheckingFunction()
+        
+        public static void StockTakeAll()
         {
-            Console.WriteLine("Are you looking for anything in particular? (Y/N)");
-            string input = Console.ReadLine();
-            switch (input)
-            {
-                case "y":
-                    Console.Clear();
-
-                    Console.WriteLine("Input an ID (Leave blank if you want all results): ");
-                    string idValue = Console.ReadLine();
-
-                    int convID = 0;
-
-                    int.TryParse(idValue, out convID);
-
-                    if (!(convID >= 0))
-                    {
-                        Console.WriteLine("That input is invalid. Leaving ID blank.");
-                        idValue = "";
-                    }
-
-                    if (idValue != "")
-                    {
-                        idValue = "ID = " + idValue;
-                    }
-
-                    Console.WriteLine("Input a Medicine: ");
-                    string nameValue = Console.ReadLine();
-
-                    if (nameValue != "" && idValue != "")
-                    {
-                        nameValue = "AND Name = " + "'" + nameValue + "'";
-                    }
-                    else if (nameValue != "") {
-                        nameValue = "Name = " + "'" + nameValue + "'";
-                    }
-
-                    Console.WriteLine("Input an Attribute: ");
-                    string attrValue = Console.ReadLine();
-                    
-                    if (attrValue != "" && nameValue != "")
-                    {
-                        attrValue = "AND Attribute = " + "'" + attrValue + "'";
-                    } else if (attrValue != "") {
-                        attrValue = "Attribute = " + "'" + attrValue + "'";
-                    }
-                    
-                    if (idValue == "" && nameValue == "" && attrValue == "")
-                    {
-                        Console.Clear();
-                        Console.WriteLine("ALL STOCK (Nothing input): ");
-                        SelectFromTable("SELECT * FROM StockTable");
-                    } else {
-                        Console.Clear();
-                        Console.WriteLine("SPECIFIED STOCK: ");
-                        Console.WriteLine("SELECT * FROM StockTable WHERE " + idValue + "" + nameValue + "" + attrValue);
-                        SelectFromTable("SELECT * FROM StockTable WHERE " + idValue + "" + nameValue + "" + attrValue);
-                    }
-                    break;
-
-                case "n":
-                    Console.Clear();
-                    Console.WriteLine("ALL STOCK: ");
-                    SelectFromTable("SELECT * FROM StockTable");
-                    break;
-
-                default:
-                    Console.WriteLine("That input is an invalid.");
-                    break;
-
-            }       
+            Console.Clear();
+            Console.WriteLine("ALL STOCK: ");
+            SelectFromTable("SELECT * FROM StockTable");
         }
+
+        public static void StockTakeID()
+        {
+            Console.Clear();
+            string idValue = Console.ReadLine();
+            int value = 0;
+
+            if (int.TryParse(idValue, out value))
+            {
+                Console.Clear();
+                Console.WriteLine("ID SPECIFIED STOCK: ");
+                SelectFromTable("SELECT * FROM StockTable WHERE ID = " + idValue);
+
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("That input is an invalid.");
+            }
+        }
+
+        public static void StockTakeName()
+        {
+            Console.Clear();
+            string nameValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("NAME SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM StockTable WHERE Name = '" + nameValue + "'");
+        }
+
+        public static void StockTakeAttribute()
+        {
+            Console.Clear();
+            string attrValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("ATTRIBUTE SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM StockTable WHERE Attribute = '" + attrValue + "'");
+        }
+
+        public static void StockTakeQuantity()
+        {
+            Console.Clear();
+            string quantityValue = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("DATE SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM StockTable WHERE Quantity = '" + quantityValue + "'");
+        }
+
+
     }
 }
