@@ -8,10 +8,8 @@ using System.IO;
 
 namespace php_srs
 {
-
     class AddItem
     {
-
         public static void CreateTable()
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");

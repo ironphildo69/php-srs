@@ -10,6 +10,8 @@ namespace php_srs
 {
     class StockSales
     {
+        
+
         public static void SelectFromTable(string selectQuery)
         {
             Console.WriteLine("_____________________________________________________________________________________________________");
@@ -88,15 +90,13 @@ namespace php_srs
         public static void StockSalesDate()
         {
             Console.Clear();
+            Console.WriteLine("Unavailable at this time.");
 
-            Console.WriteLine("Input Date (DD/MM/YYYY): ");
-            string dateValue = Console.ReadLine();
-
-
-
-            Console.Clear();
-            Console.WriteLine("DATE SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + dateValue + "'");
+            //Console.WriteLine("Input Date (DD/MM/YYYY): ");
+            //string dateValue = Console.ReadLine();
+            //Console.Clear();
+            //Console.WriteLine("DATE SPECIFIED STOCK: ");
+            //SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + dateValue + "'");
         }
 
     }

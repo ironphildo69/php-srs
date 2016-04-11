@@ -16,7 +16,7 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID int, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Date varchar (10))";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID int, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Date DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -30,7 +30,7 @@ namespace php_srs
             return true;
         }
 
-        public static void InsertIntoTable(int id, string name, string description, string attribute, int quantity, string date)
+        public static void InsertIntoTable(int id, string name, string description, string attribute, int quantity)
         {
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -63,9 +63,7 @@ namespace php_srs
             Console.WriteLine("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            DateTime date = DateTime.Today;
-
-            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity, date.ToString("D"));
+            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity);
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();
