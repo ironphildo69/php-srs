@@ -193,8 +193,7 @@ namespace php_srs
                         case 5:
                             //relevant methods will be called depending on the users selection
                             Console.Clear();
-                            CSV.WriteCSVToFile();
-                            Console.WriteLine("Text file created in 'CSV.txt'");
+                            CSV.CSVMenu();
                             break;
 
                         case 6:

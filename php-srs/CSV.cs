@@ -32,17 +32,27 @@ namespace php_srs
 
             if (int.TryParse(selectionStockSales, out value))
             {
+                switch (value)
+                {
+                    case 1:
+                        Console.Clear();
+                        WriteStockTakeToFile();                        
+                        break;
 
+                    case 2:
+                        Console.Clear();
+                        WriteStockSalesToFile();
+                        break;
 
-
+                    default:
+                        break;
+                }
             }
-
-
         }
 
         public static void WriteStockSalesToFile()
         {
-            TextWriter tw = new StreamWriter("CSV.txt");
+            TextWriter tw = new StreamWriter("CSV-StockSales.txt");
 
             tw.WriteLine("PEOPLE HEALTH PHARMACY - SALES REPORTING SYSTEM\n");
             tw.WriteLine("ALL SALES RECORDS\n");
@@ -63,11 +73,13 @@ namespace php_srs
 
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
+
+            Console.WriteLine("Text file created in 'CSV-StockSales.txt'");
         }
 
         public static void WriteStockTakeToFile()
         {
-            TextWriter tw = new StreamWriter("CSV.txt");
+            TextWriter tw = new StreamWriter("CSV-StockTake.txt");
 
             tw.WriteLine("PEOPLE HEALTH PHARMACY - SALES REPORTING SYSTEM\n");
             tw.WriteLine("ALL SALES RECORDS\n");                      
@@ -88,9 +100,8 @@ namespace php_srs
             
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
-        }
 
-        
-
+            Console.WriteLine("Text file created in 'CSV-StockTake.txt'");
+        }      
     }
 }
