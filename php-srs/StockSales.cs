@@ -28,6 +28,7 @@ namespace php_srs
             Console.WriteLine("* 6:  Back                                                *");
             Console.WriteLine("*                                                         *");
             Console.WriteLine("***********************************************************");
+            Console.WriteLine("Please select an option [1 - 6]:  ");
 
             string selectionStockSales = Console.ReadLine();
 
@@ -76,10 +77,10 @@ namespace php_srs
 
         public static void SelectFromTable(string selectQuery)
         {
-            Console.WriteLine("_____________________________________________________________________________________________________");
+            Console.WriteLine("___________________________________________________________________________________________________________");
             Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
 
-            Console.WriteLine("________________________________________________________________________________________________________");
+            Console.WriteLine("___________________________________________________________________________________________________________");
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
@@ -94,7 +95,7 @@ namespace php_srs
 
             php_srsConnection.Close();  //Closes the connection
 
-            Console.WriteLine("____________________________________________________________________________________________________");
+            Console.WriteLine("___________________________________________________________________________________________________________");
             Console.WriteLine(" ");
             Console.WriteLine("Press any key to continue . . . ");
             Console.ReadLine();

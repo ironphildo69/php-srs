@@ -25,6 +25,7 @@ namespace php_srs
             Console.WriteLine("* 3:  Back                                                *");
             Console.WriteLine("*                                                         *");
             Console.WriteLine("***********************************************************");
+            Console.WriteLine("Please select an option [1 - 3]:  ");
 
             string selectionStockSales = Console.ReadLine();
 
