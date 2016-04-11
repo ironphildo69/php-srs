@@ -8,12 +8,12 @@ using System.IO;
 
 namespace php_srs
 {
-    class StockTake
+    class StockSales
     {
         public static void SelectFromTable(string selectQuery)
         {
             Console.WriteLine("________________________________________________________________________________________________________");
-            Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", "ID", "Name", "Description", "Attribute", "Quantity")); //Formats the string to look more presentable in the command line.
+            Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
 
             Console.WriteLine("________________________________________________________________________________________________________");
 
@@ -25,8 +25,8 @@ namespace php_srs
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);  //Sets up the query to be used with the database
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
             while (readResults.Read())
-                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", readResults["ID"], readResults["Name"], readResults["Description"],
-                    readResults["Attribute"], readResults["Quantity"]));
+                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", readResults["ID"], readResults["Name"], readResults["Description"],
+                    readResults["Attribute"], readResults["Quantity"], readResults["Date"]));
 
             php_srsConnection.Close();  //Closes the connection
 
@@ -37,7 +37,7 @@ namespace php_srs
             Console.Clear();
         }
 
-        public static void CheckingFunction()
+        public static void StockSalesCheck()
         {
             Console.WriteLine("Are you looking for anything in particular? (Y/N)");
             string input = Console.ReadLine();
@@ -71,44 +71,50 @@ namespace php_srs
                     {
                         nameValue = "AND Name = " + "'" + nameValue + "'";
                     }
-                    else if (nameValue != "") {
+                    else if (nameValue != "")
+                    {
                         nameValue = "Name = " + "'" + nameValue + "'";
                     }
 
                     Console.WriteLine("Input an Attribute: ");
                     string attrValue = Console.ReadLine();
-                    
+
                     if (attrValue != "" && nameValue != "")
                     {
                         attrValue = "AND Attribute = " + "'" + attrValue + "'";
-                    } else if (attrValue != "") {
+                    }
+                    else if (attrValue != "")
+                    {
                         attrValue = "Attribute = " + "'" + attrValue + "'";
                     }
-                    
+
                     if (idValue == "" && nameValue == "" && attrValue == "")
                     {
                         Console.Clear();
                         Console.WriteLine("ALL STOCK (Nothing input): ");
-                        SelectFromTable("SELECT * FROM StockTable");
-                    } else {
+                        SelectFromTable("SELECT * FROM SalesRecords");
+                    }
+                    else
+                    {
                         Console.Clear();
                         Console.WriteLine("SPECIFIED STOCK: ");
-                        Console.WriteLine("SELECT * FROM StockTable WHERE " + idValue + "" + nameValue + "" + attrValue);
-                        SelectFromTable("SELECT * FROM StockTable WHERE " + idValue + "" + nameValue + "" + attrValue);
+                        Console.WriteLine("SELECT * FROM SalesRecords WHERE " + idValue + "" + nameValue + "" + attrValue);
+                        SelectFromTable("SELECT * FROM SalesRecords WHERE " + idValue + "" + nameValue + "" + attrValue);
                     }
                     break;
 
                 case "n":
                     Console.Clear();
                     Console.WriteLine("ALL STOCK: ");
-                    SelectFromTable("SELECT * FROM StockTable");
+                    SelectFromTable("SELECT * FROM SalesRecords");
                     break;
 
                 default:
                     Console.WriteLine("That input is an invalid.");
                     break;
 
-            }       
+            }
         }
+
     }
 }
