@@ -10,7 +10,69 @@ namespace php_srs
 {
     class StockSales
     {
-        
+        public static void StockSalesMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("* 1:  View All Stock Sales                                *");
+            Console.WriteLine("* 2:  View Stock Sales Based of ID                        *");
+            Console.WriteLine("* 3:  View Stock Sales Based of Name                      *");
+            Console.WriteLine("* 4:  View Stock Sales Based of Attribute                 *");
+            Console.WriteLine("* 5:  View Stock Sales Based of Date                      *");
+            Console.WriteLine("* 6:  Back                                                *");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("***********************************************************");
+
+            string selectionStockSales = Console.ReadLine();
+
+            int valueStockSales = 0;
+
+            if (int.TryParse(selectionStockSales, out valueStockSales))
+            {
+                switch (valueStockSales)
+                {
+                    case 1:
+                        Console.Clear();
+                        StockSalesAll();
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        StockSalesID();
+                        break;
+
+                    case 3:
+                        Console.Clear();
+                        StockSalesName();
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        StockSalesAttribute();
+                        break;
+
+                    case 5:
+                        Console.Clear();
+                        StockSalesDate();
+                        break;
+
+                    default:
+                        Console.Clear();
+                        break;
+                }
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("That input is an invalid.");
+            }
+        }
 
         public static void SelectFromTable(string selectQuery)
         {

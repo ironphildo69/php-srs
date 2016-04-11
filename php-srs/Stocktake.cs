@@ -10,6 +10,69 @@ namespace php_srs
 {
     class StockTake
     {
+        public static void StockTakeMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("* 1:  View All Stock Items                                *");
+            Console.WriteLine("* 2:  View Stock Items Based of ID                        *");
+            Console.WriteLine("* 3:  View Stock Items Based of Name                      *");
+            Console.WriteLine("* 4:  View Stock Items Based of Attribute                 *");
+            Console.WriteLine("* 5:  View Stock Items Based of Quantity                  *");
+            Console.WriteLine("* 6:  Back                                                *");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("***********************************************************");
+
+            string selectionStockItems = Console.ReadLine();
+            int valueStockItems = 0;
+
+            if (int.TryParse(selectionStockItems, out valueStockItems))
+            {
+                switch (valueStockItems)
+                {
+                    case 1:
+                        Console.Clear();
+                        StockTakeAll();
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        StockTakeID();
+                        break;
+
+                    case 3:
+                        Console.Clear();
+                        StockTakeName();
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        StockTakeAttribute();
+                        break;
+
+                    case 5:
+                        Console.Clear();
+                        StockTakeQuantity();
+                        break;
+
+                    default:
+                        Console.Clear();
+                        break;
+                }
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("That input is an invalid.");
+            }
+        }
+
         public static void SelectFromTable(string selectQuery)
         {
             Console.WriteLine("________________________________________________________________________________________________________");
