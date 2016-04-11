@@ -111,7 +111,14 @@ namespace php_srs
         public static void StockSalesID()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input ID: ");
+
             string idValue = Console.ReadLine();
             int value = 0;
 
@@ -130,6 +137,12 @@ namespace php_srs
         public static void StockSalesName()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input Name: ");
             string nameValue = Console.ReadLine();
 
@@ -141,6 +154,12 @@ namespace php_srs
         public static void StockSalesAttribute()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input Attribute: ");
             string attrValue = Console.ReadLine();
 

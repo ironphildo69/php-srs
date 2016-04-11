@@ -45,6 +45,7 @@ namespace php_srs
                         break;
 
                     default:
+                        Console.Clear();
                         break;
                 }
             }

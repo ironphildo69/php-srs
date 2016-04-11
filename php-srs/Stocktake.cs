@@ -110,6 +110,12 @@ namespace php_srs
         public static void StockTakeID()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input ID: ");
             string idValue = Console.ReadLine();
             int value = 0;
@@ -131,6 +137,12 @@ namespace php_srs
         public static void StockTakeName()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input Name: ");
             string nameValue = Console.ReadLine();
 
@@ -142,6 +154,12 @@ namespace php_srs
         public static void StockTakeAttribute()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input Attribute: ");
             string attrValue = Console.ReadLine();
 
@@ -153,12 +171,18 @@ namespace php_srs
         public static void StockTakeQuantity()
         {
             Console.Clear();
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
             Console.WriteLine("Input Qunatity: ");
             string quantityValue = Console.ReadLine();
 
             Console.Clear();
-            Console.WriteLine("DATE SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM StockTable WHERE Quantity = '" + quantityValue + "'");
+            Console.WriteLine("QUANTITY SPECIFIED STOCK: ");
+            SelectFromTable("SELECT * FROM StockTable WHERE Quantity >= '" + quantityValue + "'");
         }
 
 
