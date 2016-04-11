@@ -77,10 +77,10 @@ namespace php_srs
 
         public static void SelectFromTable(string selectQuery)
         {
-            Console.WriteLine("___________________________________________________________________________________________________________");
-            Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
+            Console.WriteLine("_______________________________________________________________________________________________________________________");
+            Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,10}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
 
-            Console.WriteLine("___________________________________________________________________________________________________________");
+            Console.WriteLine("_______________________________________________________________________________________________________________________");
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
@@ -90,12 +90,12 @@ namespace php_srs
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);  //Sets up the query to be used with the database
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
             while (readResults.Read())
-                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}|{5,10}", readResults["ID"], readResults["Name"], readResults["Description"],
+                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,10}|{5,10}", readResults["ID"], readResults["Name"], readResults["Description"],
                     readResults["Attribute"], readResults["Quantity"], readResults["Date"]));
 
             php_srsConnection.Close();  //Closes the connection
 
-            Console.WriteLine("___________________________________________________________________________________________________________");
+            Console.WriteLine("_______________________________________________________________________________________________________________________");
             Console.WriteLine(" ");
             Console.WriteLine("Press any key to continue . . . ");
             Console.ReadLine();

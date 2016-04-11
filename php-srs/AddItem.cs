@@ -15,7 +15,7 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID int, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int)";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -29,7 +29,7 @@ namespace php_srs
             return true;
         }
 
-        public static void InsertIntoTable(int id, string name, string description, string attribute, int quantity)
+        public static void InsertIntoTable(string name, string description, string attribute, int quantity)
         {
                 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -37,7 +37,7 @@ namespace php_srs
 
             CreateTable();
 
-            string insertQuery = "INSERT INTO StockTable (ID, Name, Description, Attribute, Quantity) VALUES (" + id + ", '" + name + "', '" + description + 
+            string insertQuery = "INSERT INTO StockTable (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description + 
                 "', '" + attribute + "', " + quantity + ")";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
@@ -47,8 +47,8 @@ namespace php_srs
 
         public static void AddStock()
         {            
-            Console.WriteLine("ID: ");
-            int responseID = int.Parse(Console.ReadLine());
+            //Console.WriteLine("ID: ");
+            //int responseID = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Name: ");
             string responseName = Console.ReadLine();
@@ -62,7 +62,7 @@ namespace php_srs
             Console.WriteLine("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity);
+            InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();
