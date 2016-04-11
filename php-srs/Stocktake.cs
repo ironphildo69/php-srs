@@ -20,7 +20,9 @@ namespace php_srs
         {
             Console.WriteLine("________________________________________________________________________________________________________");
             Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", "ID", "Name", "Description", "Attribute", "Quantity")); //Formats the string to look more presentable in the command line.
-            
+
+            Console.WriteLine("________________________________________________________________________________________________________");
+
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
 
