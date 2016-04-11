@@ -15,9 +15,8 @@ namespace php_srs
             TextWriter tw = new StreamWriter("CSV.txt");
 
             tw.WriteLine("PEOPLE HEALTH PHARMACY - SALES REPORTING SYSTEM\n");
-            tw.WriteLine("ALL SALES RECORDS\n");
-            tw.WriteLine(String.Format("{0,5}|{1,20}|{2,60}|{3,15}|{4,10}|{5,25}", "ID", "Name", "Description", "Attribute", "Quantity", "Date"));            
-            tw.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------");            
+            tw.WriteLine("ALL SALES RECORDS\n");                      
+            tw.WriteLine("------------------------------------------------------------------------------------------------------------------------\n");            
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
@@ -28,8 +27,8 @@ namespace php_srs
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
             while (readResults.Read())
             {
-                tw.WriteLine(String.Format("{0,5}|{1,20}|{2,60}|{3,15}|{4,10}|{5,25}", readResults["ID"], readResults["Name"], readResults["Description"],
-                    readResults["Attribute"], readResults["Quantity"], readResults["Date"]));
+                tw.WriteLine(readResults["ID"] + ", " + readResults["Name"] + ", " + readResults["Description"] + ", " + readResults["Attribute"] + ", " + 
+                    readResults["Quantity"] + ", " + readResults["Date"] + "\n");
             }
             
             tw.Close();

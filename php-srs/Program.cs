@@ -11,7 +11,7 @@ namespace php_srs
         {
             if (File.Exists("php-srs_database.sqlite"))
             {
-                Console.WriteLine("Database successfully located.");
+                //Console.WriteLine("Database successfully located.");
             }
             else
             {
@@ -19,10 +19,6 @@ namespace php_srs
             }
             return true;
         }        
-        
-        //Startof CSV Export function from local SQL Database
-
-        //CODE HERE
 
         public static void Main(string[] args)
         {
@@ -121,9 +117,7 @@ namespace php_srs
                                         Console.Clear();
                                         break;
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 Console.Clear();
                                 Console.WriteLine("That input is an invalid.");
                             }
@@ -190,9 +184,7 @@ namespace php_srs
                                         Console.Clear();
                                         break;
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 Console.Clear();
                                 Console.WriteLine("That input is an invalid.");
                             }
@@ -202,11 +194,11 @@ namespace php_srs
                             //relevant methods will be called depending on the users selection
                             Console.Clear();
                             CSV.WriteCSVToFile();
-                            Console.WriteLine("Text file created in /CSV");
+                            Console.WriteLine("Text file created in 'CSV.txt'");
                             break;
 
                         case 6:
-                            Console.WriteLine("log out");       //relevant methods will be called depending on the users selection
+                            Console.WriteLine("Log Out Function <To be implemented...>");       //relevant methods will be called depending on the users selection
                             break;
 
                         default:

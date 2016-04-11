@@ -47,6 +47,7 @@ namespace php_srs
         public static void StockTakeID()
         {
             Console.Clear();
+            Console.WriteLine("Input ID: ");
             string idValue = Console.ReadLine();
             int value = 0;
 
@@ -67,6 +68,7 @@ namespace php_srs
         public static void StockTakeName()
         {
             Console.Clear();
+            Console.WriteLine("Input Name: ");
             string nameValue = Console.ReadLine();
 
             Console.Clear();
@@ -77,6 +79,7 @@ namespace php_srs
         public static void StockTakeAttribute()
         {
             Console.Clear();
+            Console.WriteLine("Input Attribute: ");
             string attrValue = Console.ReadLine();
 
             Console.Clear();
@@ -87,6 +90,7 @@ namespace php_srs
         public static void StockTakeQuantity()
         {
             Console.Clear();
+            Console.WriteLine("Input Qunatity: ");
             string quantityValue = Console.ReadLine();
 
             Console.Clear();

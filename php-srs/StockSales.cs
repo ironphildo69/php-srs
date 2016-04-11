@@ -47,6 +47,7 @@ namespace php_srs
         public static void StockSalesID()
         {
             Console.Clear();
+            Console.WriteLine("Input ID: ");
             string idValue = Console.ReadLine();
             int value = 0;
 
@@ -65,6 +66,7 @@ namespace php_srs
         public static void StockSalesName()
         {
             Console.Clear();
+            Console.WriteLine("Input Name: ");
             string nameValue = Console.ReadLine();
 
             Console.Clear();
@@ -75,6 +77,7 @@ namespace php_srs
         public static void StockSalesAttribute()
         {
             Console.Clear();
+            Console.WriteLine("Input Attribute: ");
             string attrValue = Console.ReadLine();
 
             Console.Clear();
@@ -85,7 +88,11 @@ namespace php_srs
         public static void StockSalesDate()
         {
             Console.Clear();
+
+            Console.WriteLine("Input Date (DD/MM/YYYY): ");
             string dateValue = Console.ReadLine();
+
+
 
             Console.Clear();
             Console.WriteLine("DATE SPECIFIED STOCK: ");

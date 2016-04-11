@@ -8,7 +8,6 @@ using System.IO;
 
 namespace php_srs
 {
-
     class AddSalesRecord
     {
 
@@ -17,7 +16,7 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID int, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Date DATETIME DEFAULT CURRENT_TIMESTAMP)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID int, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Date varchar (10))";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -31,7 +30,7 @@ namespace php_srs
             return true;
         }
 
-        public static void InsertIntoTable(int id, string name, string description, string attribute, int quantity)
+        public static void InsertIntoTable(int id, string name, string description, string attribute, int quantity, string date)
         {
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -40,7 +39,7 @@ namespace php_srs
             CreateTable();
 
             string insertQuery = "INSERT INTO SalesRecords (ID, Name, Description, Attribute, Quantity) VALUES (" + id + ", '" + name + "', '" + description +
-                "', '" + attribute + "', " + quantity + ")";
+                "', '" + attribute + "', " + quantity + ", '" + date + "')";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
 
@@ -64,7 +63,9 @@ namespace php_srs
             Console.WriteLine("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity);
+            DateTime date = DateTime.Today;
+
+            InsertIntoTable(responseID, responseName, responseDescription, responseAttribute, responseQuantity, date.ToString("D"));
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();
