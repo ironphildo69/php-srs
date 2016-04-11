@@ -62,6 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddItem.cs" />
+    <Compile Include="AddSalesRecord.cs" />
+    <Compile Include="CSV.cs" />
+    <Compile Include="Medicine.cs" />
+    <Compile Include="StockSales.cs" />
     <Compile Include="StockTake.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

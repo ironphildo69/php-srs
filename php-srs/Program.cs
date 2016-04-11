@@ -6,13 +6,6 @@ namespace php_srs
 {
     class Program
     {
-        //Global Variables
-        public static void globalVariables()
-        {
-            //Global SQL Connection to Database
-            SQLiteConnection databaseConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
-        }
-
         //Database creation logic, checks if file exists.
         public static bool createDatabase()
         {
