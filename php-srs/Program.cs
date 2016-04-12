@@ -39,7 +39,7 @@ namespace php_srs
                 Console.WriteLine("***********************************************************");
                 Console.WriteLine("*                                                         *");
                 Console.WriteLine("* 1:  Add Sales Record                                    *");
-                Console.WriteLine("* 2:  View Stock Sales                                    *");
+                Console.WriteLine("* 2:  View Sales Records                                  *");
                 Console.WriteLine("* 3:  Add Stock Item                                      *");
                 Console.WriteLine("* 4:  View Stock Items                                    *");
                 Console.WriteLine("* 5:  Output to CSV file                                  *");

@@ -50,17 +50,23 @@ namespace php_srs
         {
             //Console.WriteLine("ID: ");
             //int responseID = int.Parse(Console.ReadLine());
+            Console.WriteLine(" ");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*                                                         *");
+            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
+            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
+            Console.WriteLine("***********************************************************");
 
-            Console.WriteLine("Name: ");
+            Console.Write("Name: ");
             string responseName = Console.ReadLine();
 
-            Console.WriteLine("Description: ");
+            Console.Write("Description: ");
             string responseDescription = Console.ReadLine();
 
-            Console.WriteLine("Attribute: ");
+            Console.Write("Attribute: ");
             string responseAttribute = Console.ReadLine();
 
-            Console.WriteLine("Quantity: ");
+            Console.Write("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
             InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
