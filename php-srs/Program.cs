@@ -16,6 +16,7 @@ namespace php_srs
             else
             {
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
+
             }
             return true;
         }        
@@ -25,6 +26,7 @@ namespace php_srs
             //Pre initalisation logic
 
             createDatabase();
+            userLogin.runUserLogin();
 
             int value = 0;
 
