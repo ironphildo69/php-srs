@@ -35,12 +35,14 @@ namespace php_srs
         {
             String sqlStatement = "Select * from UserLogin Where Name='" + username + "' AND Password='" + password + "'";
             SQLiteDataReader readResults = Program.phpsrsDBQuery(sqlStatement);
+            while (readResults.Read())
+                Console.WriteLine(readResults);
 
-            Console.WriteLine(readResults);
+            string userCheck = readResults.ToString();
             //string adminCheck = readResults["Name"];
             //Console.Write(readResults["Name"]); //Debug
 
-            if (readResults == username + password)
+            if (userCheck == username + password)
             {
                 Console.WriteLine("Success!");
                 //Console.Write(readResults["Name"]); //More Debug

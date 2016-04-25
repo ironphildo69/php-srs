@@ -22,7 +22,7 @@ namespace php_srs
             }
             return true;
         }        
-
+        //Global Query String for PHP-SRS Database
         public static SQLiteDataReader phpsrsDBQuery(string sqlStatement)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -31,18 +31,19 @@ namespace php_srs
             SQLiteCommand sqlQuery = new SQLiteCommand(sqlStatement, php_srsConnection);
 
             SQLiteDataReader readResults = sqlQuery.ExecuteReader();
+
             php_srsConnection.Close();
 
             return readResults;
 
         }
-
+        
         public static void Main(string[] args)
         {
             //Pre initalisation logic
 
             createDatabase();
-            userLogin.runUserLogin();
+            //userLogin.runUserLogin();
 
             int value = 0;
 
