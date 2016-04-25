@@ -15,11 +15,27 @@ namespace php_srs
             }
             else
             {
+                //Put Table Creation Here + other database operations
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
+                userLogin.createUserLoginTable();
 
             }
             return true;
         }        
+
+        public static SQLiteDataReader phpsrsDBQuery(string sqlStatement)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            php_srsConnection.Open();
+
+            SQLiteCommand sqlQuery = new SQLiteCommand(sqlStatement, php_srsConnection);
+
+            SQLiteDataReader readResults = sqlQuery.ExecuteReader();
+            php_srsConnection.Close();
+
+            return readResults;
+
+        }
 
         public static void Main(string[] args)
         {
