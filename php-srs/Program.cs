@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.IO;
+using System.Windows.Forms;
 
 namespace php_srs
 {
@@ -23,6 +24,10 @@ namespace php_srs
         public static void Main(string[] args)
         {
             //Pre initalisation logic
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Window());
 
             createDatabase();
 
@@ -74,7 +79,8 @@ namespace php_srs
 
                         case 4:
                             //relevant methods will be called depending on the users selection
-                            StockTake.StockTakeMenu();                               
+                            StockTake st = new StockTake();
+                            st.StockTakeMenu();                               
                             break;
 
                         case 5:

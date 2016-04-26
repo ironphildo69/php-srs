@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
+using System.Data;
+using System.Windows.Forms;
 
 namespace php_srs
 {
     class StockTake
     {
-        public static void StockTakeMenu()
+        public void StockTakeMenu()
         {
             Console.Clear();
 
@@ -74,23 +76,43 @@ namespace php_srs
             }
         }
 
-        public static void SelectFromTable(string selectQuery)
+        public void SelectFromTable(string selectQuery, DataGridView dataGridStock)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+
+            try
+            {
+                php_srsConnection.Open(); //Opens the connection
+                AddItem.CreateTable();
+                DataSet ds = new DataSet();
+                var sqliteDA = new SQLiteDataAdapter(selectQuery, php_srsConnection);
+                sqliteDA.Fill(ds);
+                dataGridStock.DataSource = ds.Tables[0].DefaultView;
+
+            } catch {
+                throw;
+            }
+            php_srsConnection.Close();
+        }
+
+        public void SelectFromTableCLI(string selectQuery)
         {
             Console.WriteLine("________________________________________________________________________________________________________");
             Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", "ID", "Name", "Description", "Attribute", "Quantity")); //Formats the string to look more presentable in the command line.
-
             Console.WriteLine("________________________________________________________________________________________________________");
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
 
+            AddItem.CreateTable();
+
             string query = selectQuery; //Acquires the SQL SELECT statement from the reference
 
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);  //Sets up the query to be used with the database
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
+
             while (readResults.Read())
-                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", readResults["ID"], readResults["Name"], readResults["Description"],
-                    readResults["Attribute"], readResults["Quantity"]));
+                Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,5}", readResults["ID"], readResults["Name"], readResults["Description"], readResults["Attribute"], readResults["Quantity"]));
 
             php_srsConnection.Close();  //Closes the connection
 
@@ -101,14 +123,14 @@ namespace php_srs
             Console.Clear();
         }
         
-        public static void StockTakeAll()
+        public void StockTakeAll()
         {
             Console.Clear();
             Console.WriteLine("ALL STOCK: ");
-            SelectFromTable("SELECT * FROM StockTable");
+            SelectFromTableCLI("SELECT * FROM StockTable");
         }
 
-        public static void StockTakeID()
+        public void StockTakeID()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -125,7 +147,7 @@ namespace php_srs
             {
                 Console.Clear();
                 Console.WriteLine("ID SPECIFIED STOCK: ");
-                SelectFromTable("SELECT * FROM StockTable WHERE ID = " + idValue);
+                SelectFromTableCLI("SELECT * FROM StockTable WHERE ID = " + idValue);
 
             }
             else
@@ -135,7 +157,7 @@ namespace php_srs
             }
         }
 
-        public static void StockTakeName()
+        public void StockTakeName()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -149,10 +171,10 @@ namespace php_srs
 
             Console.Clear();
             Console.WriteLine("NAME SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM StockTable WHERE Name = '" + nameValue + "'");
+            SelectFromTableCLI("SELECT * FROM StockTable WHERE Name = '" + nameValue + "'");
         }
 
-        public static void StockTakeAttribute()
+        public void StockTakeAttribute()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -166,10 +188,10 @@ namespace php_srs
 
             Console.Clear();
             Console.WriteLine("ATTRIBUTE SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM StockTable WHERE Attribute = '" + attrValue + "'");
+            SelectFromTableCLI("SELECT * FROM StockTable WHERE Attribute = '" + attrValue + "'");
         }
 
-        public static void StockTakeQuantity()
+        public void StockTakeQuantity()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -183,9 +205,7 @@ namespace php_srs
 
             Console.Clear();
             Console.WriteLine("QUANTITY SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM StockTable WHERE Quantity >= '" + quantityValue + "'");
+            SelectFromTableCLI("SELECT * FROM StockTable WHERE Quantity >= '" + quantityValue + "'");
         }
-
-
     }
 }

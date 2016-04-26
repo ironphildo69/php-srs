@@ -23,12 +23,6 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public static bool CheckIfTableExists()
-        {
-
-            return true;
-        }
-
         public static void InsertIntoTable(string name, string description, string attribute, int quantity)
         {
                 
@@ -47,9 +41,6 @@ namespace php_srs
 
         public static void AddStock()
         {            
-            //Console.WriteLine("ID: ");
-            //int responseID = int.Parse(Console.ReadLine());
-
             Console.WriteLine("Name: ");
             string responseName = Console.ReadLine();
 

@@ -21,7 +21,7 @@ namespace php_srs
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
 
-            php_srsConnection.Close();
+            php_srsConnection.Close();  
         }
 
         public static bool CheckIfTableExists()
