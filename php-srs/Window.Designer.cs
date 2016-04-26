@@ -151,6 +151,18 @@
             this.back_b.Text = "Back";
             this.back_b.UseVisualStyleBackColor = true;
             this.back_b.Click += new System.EventHandler(this.back_b_Click);
+
+            // 
+            // back2_b
+            // 
+            this.back2_b.Location = new System.Drawing.Point(275, 320);
+            this.back2_b.Name = "back2_b";
+            this.back2_b.Size = new System.Drawing.Size(250, 50);
+            this.back2_b.TabIndex = 2;
+            this.back2_b.Text = "Back";
+            this.back2_b.UseVisualStyleBackColor = true;
+            this.back2_b.Click += new System.EventHandler(this.back2_b_Click);
+
             // 
             // enter_b
             // 

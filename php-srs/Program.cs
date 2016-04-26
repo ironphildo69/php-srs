@@ -23,6 +23,7 @@ namespace php_srs
             }
             return true;
         }        
+
         //Global Query String for PHP-SRS Database
         public static SQLiteDataReader phpsrsDBQuery(string sqlStatement)
         {
@@ -32,6 +33,18 @@ namespace php_srs
             SQLiteCommand sqlQuery = new SQLiteCommand(sqlStatement, php_srsConnection);
 
             SQLiteDataReader readResults = sqlQuery.ExecuteReader();
+
+            string userName;
+            string pass;
+
+            while (readResults.Read())
+            {
+                //readResults["Name"] = userName;
+                //readResults["Password"] = pass;
+
+            }
+            
+            //test strings against input
 
             php_srsConnection.Close();
 
@@ -48,7 +61,7 @@ namespace php_srs
             Application.Run(new Window());
 
             createDatabase();
-            //userLogin.runUserLogin();
+            userLogin.runUserLogin();
 
             int value = 0;
 
