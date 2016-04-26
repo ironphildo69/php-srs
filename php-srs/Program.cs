@@ -16,11 +16,29 @@ namespace php_srs
             }
             else
             {
+                //Put Table Creation Here + other database operations
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
+                userLogin.createUserLoginTable();
+
             }
             return true;
         }        
+        //Global Query String for PHP-SRS Database
+        public static SQLiteDataReader phpsrsDBQuery(string sqlStatement)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            php_srsConnection.Open();
 
+            SQLiteCommand sqlQuery = new SQLiteCommand(sqlStatement, php_srsConnection);
+
+            SQLiteDataReader readResults = sqlQuery.ExecuteReader();
+
+            php_srsConnection.Close();
+
+            return readResults;
+
+        }
+        
         public static void Main(string[] args)
         {
             //Pre initalisation logic
@@ -30,6 +48,7 @@ namespace php_srs
             Application.Run(new Window());
 
             createDatabase();
+            //userLogin.runUserLogin();
 
             int value = 0;
 
@@ -44,7 +63,7 @@ namespace php_srs
                 Console.WriteLine("***********************************************************");
                 Console.WriteLine("*                                                         *");
                 Console.WriteLine("* 1:  Add Sales Record                                    *");
-                Console.WriteLine("* 2:  View Stock Sales                                    *");
+                Console.WriteLine("* 2:  View Sales Records                                  *");
                 Console.WriteLine("* 3:  Add Stock Item                                      *");
                 Console.WriteLine("* 4:  View Stock Items                                    *");
                 Console.WriteLine("* 5:  Output to CSV file                                  *");

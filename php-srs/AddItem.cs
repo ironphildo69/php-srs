@@ -41,16 +41,19 @@ namespace php_srs
 
         public static void AddStock()
         {            
+            //Console.WriteLine("ID: ");
+            //int responseID = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Name: ");
             string responseName = Console.ReadLine();
 
-            Console.WriteLine("Description: ");
+            Console.Write("Description: ");
             string responseDescription = Console.ReadLine();
 
-            Console.WriteLine("Attribute: ");
+            Console.Write("Attribute: ");
             string responseAttribute = Console.ReadLine();
 
-            Console.WriteLine("Quantity: ");
+            Console.Write("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
             InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
