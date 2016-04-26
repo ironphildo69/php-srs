@@ -491,9 +491,7 @@
         private System.Windows.Forms.Panel stockitemview_p;
         private System.Windows.Forms.Panel heading_img;
         private System.Windows.Forms.Panel stocktable_p;
-        private System.Windows.Forms.Panel stocktableupdate_p;
-        
-
+        private System.Windows.Forms.Panel stocktableupdate_p;      
 
         //ListBox
         private System.Windows.Forms.ListBox attribute_lst;
