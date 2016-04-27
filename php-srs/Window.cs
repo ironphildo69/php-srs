@@ -81,8 +81,7 @@ namespace php_srs
         }
 
         //Panel 3 submenu stockupdate
-
-        //
+        // enter
         private void enter_b_Click(object sender, EventArgs e)
         {            
 
@@ -96,7 +95,6 @@ namespace php_srs
         }
 
         //Panel 4 submenu stockview
-
         //show all current stock
         private void allstock_b_Click(object sender, EventArgs e)
         {
@@ -109,6 +107,61 @@ namespace php_srs
         //enter
         private void enter1_b_Click(object sender, EventArgs e)
         {
+            string inputID = textbox_id.Text;
+            string inputName = textbox_name.Text;
+            int inputAttr = attribute_lst.SelectedIndex;
+
+            stockitemview_p.Visible = false;
+            StockTake st = new StockTake();
+            
+            string query = "SELECT * FROM StockTable ";
+            string whereClause = "WHERE ";
+            string whereAnd = " AND ";
+            string whereID = "ID = " + inputID;
+            string whereName = "Name = " + "'" + inputName + "'";
+            string whereAttr = "Attribute = " + "'" + attribute_lst.SelectedValue + "'";
+
+            if (inputID != "")
+            {
+                query += whereClause;
+                query += whereID;
+
+                if (inputName != "")
+                {
+                    query += whereAnd;
+                    query += whereName;
+
+                    if (inputAttr > 0)
+                    {
+                        query += whereAnd;
+                        query += whereAttr;
+                    }
+                } else if (inputAttr > 0) {
+                    query += whereAnd;
+                    query += whereAttr;                    
+                }
+            } else if (inputName != "")
+                {
+                    query += whereClause;
+                    query += whereName;
+
+                    if (inputAttr > 0)
+                    {
+                        query += whereAnd;
+                        query += whereAttr;
+                    }                
+            } else if (inputAttr > 0) {
+                query += whereClause;
+                query += whereAttr;
+            }          
+            
+            st.SelectFromTable(query, dataGridStock);
+
+            textbox_id.Clear();
+            textbox_name.Clear();
+            attribute_lst.SelectedIndex = 0;
+
+            stocktable_p.Visible = true;
 
         }
 
@@ -152,20 +205,32 @@ namespace php_srs
             this.back_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2;
 
             //smenu updatestock
-            //this.enter_b.Left = (this.ClientSize.Width - this.enter_b.Width) / 2;
-            //this.back1_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2;
-            this.dataGridStockUpdate.Left = (this.ClientSize.Width - this.dataGridStockUpdate.Width) / 2;
-            this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;
-            
+            this.addiditem_stockup_l.Left = (this.ClientSize.Width - this.addiditem_stockup_l.Width) / 2 - 130;
+            this.addnewitem_stockup_l.Left = (this.ClientSize.Width - this.addnewitem_stockup_l.Width) / 2 - 130;
+            this.name_stockup_l.Left = (this.ClientSize.Width - this.name_stockup_l.Width) / 2 - 150;
+            this.desc_stockup_l.Left = (this.ClientSize.Width - this.desc_stockup_l.Width) / 2 - 150;
+            this.attr_stockup_l.Left = (this.ClientSize.Width - this.attr_stockup_l.Width) / 2 - 150;
+            this.qty_stockup_l.Left = (this.ClientSize.Width - this.qty_stockup_l.Width) / 2 - 150;
+            this.price_stockup_l.Left = (this.ClientSize.Width - this.price_stockup_l.Width) / 2 - 150;
 
+            this.qtyid_stockup_t.Left = (this.ClientSize.Width - this.qtyid_stockup_t.Width) / 2 + 100;
+            this.name_stockup_t.Left = (this.ClientSize.Width - this.name_stockup_t.Width) / 2 + 100;
+            this.desc_stockup_t.Left = (this.ClientSize.Width - this.desc_stockup_t.Width) / 2 + 100;
+            this.qty_stockup_t.Left = (this.ClientSize.Width - this.qty_stockup_t.Width) / 2 + 100;
+            this.price_stockup_t.Left = (this.ClientSize.Width - this.price_stockup_t.Width) / 2 + 100;
+
+            this.id_l.Left = (this.ClientSize.Width - this.id_l.Width) / 2 - 200;
+            this.id_qty_l.Left = (this.ClientSize.Width - this.id_qty_l.Width) / 2 - 100;         
+
+            this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;     
 
             //smenu viewstock
             this.allstock_b.Left = (this.ClientSize.Width - this.viewcurrentstock_b.Width) / 2 - 150;
             this.enter1_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
-            this.back2_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;            
-            
-            this.label_stocktable_id.Left = (this.ClientSize.Width - this.label_stocktable_id.Width) / 2 - 131;
-            this.label_stocktable_name.Left = (this.ClientSize.Width - this.label_stocktable_name.Width) / 2 - 142;
+            this.back2_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
+
+            this.label_stocktable_id.Left = (this.ClientSize.Width - this.label_stocktable_id.Width) / 2 - 150;
+            this.label_stocktable_name.Left = (this.ClientSize.Width - this.label_stocktable_name.Width) / 2 - 150;
             this.label_stocktable_attr.Left = (this.ClientSize.Width - this.label_stocktable_attr.Width) / 2 - 150;
             this.textbox_id.Left = (this.ClientSize.Width - this.textbox_id.Width) / 2 + 150;
             this.textbox_name.Left = (this.ClientSize.Width - this.textbox_name.Width) / 2 + 150;
@@ -174,6 +239,8 @@ namespace php_srs
             //smenu stocktable
             this.back_stocktable_b.Left = (this.ClientSize.Width - this.back_stocktable_b.Width) / 2;
             this.dataGridStock.Left = (this.ClientSize.Width - this.dataGridStock.Width) / 2;
+
+
             
 
         }

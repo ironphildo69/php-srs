@@ -73,10 +73,11 @@ namespace php_srs
 
             string insertQuery = "UPDATE " + userLoginTable + " SET (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "') WHERE Name='" + defaultUser + "'";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
-            insertCommand.ExecuteNonQuery();
+            //insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
         } 
+
         //checks user permisions level and loads this in. Unfinished.
         private static bool userCheckPerms(String username)
         {

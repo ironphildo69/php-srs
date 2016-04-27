@@ -15,7 +15,7 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Price real)";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -25,7 +25,21 @@ namespace php_srs
 
         public static void InsertIntoTable(string name, string description, string attribute, int quantity)
         {
-                
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            php_srsConnection.Open();
+
+            CreateTable();
+
+            string insertQuery = "INSERT INTO StockTable (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description +
+                "', '" + attribute + "', " + quantity + ")";
+            SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
+            insertCommand.ExecuteNonQuery();
+
+            php_srsConnection.Close();
+        }
+
+        public static void InsertIntoTableCLI(string name, string description, string attribute, int quantity)
+        {                
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
@@ -56,7 +70,7 @@ namespace php_srs
             Console.Write("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
+            InsertIntoTableCLI(responseName, responseDescription, responseAttribute, responseQuantity);
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();

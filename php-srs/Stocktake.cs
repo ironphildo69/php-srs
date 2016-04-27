@@ -88,11 +88,15 @@ namespace php_srs
                 var sqliteDA = new SQLiteDataAdapter(selectQuery, php_srsConnection);
                 sqliteDA.Fill(ds);
                 dataGridStock.DataSource = ds.Tables[0].DefaultView;
-
             } catch {
                 throw;
             }
             php_srsConnection.Close();
+        }
+
+        public void SelectSpecific()
+        {
+
         }
 
         public void SelectFromTableCLI(string selectQuery)

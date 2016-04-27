@@ -61,7 +61,7 @@ namespace php_srs
             Application.Run(new Window());
 
             createDatabase();
-            userLogin.runUserLogin();
+            //userLogin.runUserLogin();
 
             int value = 0;
 
