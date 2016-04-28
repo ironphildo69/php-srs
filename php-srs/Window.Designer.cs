@@ -38,7 +38,6 @@
             this.viewcurrentstock_b = new System.Windows.Forms.Button();
             this.back_b = new System.Windows.Forms.Button();
             this.enter_b = new System.Windows.Forms.Button();
-            this.back1_b = new System.Windows.Forms.Button();
             this.allstock_b = new System.Windows.Forms.Button();
             this.enter1_b = new System.Windows.Forms.Button();
             this.back2_b = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@
             this.record_l = new System.Windows.Forms.Label();
             this.mainmenu_p = new System.Windows.Forms.Panel();
             this.stockitem_p = new System.Windows.Forms.Panel();
-            this.stockitemupdate_p = new System.Windows.Forms.Panel();
             this.stockitemview_p = new System.Windows.Forms.Panel();
             this.attribute_lst = new System.Windows.Forms.ListBox();
             this.label_stocktable_name = new System.Windows.Forms.Label();
@@ -60,16 +58,15 @@
             this.stocktableupdate_p = new System.Windows.Forms.Panel();
             this.back_stocktableupdate_b = new System.Windows.Forms.Button();
             this.dataGridStock = new System.Windows.Forms.DataGridView();
-
+            this.attr_stockup_list = new System.Windows.Forms.ListBox();
+            this.id_stockup_list = new System.Windows.Forms.ListBox();
             this.id_l = new System.Windows.Forms.Label();
             this.id_qty_l = new System.Windows.Forms.Label();
-
             this.name_stockup_t = new System.Windows.Forms.TextBox();
             this.qtyid_stockup_t = new System.Windows.Forms.TextBox();
             this.desc_stockup_t = new System.Windows.Forms.TextBox();
             this.qty_stockup_t = new System.Windows.Forms.TextBox();
             this.price_stockup_t = new System.Windows.Forms.TextBox();
-
             this.addiditem_stockup_l = new System.Windows.Forms.Label();
             this.addnewitem_stockup_l = new System.Windows.Forms.Label();
             this.name_stockup_l = new System.Windows.Forms.Label();
@@ -77,13 +74,22 @@
             this.attr_stockup_l = new System.Windows.Forms.Label();
             this.qty_stockup_l = new System.Windows.Forms.Label();
             this.price_stockup_l = new System.Windows.Forms.Label();
+            this.confirm_label = new System.Windows.Forms.Label();
+            this.enterid_stockup_b = new System.Windows.Forms.Button();
+            this.enter_stockup_b = new System.Windows.Forms.Button();
+            this.stockadditem_p = new System.Windows.Forms.Panel();
+            this.additem_stockup_b = new System.Windows.Forms.Button();
+            this.back_stockadditem_b = new System.Windows.Forms.Button();
+            
+
 
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
-            this.stockitemupdate_p.SuspendLayout();
             this.stockitemview_p.SuspendLayout();
             this.stocktable_p.SuspendLayout();
-            this.stocktableupdate_p.SuspendLayout();            
+            this.stocktableupdate_p.SuspendLayout();
+            this.stockadditem_p.SuspendLayout();
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,13 +143,13 @@
             this.updatestock_b.Location = new System.Drawing.Point(275, 20);
             this.updatestock_b.Name = "updatestock_b";
             this.updatestock_b.Size = new System.Drawing.Size(250, 50);
-            this.updatestock_b.Text = "Update Stock";
+            this.updatestock_b.Text = "Update An Existing Item";
             this.updatestock_b.UseVisualStyleBackColor = true;
             this.updatestock_b.Click += new System.EventHandler(this.updatestock_b_Click);
             // 
             // viewcurrentstock_b
             // 
-            this.viewcurrentstock_b.Location = new System.Drawing.Point(275, 95);
+            this.viewcurrentstock_b.Location = new System.Drawing.Point(275, 170);
             this.viewcurrentstock_b.Name = "viewcurrentstock_b";
             this.viewcurrentstock_b.Size = new System.Drawing.Size(250, 50);
             this.viewcurrentstock_b.Text = "View Current Stock";
@@ -152,7 +158,7 @@
             // 
             // back_b
             // 
-            this.back_b.Location = new System.Drawing.Point(275, 170);
+            this.back_b.Location = new System.Drawing.Point(275, 245);
             this.back_b.Name = "back_b";
             this.back_b.Size = new System.Drawing.Size(250, 50);
             this.back_b.Text = "Back";
@@ -168,25 +174,6 @@
             this.back2_b.Text = "Back";
             this.back2_b.UseVisualStyleBackColor = true;
             this.back2_b.Click += new System.EventHandler(this.back2_b_Click);
-
-            // 
-            // enter_b
-            // 
-            this.enter_b.Location = new System.Drawing.Point(275, 20);
-            this.enter_b.Name = "enter_b";
-            this.enter_b.Size = new System.Drawing.Size(250, 50);
-            this.enter_b.Text = "Enter";
-            this.enter_b.UseVisualStyleBackColor = true;
-            this.enter_b.Click += new System.EventHandler(this.enter_b_Click);
-            // 
-            // back1_b
-            // 
-            this.back1_b.Location = new System.Drawing.Point(275, 95);
-            this.back1_b.Name = "back1_b";
-            this.back1_b.Size = new System.Drawing.Size(250, 50);
-            this.back1_b.Text = "Back";
-            this.back1_b.UseVisualStyleBackColor = true;
-            this.back1_b.Click += new System.EventHandler(this.back1_b_Click);
             // 
             // allstock_b
             // 
@@ -244,20 +231,11 @@
             this.stockitem_p.Controls.Add(this.back_b);
             this.stockitem_p.Controls.Add(this.viewcurrentstock_b);
             this.stockitem_p.Controls.Add(this.updatestock_b);
+            this.stockitem_p.Controls.Add(this.additem_stockup_b);
             this.stockitem_p.Location = new System.Drawing.Point(0, 240);
             this.stockitem_p.Name = "stockitem_p";
             this.stockitem_p.Size = new System.Drawing.Size(1680, 1080);
-            this.stockitem_p.Visible = false;
-            // 
-            // stockitemupdate_p
-            // 
-            this.stockitemupdate_p.BackColor = System.Drawing.Color.Transparent;
-            this.stockitemupdate_p.Controls.Add(this.back1_b);
-            this.stockitemupdate_p.Controls.Add(this.enter_b);
-            this.stockitemupdate_p.Location = new System.Drawing.Point(0, 240);
-            this.stockitemupdate_p.Name = "stockitemupdate_p";
-            this.stockitemupdate_p.Size = new System.Drawing.Size(1680, 1080);
-            this.stockitemupdate_p.Visible = false;
+            this.stockitem_p.Visible = false;            
             // 
             // stockitemview_p
             // 
@@ -366,44 +344,41 @@
             this.back_stocktable_b.Text = "Back";
             this.back_stocktable_b.UseVisualStyleBackColor = true;
             this.back_stocktable_b.Click += new System.EventHandler(this.back_stocktable_b_Click);
-
             // 
             // stocktableupdate_p
             // 
             this.stocktableupdate_p.BackColor = System.Drawing.Color.Transparent;
             this.stocktableupdate_p.Controls.Add(this.back_stocktableupdate_b);
             this.stocktableupdate_p.Controls.Add(this.addiditem_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.addnewitem_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.name_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.desc_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.attr_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.qty_stockup_l);
-            this.stocktableupdate_p.Controls.Add(this.price_stockup_l);
             this.stocktableupdate_p.Controls.Add(this.id_l);
-            this.stocktableupdate_p.Controls.Add(this.id_qty_l);
-
+            this.stocktableupdate_p.Controls.Add(this.id_qty_l);     
             this.stocktableupdate_p.Controls.Add(this.qtyid_stockup_t);
-            this.stocktableupdate_p.Controls.Add(this.name_stockup_t);
-            this.stocktableupdate_p.Controls.Add(this.desc_stockup_t);
-            this.stocktableupdate_p.Controls.Add(this.qty_stockup_t);
-            this.stocktableupdate_p.Controls.Add(this.price_stockup_t);
-            
-            
+            this.stocktableupdate_p.Controls.Add(this.id_stockup_list);
+            this.stocktableupdate_p.Controls.Add(this.enterid_stockup_b);
+
             this.stocktableupdate_p.Location = new System.Drawing.Point(0, 240);
             this.stocktableupdate_p.Name = "stocktableupdate_p";
             this.stocktableupdate_p.Size = new System.Drawing.Size(1680, 1080);
             this.stocktableupdate_p.Visible = false;
+            // 
+            // additem_stockup_b
+            // 
+            this.additem_stockup_b.Location = new System.Drawing.Point(70, 95);
+            this.additem_stockup_b.Name = "additem_stockup_b";
+            this.additem_stockup_b.Size = new System.Drawing.Size(250, 50);
+            this.additem_stockup_b.Text = "Add New Item";
+            this.additem_stockup_b.UseVisualStyleBackColor = true;
+            this.additem_stockup_b.Click += new System.EventHandler(this.additem_stockup_b_Click);
 
             // 
             // back_stocktableupdate_b
             // 
-            this.back_stocktableupdate_b.Location = new System.Drawing.Point(70, 320);
+            this.back_stocktableupdate_b.Location = new System.Drawing.Point(70, 245);
             this.back_stocktableupdate_b.Name = "back_stocktableupdate_b";
             this.back_stocktableupdate_b.Size = new System.Drawing.Size(250, 50);
             this.back_stocktableupdate_b.Text = "Back";
             this.back_stocktableupdate_b.UseVisualStyleBackColor = true;
             this.back_stocktableupdate_b.Click += new System.EventHandler(this.back_stocktableupdate_b_Click);
-
             //
             //addiditem_stockup_l
             //
@@ -413,10 +388,17 @@
             this.addiditem_stockup_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addiditem_stockup_l.Location = new System.Drawing.Point(5, 20);
             this.addiditem_stockup_l.Name = "addiditem_stockup_l";
-            this.addiditem_stockup_l.Size = new System.Drawing.Size(200, 25);
-            this.addiditem_stockup_l.Text = "Add an item by ID: ";
-            this.addiditem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
+            this.addiditem_stockup_l.Size = new System.Drawing.Size(400, 50);
+            this.addiditem_stockup_l.Text = "Update Stock of an item by Name";
+            this.addiditem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            //qtyid_stockup_t
+            //
+            this.qtyid_stockup_t.AcceptsReturn = true;
+            this.qtyid_stockup_t.AcceptsTab = true;
+            this.qtyid_stockup_t.Location = new System.Drawing.Point(275, 131);
+            this.qtyid_stockup_t.Name = "qtyid_stockup_t";
+            this.qtyid_stockup_t.Size = new System.Drawing.Size(250, 20);
             //
             //addnewitem_stockup_l
             //
@@ -424,12 +406,11 @@
             this.addnewitem_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.addnewitem_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addnewitem_stockup_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addnewitem_stockup_l.Location = new System.Drawing.Point(5, 75);
+            this.addnewitem_stockup_l.Location = new System.Drawing.Point(5, 20);
             this.addnewitem_stockup_l.Name = "addnewitem_stockup_l";
-            this.addnewitem_stockup_l.Size = new System.Drawing.Size(200, 25);
+            this.addnewitem_stockup_l.Size = new System.Drawing.Size(400, 50);
             this.addnewitem_stockup_l.Text = "Add a new item: ";
-            this.addnewitem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
+            this.addnewitem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             //name_stockup_l
             //
@@ -437,12 +418,11 @@
             this.name_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.name_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.name_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name_stockup_l.Location = new System.Drawing.Point(5, 105);
+            this.name_stockup_l.Location = new System.Drawing.Point(5, 90);
             this.name_stockup_l.Name = "name_stockup_l";
-            this.name_stockup_l.Size = new System.Drawing.Size(100, 25);
+            this.name_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.name_stockup_l.Text = "Name: ";
             this.name_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //desc_stockup_l
             //
@@ -450,12 +430,11 @@
             this.desc_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.desc_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.desc_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desc_stockup_l.Location = new System.Drawing.Point(5, 135);
+            this.desc_stockup_l.Location = new System.Drawing.Point(5, 121);
             this.desc_stockup_l.Name = "desc_stockup_l";
-            this.desc_stockup_l.Size = new System.Drawing.Size(100, 25);
+            this.desc_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.desc_stockup_l.Text = "Description: ";
             this.desc_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //attr_stockup_l
             //
@@ -463,12 +442,11 @@
             this.attr_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.attr_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.attr_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attr_stockup_l.Location = new System.Drawing.Point(5, 165);
+            this.attr_stockup_l.Location = new System.Drawing.Point(5, 152);
             this.attr_stockup_l.Name = "attr_stockup_l";
-            this.attr_stockup_l.Size = new System.Drawing.Size(100, 25);
+            this.attr_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.attr_stockup_l.Text = "Attribute: ";
             this.attr_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //qty_stockup_l
             //
@@ -476,12 +454,11 @@
             this.qty_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.qty_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qty_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.qty_stockup_l.Location = new System.Drawing.Point(5, 195);
+            this.qty_stockup_l.Location = new System.Drawing.Point(5, 193);
             this.qty_stockup_l.Name = "qty_stockup_l";
-            this.qty_stockup_l.Size = new System.Drawing.Size(100, 25);
+            this.qty_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.qty_stockup_l.Text = "Quantity: ";
             this.qty_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //price_stockup_l
             //
@@ -489,57 +466,43 @@
             this.price_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.price_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.price_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.price_stockup_l.Location = new System.Drawing.Point(5, 225);
+            this.price_stockup_l.Location = new System.Drawing.Point(5, 224);
             this.price_stockup_l.Name = "price_stockup_l";
-            this.price_stockup_l.Size = new System.Drawing.Size(100, 25);
+            this.price_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.price_stockup_l.Text = "Price: ";
-            this.price_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
-            //
-            //qtyid_stockup_t
-            //
-            this.qtyid_stockup_t.AcceptsReturn = true;
-            this.qtyid_stockup_t.AcceptsTab = true;
-            this.qtyid_stockup_t.Location = new System.Drawing.Point(275, 50);
-            this.qtyid_stockup_t.Name = "qtyid_stockup_t";
-            this.qtyid_stockup_t.Size = new System.Drawing.Size(250, 25);
-
+            this.price_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;            
             //
             //name_stockup_t
             //
             this.name_stockup_t.AcceptsReturn = true;
             this.name_stockup_t.AcceptsTab = true;
-            this.name_stockup_t.Location = new System.Drawing.Point(275, 105);
+            this.name_stockup_t.Location = new System.Drawing.Point(275, 90);
             this.name_stockup_t.Name = "name_stockup_t";
-            this.name_stockup_t.Size = new System.Drawing.Size(250, 20);
-
+            this.name_stockup_t.Size = new System.Drawing.Size(250, 25);
             //
             //desc_stockup_t
             //
             this.desc_stockup_t.AcceptsReturn = true;
             this.desc_stockup_t.AcceptsTab = true;
-            this.desc_stockup_t.Location = new System.Drawing.Point(275, 135);
+            this.desc_stockup_t.Location = new System.Drawing.Point(275, 121);
             this.desc_stockup_t.Name = "desc_stockup_t";
-            this.desc_stockup_t.Size = new System.Drawing.Size(250, 20);
-
+            this.desc_stockup_t.Size = new System.Drawing.Size(250, 25);
             //
             //qty_stockup_t
             //
             this.qty_stockup_t.AcceptsReturn = true;
             this.qty_stockup_t.AcceptsTab = true;
-            this.qty_stockup_t.Location = new System.Drawing.Point(275, 195);
+            this.qty_stockup_t.Location = new System.Drawing.Point(275, 193);
             this.qty_stockup_t.Name = "qty_stockup_t";
-            this.qty_stockup_t.Size = new System.Drawing.Size(250, 20);
-
+            this.qty_stockup_t.Size = new System.Drawing.Size(250, 25);
             //
             //price_stockup_t
             //
             this.price_stockup_t.AcceptsReturn = true;
             this.price_stockup_t.AcceptsTab = true;
-            this.price_stockup_t.Location = new System.Drawing.Point(275, 225);
+            this.price_stockup_t.Location = new System.Drawing.Point(275, 224);
             this.price_stockup_t.Name = "price_stockup_t";
-            this.price_stockup_t.Size = new System.Drawing.Size(250, 20);
-
+            this.price_stockup_t.Size = new System.Drawing.Size(250, 25);
             //
             //id_l
             //
@@ -547,12 +510,11 @@
             this.id_l.BackColor = System.Drawing.Color.LightBlue;
             this.id_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.id_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.id_l.Location = new System.Drawing.Point(5, 50);
+            this.id_l.Location = new System.Drawing.Point(5, 90);
             this.id_l.Name = "id_l";
-            this.id_l.Size = new System.Drawing.Size(100, 25);
-            this.id_l.Text = "ID: ";
+            this.id_l.Size = new System.Drawing.Size(100, 21);
+            this.id_l.Text = "Name: ";
             this.id_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //id_qty_l
             //
@@ -560,44 +522,63 @@
             this.id_qty_l.BackColor = System.Drawing.Color.LightBlue;
             this.id_qty_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.id_qty_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.id_qty_l.Location = new System.Drawing.Point(5, 50);
+            this.id_qty_l.Location = new System.Drawing.Point(5, 131);
             this.id_qty_l.Name = "id_qty_l";
-            this.id_qty_l.Size = new System.Drawing.Size(100, 25);
+            this.id_qty_l.Size = new System.Drawing.Size(100, 21);
             this.id_qty_l.Text = "Quantity: ";
             this.id_qty_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-
             //
             //id_stockup_list
             //
-
+            this.id_stockup_list.FormattingEnabled = true;
+            this.id_stockup_list.Location = new System.Drawing.Point(275, 90);
+            this.id_stockup_list.Name = "id_stockup_list";
+            this.id_stockup_list.Size = new System.Drawing.Size(250, 30);  
             //
             //attr_stockup_list
             //
-
+            this.attr_stockup_list.FormattingEnabled = true;
+            this.attr_stockup_list.Location = new System.Drawing.Point(275, 152);
+            this.attr_stockup_list.Name = "attr_stockup_list";
+            this.attr_stockup_list.Size = new System.Drawing.Size(250, 30);
+            this.attr_stockup_list.Items.Insert(0, "Tablet");
+            this.attr_stockup_list.Items.Insert(1, "Syrup");
+            this.attr_stockup_list.Items.Insert(2, "Spray");
             //
             //enterid_stockup_b
             //
-
+            this.enterid_stockup_b.Location = new System.Drawing.Point(70, 170);
+            this.enterid_stockup_b.Name = "enterid_stockup_b";
+            this.enterid_stockup_b.Size = new System.Drawing.Size(250, 50);
+            this.enterid_stockup_b.Text = "Enter";
+            this.enterid_stockup_b.UseVisualStyleBackColor = true;
+            this.enterid_stockup_b.Click += new System.EventHandler(this.enterid_stockup_b_Click);
             //
             //enter_stockup_b
             //
-
+            this.enter_stockup_b.Location = new System.Drawing.Point(70, 255);
+            this.enter_stockup_b.Name = "enter_stockup_b";
+            this.enter_stockup_b.Size = new System.Drawing.Size(250, 50);
+            this.enter_stockup_b.Text = "Enter";
+            this.enter_stockup_b.UseVisualStyleBackColor = true;
+            this.enter_stockup_b.Click += new System.EventHandler(this.enter_stockup_b_Click);
             //
-            //back_stockup_b
+            //confirm_label
             //
-
-
-
-
-
-
+            this.confirm_label.AutoSize = false;
+            this.confirm_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirm_label.Location = new System.Drawing.Point(5, 70);
+            this.confirm_label.Name = "confirm_label";
+            this.confirm_label.Size = new System.Drawing.Size(600, 18);
+            this.confirm_label.Text = " ";
+            this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridStock
             // 
             this.dataGridStock.AllowUserToAddRows = false;
             this.dataGridStock.AllowUserToDeleteRows = false;
             this.dataGridStock.AllowUserToOrderColumns = true;
-            this.dataGridStock.AllowUserToResizeColumns = false;
+            this.dataGridStock.AllowUserToResizeColumns = true;
             this.dataGridStock.AllowUserToResizeRows = false;
             this.dataGridStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -605,6 +586,38 @@
             this.dataGridStock.Name = "dataGridStock";
             this.dataGridStock.ReadOnly = true;
             this.dataGridStock.Size = new System.Drawing.Size(800, 290);
+            // 
+            // stockadditem_p
+            // 
+            this.stockadditem_p.BackColor = System.Drawing.Color.Transparent;            
+            this.stockadditem_p.Controls.Add(this.addnewitem_stockup_l);
+            this.stockadditem_p.Controls.Add(this.name_stockup_l);
+            this.stockadditem_p.Controls.Add(this.desc_stockup_l);
+            this.stockadditem_p.Controls.Add(this.attr_stockup_l);
+            this.stockadditem_p.Controls.Add(this.qty_stockup_l);
+            this.stockadditem_p.Controls.Add(this.price_stockup_l);
+            this.stockadditem_p.Controls.Add(this.confirm_label);
+            this.stockadditem_p.Controls.Add(this.name_stockup_t);
+            this.stockadditem_p.Controls.Add(this.desc_stockup_t);
+            this.stockadditem_p.Controls.Add(this.qty_stockup_t);
+            this.stockadditem_p.Controls.Add(this.price_stockup_t);
+            this.stockadditem_p.Controls.Add(this.attr_stockup_list);
+            this.stockadditem_p.Controls.Add(this.enter_stockup_b);
+            this.stockadditem_p.Controls.Add(this.back_stockadditem_b);
+            this.stockadditem_p.Location = new System.Drawing.Point(0, 240);
+            this.stockadditem_p.Name = "stockadditem_p";
+            this.stockadditem_p.Size = new System.Drawing.Size(1680, 1080);
+            this.stockadditem_p.Visible = false;
+            //
+            //back_stockadditem_b
+            //
+            this.back_stockadditem_b.Location = new System.Drawing.Point(70, 320);
+            this.back_stockadditem_b.Name = "back_stockadditem_b";
+            this.back_stockadditem_b.Size = new System.Drawing.Size(250, 50);
+            this.back_stockadditem_b.Text = "Back";
+            this.back_stockadditem_b.UseVisualStyleBackColor = true;
+            this.back_stockadditem_b.Click += new System.EventHandler(this.back_stockadditem_b_Click);
+
             // 
             // Window
             // 
@@ -616,9 +629,9 @@
             this.Controls.Add(this.mainmenu_p);
             this.Controls.Add(this.stockitem_p);
             this.Controls.Add(this.stocktable_p);
-            this.Controls.Add(this.stockitemupdate_p);
             this.Controls.Add(this.stockitemview_p);
-            this.Controls.Add(this.stocktableupdate_p);            
+            this.Controls.Add(this.stocktableupdate_p);
+            this.Controls.Add(this.stockadditem_p);            
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.heading_img);
             this.DoubleBuffered = true;
@@ -631,12 +644,12 @@
             this.SizeChanged += new System.EventHandler(this.window_Resize);
             this.mainmenu_p.ResumeLayout(false);
             this.mainmenu_p.PerformLayout();
+
             this.stockitem_p.ResumeLayout(false);
-            this.stockitemupdate_p.ResumeLayout(false);
+            this.stocktableupdate_p.ResumeLayout(false);
             this.stockitemview_p.ResumeLayout(false);
-            this.stocktableupdate_p.ResumeLayout(false);            
-            this.stockitemview_p.PerformLayout();
             this.stocktable_p.ResumeLayout(false);
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -665,6 +678,8 @@
         private System.Windows.Forms.Label price_stockup_l;
         private System.Windows.Forms.Label id_l;
         private System.Windows.Forms.Label id_qty_l;
+        private System.Windows.Forms.Label confirm_label;
+        
 
         //Buttons
         private System.Windows.Forms.Button stockitem_b;
@@ -675,29 +690,33 @@
         private System.Windows.Forms.Button updatestock_b;
         private System.Windows.Forms.Button viewcurrentstock_b;
         private System.Windows.Forms.Button back_b;
-
         private System.Windows.Forms.Button enter_b;
-        private System.Windows.Forms.Button back1_b;
-
         private System.Windows.Forms.Button allstock_b;
         private System.Windows.Forms.Button enter1_b;
         private System.Windows.Forms.Button back2_b;
-
         private System.Windows.Forms.Button back_stocktable_b;
+        private System.Windows.Forms.Button back_stocktableupdate_b;
+        private System.Windows.Forms.Button enterid_stockup_b;
+        private System.Windows.Forms.Button enter_stockup_b;
+        private System.Windows.Forms.Button additem_stockup_b;
+        private System.Windows.Forms.Button back_stockadditem_b;
+        
 
-        private System.Windows.Forms.Button back_stocktableupdate_b;        
 
         //Panels
         private System.Windows.Forms.Panel mainmenu_p;
         private System.Windows.Forms.Panel stockitem_p;
-        private System.Windows.Forms.Panel stockitemupdate_p;
         private System.Windows.Forms.Panel stockitemview_p;
         private System.Windows.Forms.Panel heading_img;
         private System.Windows.Forms.Panel stocktable_p;
-        private System.Windows.Forms.Panel stocktableupdate_p;      
+        private System.Windows.Forms.Panel stocktableupdate_p;
+        private System.Windows.Forms.Panel stockadditem_p;
+        
 
         //ListBox
         private System.Windows.Forms.ListBox attribute_lst;
+        private System.Windows.Forms.ListBox attr_stockup_list;
+        private System.Windows.Forms.ListBox id_stockup_list;        
 
         //GridDataView
         private System.Windows.Forms.DataGridView dataGridStock;      

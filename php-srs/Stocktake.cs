@@ -83,7 +83,8 @@ namespace php_srs
             try
             {
                 php_srsConnection.Open(); //Opens the connection
-                AddItem.CreateTable();
+                AddItem ai = new AddItem();
+                ai.CreateTable();
                 DataSet ds = new DataSet();
                 var sqliteDA = new SQLiteDataAdapter(selectQuery, php_srsConnection);
                 sqliteDA.Fill(ds);
@@ -92,6 +93,26 @@ namespace php_srs
                 throw;
             }
             php_srsConnection.Close();
+        }
+
+        public int CountQuery(string countQuery)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            int result = 0;
+
+            php_srsConnection.Open(); //Opens the connection
+
+            AddItem ai = new AddItem();
+
+            ai.CreateTable();
+
+            SQLiteCommand selectCommand = new SQLiteCommand(countQuery, php_srsConnection);  //Sets up the query to be used with the database
+            
+            result = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+            php_srsConnection.Close();
+
+            return result;
         }
 
         public void SelectSpecific()
@@ -107,8 +128,8 @@ namespace php_srs
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
-
-            AddItem.CreateTable();
+            AddItem ai = new AddItem();
+            ai.CreateTable();
 
             string query = selectQuery; //Acquires the SQL SELECT statement from the reference
 

@@ -106,7 +106,8 @@ namespace php_srs
                         case 3:
                             //relevant methods will be called depending on the users selection
                             Console.Clear();
-                            AddItem.AddStock();
+                            AddItem ai = new AddItem();
+                            ai.AddStock();
                             break;
 
                         case 4:

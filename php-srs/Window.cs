@@ -20,7 +20,6 @@ namespace php_srs
         }
 
         //Panel 1 mainmenu
-
         //Stock Items
         private void button1_Click(object sender, EventArgs e)
         {
@@ -63,6 +62,17 @@ namespace php_srs
         private void updatestock_b_Click(object sender, EventArgs e)
         {
             stocktableupdate_p.Visible = true;
+
+            id_stockup_list.Items.Clear();
+
+            StockTake st = new StockTake();
+            int idValue = st.CountQuery("SELECT COUNT(ID) FROM StockTable");
+
+            for (int i = 0; i < idValue; i++)
+            {
+                id_stockup_list.Items.Insert(i, "" + (i + 1));
+            }
+
             stockitem_p.Visible = false;
         }
 
@@ -76,25 +86,108 @@ namespace php_srs
         //back button
         private void back_b_Click(object sender, EventArgs e)
         {
-            stockitem_p.Visible = false;
             mainmenu_p.Visible = true;
+            confirm_label.Text = " ";
+            stockitem_p.Visible = false;            
         }
 
         //Panel 3 submenu stockupdate
         // enter
-        private void enter_b_Click(object sender, EventArgs e)
-        {            
+        private void enter_stockup_b_Click(object sender, EventArgs e)
+        {
+            stocktable_p.Visible = true;
+            
+            string inputName = name_stockup_t.Text;
+            string inputDesc = desc_stockup_t.Text;
+            string inputQty = qty_stockup_t.Text;
+            string inputPrice = price_stockup_t.Text;
+            string inputAttr = attr_stockup_list.GetItemText(attr_stockup_list.SelectedItem);
 
+            if (inputName == "" || inputDesc == "" || inputAttr == "" || inputPrice == "" || inputQty == "")
+            {
+                confirm_label.Text = "One of the fields has not been filled.";
+            } else {
+                int value1;
+                double value2;
+                int inputQtyOut = 0;
+                double inputPrcOut = 0;
+
+                if (int.TryParse(inputQty, out value1))
+                {
+                    inputQtyOut = value1;
+
+                    if (double.TryParse(inputPrice, out value2))
+                    {
+                        inputPrcOut = value2;
+
+                        AddItem ai = new AddItem();
+                        ai.InsertIntoTable(inputName, inputDesc, inputAttr, inputQtyOut, inputPrcOut);
+                        confirm_label.Text = "The item has been added.";
+                    }
+                    else
+                    {
+                        confirm_label.Text = "The Price Value was not correct. Please try again.";
+                    }
+                }
+                else
+                {
+                    confirm_label.Text = "The Quantity Value was not correct. Please try again.";
+                }
+            }
+
+            name_stockup_t.Clear();
+            desc_stockup_t.Clear();
+            qty_stockup_t.Clear();
+            price_stockup_t.Clear();
+            attr_stockup_list.ClearSelected();            
+            
+            stocktableupdate_p.Visible = false;
         }
 
-        //back button
-        private void back1_b_Click(object sender, EventArgs e)
+        //apply update of id qty
+        private void enterid_stockup_b_Click(object sender, EventArgs e)
         {
-            stockitemupdate_p.Visible = false;
+            string inputID = id_stockup_list.GetItemText(id_stockup_list.SelectedItem);
+            string inputQty = qtyid_stockup_t.Text;
+
+            int value1;
+            int inputQtyOut = 0;
+
+            if (int.TryParse(inputQty, out value1))
+            {
+                inputQtyOut = value1;
+            } else {
+
+            }
+
+            AddItem ai = new AddItem();
+            ai.UpdateTable(inputID, inputQtyOut);
+
+        }        
+        
+        //back to prior menu from stock update
+        private void back_stocktableupdate_b_Click(object sender, EventArgs e)
+        {
+            stocktableupdate_p.Visible = false;
             stockitem_p.Visible = true;
         }
 
-        //Panel 4 submenu stockview
+        //to additem panel stock update
+        private void additem_stockup_b_Click(object sender, EventArgs e)
+        {
+            stockitem_p.Visible = false;
+            stockadditem_p.Visible = true;
+        }
+
+        //back to prior menu from stock update
+        private void back_stockadditem_b_Click(object sender, EventArgs e)
+        {
+            stockadditem_p.Visible = false;
+            stockitem_p.Visible = true;
+        }
+
+
+        //Submenu stockview
         //show all current stock
         private void allstock_b_Click(object sender, EventArgs e)
         {
@@ -178,14 +271,7 @@ namespace php_srs
             
             stocktable_p.Visible = false;
             mainmenu_p.Visible = true;
-        }
-
-        //back to main menu from stock table
-        private void back_stocktableupdate_b_Click(object sender, EventArgs e)
-        {
-            stocktableupdate_p.Visible = false;
-            mainmenu_p.Visible = true;
-        }        
+        }           
 
         //window
         private void window_Resize(object sender, EventArgs e)
@@ -203,26 +289,33 @@ namespace php_srs
             this.updatestock_b.Left = (this.ClientSize.Width - this.updatestock_b.Width) / 2;
             this.viewcurrentstock_b.Left = (this.ClientSize.Width - this.viewcurrentstock_b.Width) / 2;
             this.back_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2;
+            this.additem_stockup_b.Left = (this.ClientSize.Width - this.additem_stockup_b.Width) / 2;
 
             //smenu updatestock
-            this.addiditem_stockup_l.Left = (this.ClientSize.Width - this.addiditem_stockup_l.Width) / 2 - 130;
-            this.addnewitem_stockup_l.Left = (this.ClientSize.Width - this.addnewitem_stockup_l.Width) / 2 - 130;
+            this.addiditem_stockup_l.Left = (this.ClientSize.Width - this.addiditem_stockup_l.Width) / 2;
+            this.qtyid_stockup_t.Left = (this.ClientSize.Width - this.qtyid_stockup_t.Width) / 2 + 75;
+            this.id_l.Left = (this.ClientSize.Width - this.id_l.Width) / 2 - 150;
+            this.id_qty_l.Left = (this.ClientSize.Width - this.id_qty_l.Width) / 2 - 150;
+            this.id_stockup_list.Left = (this.ClientSize.Width - this.id_stockup_list.Width) / 2 + 75;
+            this.enterid_stockup_b.Left = (this.ClientSize.Width - this.enterid_stockup_b.Width) / 2;
+            this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;
+
+            //smenu addstock
+            this.addnewitem_stockup_l.Left = (this.ClientSize.Width - this.addnewitem_stockup_l.Width) / 2;
             this.name_stockup_l.Left = (this.ClientSize.Width - this.name_stockup_l.Width) / 2 - 150;
             this.desc_stockup_l.Left = (this.ClientSize.Width - this.desc_stockup_l.Width) / 2 - 150;
             this.attr_stockup_l.Left = (this.ClientSize.Width - this.attr_stockup_l.Width) / 2 - 150;
             this.qty_stockup_l.Left = (this.ClientSize.Width - this.qty_stockup_l.Width) / 2 - 150;
-            this.price_stockup_l.Left = (this.ClientSize.Width - this.price_stockup_l.Width) / 2 - 150;
-
-            this.qtyid_stockup_t.Left = (this.ClientSize.Width - this.qtyid_stockup_t.Width) / 2 + 100;
-            this.name_stockup_t.Left = (this.ClientSize.Width - this.name_stockup_t.Width) / 2 + 100;
-            this.desc_stockup_t.Left = (this.ClientSize.Width - this.desc_stockup_t.Width) / 2 + 100;
-            this.qty_stockup_t.Left = (this.ClientSize.Width - this.qty_stockup_t.Width) / 2 + 100;
-            this.price_stockup_t.Left = (this.ClientSize.Width - this.price_stockup_t.Width) / 2 + 100;
-
-            this.id_l.Left = (this.ClientSize.Width - this.id_l.Width) / 2 - 200;
-            this.id_qty_l.Left = (this.ClientSize.Width - this.id_qty_l.Width) / 2 - 100;         
-
-            this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;     
+            this.price_stockup_l.Left = (this.ClientSize.Width - this.price_stockup_l.Width) / 2 - 150;           
+            this.name_stockup_t.Left = (this.ClientSize.Width - this.name_stockup_t.Width) / 2 + 75;
+            this.desc_stockup_t.Left = (this.ClientSize.Width - this.desc_stockup_t.Width) / 2 + 75;
+            this.qty_stockup_t.Left = (this.ClientSize.Width - this.qty_stockup_t.Width) / 2 + 75;
+            this.price_stockup_t.Left = (this.ClientSize.Width - this.price_stockup_t.Width) / 2 + 75;            
+            this.confirm_label.Left = (this.ClientSize.Width - this.confirm_label.Width) / 2 ;
+            this.back_stockadditem_b.Left = (this.ClientSize.Width - this.back_stockadditem_b.Width) / 2;
+            this.attr_stockup_list.Left = (this.ClientSize.Width - this.attr_stockup_list.Width) / 2 + 75;                       
+            this.enter_stockup_b.Left = (this.ClientSize.Width - this.enter_stockup_b.Width) / 2;
+                     
 
             //smenu viewstock
             this.allstock_b.Left = (this.ClientSize.Width - this.viewcurrentstock_b.Width) / 2 - 150;
