@@ -10,7 +10,7 @@ namespace php_srs
 {
     class CSV
     {
-        /*public static void CSVMenu()
+        public static void CSVMenu()
         {
             Console.Clear();
 
@@ -50,7 +50,7 @@ namespace php_srs
                         break;
                 }
             }
-        }*/
+        }
 
         public static void WriteStockSalesToFile()
         {
