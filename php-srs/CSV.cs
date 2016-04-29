@@ -10,7 +10,7 @@ namespace php_srs
 {
     class CSV
     {
-        public static void CSVMenu()
+        /*public static void CSVMenu()
         {
             Console.Clear();
 
@@ -50,7 +50,7 @@ namespace php_srs
                         break;
                 }
             }
-        }
+        }*/
 
         public static void WriteStockSalesToFile()
         {
@@ -90,7 +90,7 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
 
-            string query = "SELECT * FROM SalesRecords"; //Acquires the SQL SELECT statement from the reference
+            string query = "SELECT * FROM StockTable"; //Acquires the SQL SELECT statement from the reference
 
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);  //Sets up the query to be used with the database
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
