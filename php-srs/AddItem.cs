@@ -10,12 +10,12 @@ namespace php_srs
 {
     class AddItem
     {
-        public static void CreateTable()
+        public void CreateTable()
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS StockTable (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Price real)";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -23,9 +23,37 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public static void InsertIntoTable(string name, string description, string attribute, int quantity)
+        public void InsertIntoTable(string name, string description, string attribute, int quantity, double price)
         {
-                
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            php_srsConnection.Open();
+
+            CreateTable();
+
+            string insertQuery = "INSERT INTO StockTable (Name, Description, Attribute, Quantity, Price) VALUES ('" + name + "', '" + description + "', '" + attribute + "', " + quantity + ", " + price + ")";
+            SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
+            insertCommand.ExecuteNonQuery();
+
+            php_srsConnection.Close();
+        }
+
+        public void UpdateTable(string name, int quantity)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            php_srsConnection.Open();
+
+            CreateTable();
+
+            //string updateQuery = "UPDATE StockTable SET ";
+
+            //SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
+            //insertCommand.ExecuteNonQuery();
+
+            php_srsConnection.Close();
+        }
+
+        public void InsertIntoTableCLI(string name, string description, string attribute, int quantity)
+        {                
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
@@ -39,21 +67,24 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public static void AddStock()
+        public void AddStock()
         {            
+            //Console.WriteLine("ID: ");
+            //int responseID = int.Parse(Console.ReadLine());
+
             Console.WriteLine("Name: ");
             string responseName = Console.ReadLine();
 
-            Console.WriteLine("Description: ");
+            Console.Write("Description: ");
             string responseDescription = Console.ReadLine();
 
-            Console.WriteLine("Attribute: ");
+            Console.Write("Attribute: ");
             string responseAttribute = Console.ReadLine();
 
-            Console.WriteLine("Quantity: ");
+            Console.Write("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
+            InsertIntoTableCLI(responseName, responseDescription, responseAttribute, responseQuantity);
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();
