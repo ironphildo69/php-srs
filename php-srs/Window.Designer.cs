@@ -88,6 +88,8 @@
             this.back_reportstock_b = new System.Windows.Forms.Button();
 
 
+
+
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
             this.stockitemview_p.SuspendLayout();

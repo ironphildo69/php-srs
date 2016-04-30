@@ -44,8 +44,9 @@ namespace php_srs
 
             CreateTable();
 
-            //string insertQuery = "INSERT INTO StockTable (Name, Description, Attribute, Quantity, Price) VALUES ('" + name + "', '" + description + "', '" + attribute + "', " + quantity + ", " + price + ")";
-            //SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
+            //string updateQuery = "UPDATE StockTable SET ";
+
+            //SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
             //insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
