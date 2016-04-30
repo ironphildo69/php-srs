@@ -80,8 +80,12 @@
             this.stockadditem_p = new System.Windows.Forms.Panel();
             this.additem_stockup_b = new System.Windows.Forms.Button();
             this.back_stockadditem_b = new System.Windows.Forms.Button();
-            this.report_p = new System.Windows.Forms.Panel();       //amjad
-
+            this.report_p = new System.Windows.Forms.Panel();
+            this.back_report_b = new System.Windows.Forms.Button();
+            this.back_reportCSVsales_b = new System.Windows.Forms.Button();
+            this.back_reportCSVstock_b = new System.Windows.Forms.Button();
+            this.back_reportsales_b = new System.Windows.Forms.Button();
+            this.back_reportstock_b = new System.Windows.Forms.Button();
 
 
             this.mainmenu_p.SuspendLayout();
@@ -193,7 +197,51 @@
             this.enter1_b.Text = "Enter";
             this.enter1_b.UseVisualStyleBackColor = true;
             this.enter1_b.Click += new System.EventHandler(this.enter1_b_Click);
-
+            //
+            // back_report_b
+            //
+            this.back_report_b.Location = new System.Drawing.Point(195,170);
+            this.back_report_b.Name = "back_report_b";
+            this.back_report_b.Size = new System.Drawing.Size(250, 50);
+            this.back_report_b.Text = "Back";
+            this.back_report_b.UseVisualStyleBackColor = true;
+            this.back_report_b.Click += new System.EventHandler(this.back_report_b_Click);
+            //
+            // back_reportCSVsales_b
+            //
+            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 20);
+            this.back_reportCSVsales_b.Name = "back_reportCSVsales_b";
+            this.back_reportCSVsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVsales_b.Text = "CSV - Sales";
+            this.back_reportCSVsales_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVsales_b.Click += new System.EventHandler(this.back_reportCSVsales_b_Click);
+            //
+            // back_reportCSVstock_b
+            //
+            this.back_reportCSVstock_b.Location = new System.Drawing.Point(345, 20);
+            this.back_reportCSVstock_b.Name = "back_reportCSVstock_b";
+            this.back_reportCSVstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVstock_b.Text = "CSV - Stock";
+            this.back_reportCSVstock_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVstock_b.Click += new System.EventHandler(this.back_reportCSVstock_b_Click);
+            //
+            // back_reportsales_b
+            //
+            this.back_reportsales_b.Location = new System.Drawing.Point(70, 95);
+            this.back_reportsales_b.Name = "back_reportsales_b";
+            this.back_reportsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportsales_b.Text = "Sales Report";
+            this.back_reportsales_b.UseVisualStyleBackColor = true;
+            this.back_reportsales_b.Click += new System.EventHandler(this.back_reportsales_b_Click);
+            //
+            // back_reportstock_b
+            //
+            this.back_reportstock_b.Location = new System.Drawing.Point(345, 95);
+            this.back_reportstock_b.Name = "back_reportstock_b";
+            this.back_reportstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportstock_b.Text = "Stock Report";
+            this.back_reportstock_b.UseVisualStyleBackColor = true;
+            this.back_reportstock_b.Click += new System.EventHandler(this.back_reportstock_b_Click);
             // 
             // loginstatus_l
             // 
@@ -226,14 +274,18 @@
             this.mainmenu_p.Name = "mainmenu_p";
             this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
             //
-            // report_p (amjad)
+            // report_p 
             //
-            this.mainmenu_p.BackColor = System.Drawing.Color.Transparent;
-            this.mainmenu_p.Controls.Add(this.record_l);
-            this.stockitem_p.Controls.Add(this.back_b);
-            this.mainmenu_p.Location = new System.Drawing.Point(0, 240);
-            this.mainmenu_p.Name = "report_p";
-            this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
+            
+            this.report_p.BackColor = System.Drawing.Color.Transparent;
+            this.report_p.Controls.Add(this.back_report_b);
+            this.report_p.Controls.Add(this.back_reportCSVsales_b);
+            this.report_p.Controls.Add(this.back_reportCSVstock_b);
+            this.report_p.Controls.Add(this.back_reportsales_b);
+            this.report_p.Controls.Add(this.back_reportstock_b);
+            this.report_p.Location = new System.Drawing.Point(0, 240);
+            this.report_p.Name = "report_p";
+            this.report_p.Size = new System.Drawing.Size(1680, 1080);
             // 
             // stockitem_p
             // 
@@ -642,7 +694,7 @@
             this.Controls.Add(this.stockitemview_p);
             this.Controls.Add(this.stocktableupdate_p);
             this.Controls.Add(this.stockadditem_p);
-            this.Controls.Add(this.report_p);       //amjad
+            this.Controls.Add(this.report_p);       
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.heading_img);
             this.DoubleBuffered = true;
@@ -711,7 +763,12 @@
         private System.Windows.Forms.Button enter_stockup_b;
         private System.Windows.Forms.Button additem_stockup_b;
         private System.Windows.Forms.Button back_stockadditem_b;
-        
+        private System.Windows.Forms.Button back_report_b;
+        private System.Windows.Forms.Button back_reportCSVsales_b;
+        private System.Windows.Forms.Button back_reportCSVstock_b;
+        private System.Windows.Forms.Button back_reportsales_b;
+        private System.Windows.Forms.Button back_reportstock_b;
+
 
 
         //Panels
@@ -722,7 +779,7 @@
         private System.Windows.Forms.Panel stocktable_p;
         private System.Windows.Forms.Panel stocktableupdate_p;
         private System.Windows.Forms.Panel stockadditem_p;
-        private System.Windows.Forms.Panel report_p;        //amjad
+        private System.Windows.Forms.Panel report_p;        
 
 
         //ListBox
