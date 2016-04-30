@@ -10,7 +10,7 @@ namespace php_srs
 {
     class CSV
     {
-        public static void CSVMenu()
+        /*public static void CSVMenu()
         {
             Console.Clear();
 
@@ -50,9 +50,9 @@ namespace php_srs
                         break;
                 }
             }
-        }
+        }*/
 
-        public static void WriteStockSalesToFile()
+        public void WriteStockSalesToFile()
         {
             TextWriter tw = new StreamWriter("CSV-StockSales.txt");
 
@@ -76,10 +76,10 @@ namespace php_srs
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
 
-            Console.WriteLine("Text file created in 'CSV-StockSales.txt'");
+            //Console.WriteLine("Text file created in 'CSV-StockSales.txt'");
         }
 
-        public static void WriteStockTakeToFile()
+        public void WriteStockTakeToFile()
         {
             TextWriter tw = new StreamWriter("CSV-StockTake.txt");
 
@@ -97,13 +97,13 @@ namespace php_srs
             while (readResults.Read())
             {
                 tw.WriteLine(readResults["ID"] + ", " + readResults["Name"] + ", " + readResults["Description"] + ", " + readResults["Attribute"] + ", " + 
-                    readResults["Quantity"] + ", " + readResults["Date"] + "\n");
+                    readResults["Quantity"] + ", " + readResults["Price"] + "\n");
             }
             
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
 
-            Console.WriteLine("Text file created in 'CSV-StockTake.txt'");
+            //Console.WriteLine("Text file created in 'CSV-StockTake.txt'");
         }      
     }
 }

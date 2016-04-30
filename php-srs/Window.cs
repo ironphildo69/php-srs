@@ -203,12 +203,14 @@ namespace php_srs
 
         private void back_reportCSVsales_b_Click(object sender, EventArgs e)
         {
-
+            CSV salesCSV = new CSV();
+            salesCSV.WriteStockSalesToFile();
         }
 
         private void back_reportCSVstock_b_Click(object sender, EventArgs e)
         {
-
+            CSV stockCSV = new CSV();
+            stockCSV.WriteStockTakeToFile();
         }
 
         private void back_reportsales_b_Click(object sender, EventArgs e)

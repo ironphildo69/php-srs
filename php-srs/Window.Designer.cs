@@ -87,7 +87,7 @@
             this.back_reportsales_b = new System.Windows.Forms.Button();
             this.back_reportstock_b = new System.Windows.Forms.Button();
 
-
+            this.confirmbyid_label = new System.Windows.Forms.Label();
 
 
             this.mainmenu_p.SuspendLayout();
@@ -744,7 +744,8 @@
         private System.Windows.Forms.Label id_l;
         private System.Windows.Forms.Label id_qty_l;
         private System.Windows.Forms.Label confirm_label;
-        
+        private System.Windows.Forms.Label confirmbyid_label;
+
 
         //Buttons
         private System.Windows.Forms.Button stockitem_b;
