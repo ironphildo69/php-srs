@@ -37,7 +37,8 @@ namespace php_srs
         //Reports
         private void button3_Click(object sender, EventArgs e)
         {
-
+            mainmenu_p.Visible = false;
+            report_p.Visible = true;
         }
 
         //log out
@@ -107,6 +108,8 @@ namespace php_srs
             confirm_label.Text = " ";
             stockitem_p.Visible = false;            
         }
+
+        
 
         //Panel 3 submenu stockupdate
         // enter
@@ -212,6 +215,36 @@ namespace php_srs
             stockitem_p.Visible = true;
         }
 
+        //Report Panel
+        //
+
+        private void back_report_b_Click( object sender, EventArgs e)
+        {
+            report_p.Visible = false;
+            mainmenu_p.Visible = true;
+            
+        }
+
+        private void back_reportCSVsales_b_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_reportCSVstock_b_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_reportsales_b_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void back_reportstock_b_Click(object sender, EventArgs e)
+        {
+
+        }
+        
 
         //Submenu stockview
         //show all current stock
@@ -354,6 +387,13 @@ namespace php_srs
             this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 - 150;
             this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - (217);
             this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 - (83);
+
+            //smenu report
+            this.back_report_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2 ;
+            this.back_reportCSVsales_b.Left = (this.ClientSize.Width - this.back_reportCSVsales_b.Width) / 2 + 150;
+            this.back_reportCSVstock_b.Left = (this.ClientSize.Width - this.back_reportCSVstock_b.Width) / 2 - 150;
+            this.back_reportsales_b.Left = (this.ClientSize.Width - this.back_reportsales_b.Width) / 2 + 150;
+            this.back_reportstock_b.Left = (this.ClientSize.Width - this.back_reportstock_b.Width) / 2 - 150;
 
             //smenu stock
             this.updatestock_b.Left = (this.ClientSize.Width - this.updatestock_b.Width) / 2;

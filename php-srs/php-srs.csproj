@@ -92,6 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs" />
     <Compile Include="StockSales.cs" />
     <Compile Include="StockTake.cs" />
     <Compile Include="Program.cs" />
