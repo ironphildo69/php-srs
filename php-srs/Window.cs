@@ -30,7 +30,8 @@ namespace php_srs
         //Sales Records
         private void button2_Click(object sender, EventArgs e)
         {
-
+            mainmenu_p.Visible = false;
+            salesrecords_p.Visible = true;
         }
 
         //Reports
@@ -292,11 +293,55 @@ namespace php_srs
 
         //back to main menu from stock table
         private void back_stocktable_b_Click(object sender, EventArgs e)
-        {
-            
+        {            
             stocktable_p.Visible = false;
             mainmenu_p.Visible = true;
-        }           
+        }
+
+
+        //Panel - Sales Records
+        private void makesales_b_Click(object sender, EventArgs e)
+        {
+            salesrecords_p.Visible = false;
+
+            salesitems_list.Items.Insert(0, "");
+
+            StockTake st = new StockTake();
+            List<string> results = st.GetItemRows("SELECT * FROM StockTable");
+            for (int i = 0; i < results.Count; i++)
+            {
+                salesitems_list.Items.Insert((i + 1), results[i]);
+            }
+
+            makesale_p.Visible = true;
+        }
+
+        private void viewrecord_b_Click(object sender, EventArgs e)
+        {
+            //stocktable_p.Visible = false;
+            //mainmenu_p.Visible = true;
+        }
+
+        private void salesrecordback_b_Click(object sender, EventArgs e)
+        {
+            salesrecords_p.Visible = false;
+            mainmenu_p.Visible = true;
+        }
+
+        //Make sale
+        private void sales_enter_b_Click(object sender, EventArgs e)
+        {
+             
+        }
+
+        //back 
+        private void sales_back_b_Click(object sender, EventArgs e)
+        {
+            makesale_p.Visible = false;
+            salesitems_list.ClearSelected();
+            salesrecords_p.Visible = true;
+        }
+
 
         //window
         private void window_Resize(object sender, EventArgs e)
@@ -356,7 +401,18 @@ namespace php_srs
             //smenu stocktable
             this.back_stocktable_b.Left = (this.ClientSize.Width - this.back_stocktable_b.Width) / 2;
             this.dataGridStock.Left = (this.ClientSize.Width - this.dataGridStock.Width) / 2;
-            
+
+            //smenu salesrecords
+            this.makesales_b.Left = (this.ClientSize.Width - this.makesales_b.Width) / 2;
+            this.viewrecord_b.Left = (this.ClientSize.Width - this.viewrecord_b.Width) / 2;
+            this.salesrecordback_b.Left = (this.ClientSize.Width - this.salesrecordback_b.Width) / 2;
+
+            this.choosestock_l.Left = (this.ClientSize.Width - this.choosestock_l.Width) / 2;
+            this.sales_qty_l.Left = (this.ClientSize.Width - this.sales_qty_l.Width) / 2 - 125;
+            this.salesitems_list.Left = (this.ClientSize.Width - this.salesitems_list.Width) / 2;
+            this.sales_qty_t.Left = (this.ClientSize.Width - this.sales_qty_t.Width) / 2 + 88;
+            this.sales_enter_b.Left = (this.ClientSize.Width - this.sales_enter_b.Width) / 2;
+            this.sales_back_b.Left = (this.ClientSize.Width - this.sales_back_b.Width) / 2;
 
         }
     }

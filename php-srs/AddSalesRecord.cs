@@ -16,30 +16,22 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
             
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID INTEGER PRIMARY KEY, Name varchar(30), Description varchar(30), Attribute varchar(10), Quantity int, Date DATETIME DEFAULT CURRENT_TIMESTAMP)";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID INTEGER PRIMARY KEY, Name varchar(30), User varchar(20), Quantity int, Price real, Date varchar(10))";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
 
             php_srsConnection.Close();  
-        }
-
-        public static bool CheckIfTableExists()
-        {
-
-            return true;
-        }
+        }       
 
         public static void InsertIntoTable(string name, string description, string attribute, int quantity)
         {
-
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
             CreateTable();
 
-            string insertQuery = "INSERT INTO SalesRecords (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description +
-                "', '" + attribute + "', " + quantity + ")";
+            string insertQuery = "INSERT INTO SalesRecords (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description + "', '" + attribute + "', " + quantity + ")";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
 
