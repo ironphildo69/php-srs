@@ -44,10 +44,25 @@ namespace php_srs
 
             CreateTable();
 
-            //string updateQuery = "UPDATE StockTable SET ";
+            string selectQuery = "SELECT Quantity FROM StockTable WHERE ID = " + name + " ORDER BY ID DESC LIMIT 1";
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader rdr = selectCommand.ExecuteReader();
 
-            //SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
-            //insertCommand.ExecuteNonQuery();
+            string qty = "";
+
+            while (rdr.Read())
+            {
+                qty = "" + rdr["Quantity"];
+            }
+
+            int newQty = int.Parse(qty);
+
+            quantity += newQty;
+
+            string updateQuery = "UPDATE StockTable SET Quantity = " + newQty + " WHERE ID = " + name;
+
+            SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
+            insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
         }

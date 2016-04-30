@@ -355,6 +355,7 @@
             this.stocktableupdate_p.Controls.Add(this.qtyid_stockup_t);
             this.stocktableupdate_p.Controls.Add(this.id_stockup_list);
             this.stocktableupdate_p.Controls.Add(this.enterid_stockup_b);
+            this.stocktableupdate_p.Controls.Add(this.confirmbyid_label);           
 
             this.stocktableupdate_p.Location = new System.Drawing.Point(0, 240);
             this.stocktableupdate_p.Name = "stocktableupdate_p";

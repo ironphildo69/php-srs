@@ -160,7 +160,7 @@ namespace php_srs
                 AddItem ai = new AddItem();
                 ai.UpdateTable(inputID, inputQtyOut);
 
-                confirmbyid_label.Text = "The item has been update.";
+                confirmbyid_label.Text = "The item has been updated.";
             } else {
                 confirmbyid_label.Text = "One of the fields has not been filled.";
             }           
@@ -301,6 +301,8 @@ namespace php_srs
             this.id_stockup_list.Left = (this.ClientSize.Width - this.id_stockup_list.Width) / 2 + 75;
             this.enterid_stockup_b.Left = (this.ClientSize.Width - this.enterid_stockup_b.Width) / 2;
             this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;
+            this.confirmbyid_label.Left = (this.ClientSize.Width - this.confirmbyid_label.Width) / 2;
+            
 
             //smenu addstock
             this.addnewitem_stockup_l.Left = (this.ClientSize.Width - this.addnewitem_stockup_l.Width) / 2;
