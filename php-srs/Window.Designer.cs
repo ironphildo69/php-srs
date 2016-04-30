@@ -80,7 +80,11 @@
             this.stockadditem_p = new System.Windows.Forms.Panel();
             this.additem_stockup_b = new System.Windows.Forms.Button();
             this.back_stockadditem_b = new System.Windows.Forms.Button();
-                        
+
+            this.id_stockview_list = new System.Windows.Forms.ListBox();
+            this.name_stockview_list = new System.Windows.Forms.ListBox();
+            
+
             this.confirmbyid_label = new System.Windows.Forms.Label();
 
             this.mainmenu_p.SuspendLayout();
@@ -247,19 +251,35 @@
             this.stockitemview_p.Controls.Add(this.label_stocktable_name);
             this.stockitemview_p.Controls.Add(this.label_stocktable_id);
             this.stockitemview_p.Controls.Add(this.label_stocktable_attr);
-            this.stockitemview_p.Controls.Add(this.textbox_id);
-            this.stockitemview_p.Controls.Add(this.textbox_name);
+
+            this.stockitemview_p.Controls.Add(this.id_stockview_list);
+            this.stockitemview_p.Controls.Add(this.name_stockview_list);
+
             this.stockitemview_p.Location = new System.Drawing.Point(0, 240);
             this.stockitemview_p.Name = "stockitemview_p";
             this.stockitemview_p.Size = new System.Drawing.Size(1680, 1080);
             this.stockitemview_p.Visible = false;
+            // 
+            // id_stockview_list
+            // 
+            this.id_stockview_list.FormattingEnabled = true;
+            this.id_stockview_list.Location = new System.Drawing.Point(275, 20);
+            this.id_stockview_list.Name = "id_stockview_list";
+            this.id_stockview_list.Size = new System.Drawing.Size(250, 50);
+            // 
+            // name_stockview_list
+            // 
+            this.name_stockview_list.FormattingEnabled = true;
+            this.name_stockview_list.Location = new System.Drawing.Point(275, 95);
+            this.name_stockview_list.Name = "name_stockview_list";
+            this.name_stockview_list.Size = new System.Drawing.Size(250, 50);
             // 
             // attribute_lst
             // 
             this.attribute_lst.FormattingEnabled = true;
             this.attribute_lst.Location = new System.Drawing.Point(275, 170);
             this.attribute_lst.Name = "attribute_lst";
-            this.attribute_lst.Size = new System.Drawing.Size(250, 43);
+            this.attribute_lst.Size = new System.Drawing.Size(250, 50);
             this.attribute_lst.Items.Insert(0, "");
             this.attribute_lst.Items.Insert(1, "Tablet");
             this.attribute_lst.Items.Insert(2, "Syrup");
@@ -299,23 +319,7 @@
             this.label_stocktable_attr.Name = "label_stocktable_attr";
             this.label_stocktable_attr.Size = new System.Drawing.Size(100, 25);
             this.label_stocktable_attr.Text = "Item Attribute: ";
-            this.label_stocktable_attr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textbox_id
-            // 
-            this.textbox_id.AcceptsReturn = true;
-            this.textbox_id.AcceptsTab = true;
-            this.textbox_id.Location = new System.Drawing.Point(275, 20);
-            this.textbox_id.Name = "textbox_id";
-            this.textbox_id.Size = new System.Drawing.Size(250, 20);
-            // 
-            // textbox_name
-            // 
-            this.textbox_name.AcceptsReturn = true;
-            this.textbox_name.AcceptsTab = true;
-            this.textbox_name.Location = new System.Drawing.Point(275, 95);
-            this.textbox_name.Name = "textbox_name";
-            this.textbox_name.Size = new System.Drawing.Size(250, 20);
+            this.label_stocktable_attr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;            
             // 
             // heading_img
             // 
@@ -729,7 +733,9 @@
         //ListBox
         private System.Windows.Forms.ListBox attribute_lst;
         private System.Windows.Forms.ListBox attr_stockup_list;
-        private System.Windows.Forms.ListBox id_stockup_list;        
+        private System.Windows.Forms.ListBox id_stockup_list;
+        private System.Windows.Forms.ListBox id_stockview_list;
+        private System.Windows.Forms.ListBox name_stockview_list;    
 
         //GridDataView
         private System.Windows.Forms.DataGridView dataGridStock;      

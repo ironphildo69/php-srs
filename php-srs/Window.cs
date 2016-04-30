@@ -66,11 +66,12 @@ namespace php_srs
             id_stockup_list.Items.Clear();
 
             StockTake st = new StockTake();
-            int idValue = st.CountQuery("SELECT COUNT(ID) FROM StockTable");
 
-            for (int i = 0; i < idValue; i++)
+            List<string> results = st.GetNameRows("SELECT Name FROM StockTable");
+
+            for (int i = 0; i < results.Count; i++)
             {
-                id_stockup_list.Items.Insert(i, "" + (i + 1));
+                id_stockup_list.Items.Insert(i, results[i]);
             }
 
             stockitem_p.Visible = false;
@@ -80,6 +81,21 @@ namespace php_srs
         private void viewcurrentstock_b_Click(object sender, EventArgs e)
         {
             stockitemview_p.Visible = true;
+
+            id_stockview_list.Items.Clear();
+            name_stockview_list.Items.Clear();
+
+            name_stockview_list.Items.Insert(0, "");
+            id_stockview_list.Items.Insert(0, "");
+
+            StockTake st = new StockTake();
+            List<string> results = st.GetNameRows("SELECT Name FROM StockTable");
+            for (int i = 0; i < results.Count; i++)
+            {
+                name_stockview_list.Items.Insert((i + 1), results[i]);
+                id_stockview_list.Items.Insert((i + 1), (i + 1));
+            }
+
             stockitem_p.Visible = false;
         }
 
@@ -95,22 +111,22 @@ namespace php_srs
         // enter
         private void enter_stockup_b_Click(object sender, EventArgs e)
         {
-            stocktable_p.Visible = true;
-            
             string inputName = name_stockup_t.Text;
             string inputDesc = desc_stockup_t.Text;
             string inputQty = qty_stockup_t.Text;
             string inputPrice = price_stockup_t.Text;
             string inputAttr = attr_stockup_list.GetItemText(attr_stockup_list.SelectedItem);
 
+            int value1;
+            double value2;
+            int inputQtyOut = 0;
+            double inputPrcOut = 0;
+
             if (inputName == "" || inputDesc == "" || inputAttr == "" || inputPrice == "" || inputQty == "")
             {
                 confirm_label.Text = "One of the fields has not been filled.";
             } else {
-                int value1;
-                double value2;
-                int inputQtyOut = 0;
-                double inputPrcOut = 0;
+                
 
                 if (int.TryParse(inputQty, out value1))
                 {
@@ -139,9 +155,7 @@ namespace php_srs
             desc_stockup_t.Clear();
             qty_stockup_t.Clear();
             price_stockup_t.Clear();
-            attr_stockup_list.ClearSelected();            
-            
-            stocktableupdate_p.Visible = false;
+            attr_stockup_list.ClearSelected();   
         }
 
         //apply update of id qty
@@ -162,19 +176,23 @@ namespace php_srs
 
                 confirmbyid_label.Text = "The item has been updated.";
             } else {
-                confirmbyid_label.Text = "One of the fields has not been filled.";
-            }           
-
+                confirmbyid_label.Text = "Quantity needs numeric input only.";
+            }
+            
+            qtyid_stockup_t.Clear();
+            id_stockup_list.ClearSelected();
         }        
         
         //back to prior menu from stock update
         private void back_stocktableupdate_b_Click(object sender, EventArgs e)
         {
             stocktableupdate_p.Visible = false;
+            qtyid_stockup_t.Clear();
+            id_stockup_list.ClearSelected();
             stockitem_p.Visible = true;
         }
 
-        //to additem panel stock update
+        //to additem panel stock item
         private void additem_stockup_b_Click(object sender, EventArgs e)
         {
             stockitem_p.Visible = false;
@@ -185,6 +203,11 @@ namespace php_srs
         private void back_stockadditem_b_Click(object sender, EventArgs e)
         {
             stockadditem_p.Visible = false;
+            name_stockup_t.Clear();
+            desc_stockup_t.Clear();
+            qty_stockup_t.Clear();
+            price_stockup_t.Clear();
+            attr_stockup_list.ClearSelected();
             stockitem_p.Visible = true;
         }
 
@@ -202,11 +225,12 @@ namespace php_srs
         //enter
         private void enter1_b_Click(object sender, EventArgs e)
         {
-            string inputID = textbox_id.Text;
-            string inputName = textbox_name.Text;
-            int inputAttr = attribute_lst.SelectedIndex;
-
             stockitemview_p.Visible = false;
+            
+            string inputID = "" + id_stockview_list.SelectedItem.ToString();
+            string inputName = "" + name_stockview_list.SelectedItem.ToString();
+            string inputAttr = "" + attribute_lst.SelectedItem.ToString();
+                        
             StockTake st = new StockTake();
             
             string query = "SELECT * FROM StockTable ";
@@ -214,7 +238,7 @@ namespace php_srs
             string whereAnd = " AND ";
             string whereID = "ID = " + inputID;
             string whereName = "Name = " + "'" + inputName + "'";
-            string whereAttr = "Attribute = " + "'" + attribute_lst.SelectedValue + "'";
+            string whereAttr = "Attribute = " + "'" + inputAttr + "'";
 
             if (inputID != "")
             {
@@ -226,12 +250,12 @@ namespace php_srs
                     query += whereAnd;
                     query += whereName;
 
-                    if (inputAttr > 0)
+                    if (inputAttr != "")
                     {
                         query += whereAnd;
                         query += whereAttr;
                     }
-                } else if (inputAttr > 0) {
+                } else if (inputAttr != "") {
                     query += whereAnd;
                     query += whereAttr;                    
                 }
@@ -240,24 +264,23 @@ namespace php_srs
                     query += whereClause;
                     query += whereName;
 
-                    if (inputAttr > 0)
+                    if (inputAttr != "")
                     {
                         query += whereAnd;
                         query += whereAttr;
                     }                
-            } else if (inputAttr > 0) {
+            } else if (inputAttr != "") {
                 query += whereClause;
                 query += whereAttr;
             }          
             
             st.SelectFromTable(query, dataGridStock);
 
-            textbox_id.Clear();
-            textbox_name.Clear();
-            attribute_lst.SelectedIndex = 0;
+            id_stockview_list.ClearSelected();
+            name_stockview_list.ClearSelected();
+            attribute_lst.ClearSelected();
 
             stocktable_p.Visible = true;
-
         }
 
         //back
@@ -301,8 +324,7 @@ namespace php_srs
             this.id_stockup_list.Left = (this.ClientSize.Width - this.id_stockup_list.Width) / 2 + 75;
             this.enterid_stockup_b.Left = (this.ClientSize.Width - this.enterid_stockup_b.Width) / 2;
             this.back_stocktableupdate_b.Left = (this.ClientSize.Width - this.back_stocktableupdate_b.Width) / 2;
-            this.confirmbyid_label.Left = (this.ClientSize.Width - this.confirmbyid_label.Width) / 2;
-            
+            this.confirmbyid_label.Left = (this.ClientSize.Width - this.confirmbyid_label.Width) / 2;            
 
             //smenu addstock
             this.addnewitem_stockup_l.Left = (this.ClientSize.Width - this.addnewitem_stockup_l.Width) / 2;
@@ -318,26 +340,22 @@ namespace php_srs
             this.confirm_label.Left = (this.ClientSize.Width - this.confirm_label.Width) / 2 ;
             this.back_stockadditem_b.Left = (this.ClientSize.Width - this.back_stockadditem_b.Width) / 2;
             this.attr_stockup_list.Left = (this.ClientSize.Width - this.attr_stockup_list.Width) / 2 + 75;                       
-            this.enter_stockup_b.Left = (this.ClientSize.Width - this.enter_stockup_b.Width) / 2;
-                     
+            this.enter_stockup_b.Left = (this.ClientSize.Width - this.enter_stockup_b.Width) / 2;                     
 
             //smenu viewstock
             this.allstock_b.Left = (this.ClientSize.Width - this.viewcurrentstock_b.Width) / 2 - 150;
             this.enter1_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
             this.back2_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
-
             this.label_stocktable_id.Left = (this.ClientSize.Width - this.label_stocktable_id.Width) / 2 - 150;
             this.label_stocktable_name.Left = (this.ClientSize.Width - this.label_stocktable_name.Width) / 2 - 150;
             this.label_stocktable_attr.Left = (this.ClientSize.Width - this.label_stocktable_attr.Width) / 2 - 150;
-            this.textbox_id.Left = (this.ClientSize.Width - this.textbox_id.Width) / 2 + 150;
-            this.textbox_name.Left = (this.ClientSize.Width - this.textbox_name.Width) / 2 + 150;
+            this.id_stockview_list.Left = (this.ClientSize.Width - this.id_stockview_list.Width) / 2 + 150;
+            this.name_stockview_list.Left = (this.ClientSize.Width - this.name_stockview_list.Width) / 2 + 150;
             this.attribute_lst.Left = (this.ClientSize.Width - this.attribute_lst.Width) / 2 + 150;
 
             //smenu stocktable
             this.back_stocktable_b.Left = (this.ClientSize.Width - this.back_stocktable_b.Width) / 2;
             this.dataGridStock.Left = (this.ClientSize.Width - this.dataGridStock.Width) / 2;
-
-
             
 
         }

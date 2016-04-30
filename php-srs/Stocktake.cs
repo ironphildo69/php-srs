@@ -115,6 +115,31 @@ namespace php_srs
             return result;
         }
 
+        public List<string> GetNameRows(string selectQuery)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+
+            List<string> results = new List<string>();        
+
+            php_srsConnection.Open(); //Opens the connection
+
+            AddItem ai = new AddItem();
+
+            ai.CreateTable();
+
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader readResults = selectCommand.ExecuteReader();
+
+            while (readResults.Read())
+            {
+                results.Add("" + readResults["Name"]);
+            }
+
+            php_srsConnection.Close();
+
+            return results;
+        }
+
         public void SelectSpecific()
         {
 
