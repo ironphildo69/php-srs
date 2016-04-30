@@ -156,12 +156,14 @@ namespace php_srs
             if (int.TryParse(inputQty, out value1))
             {
                 inputQtyOut = value1;
+
+                AddItem ai = new AddItem();
+                ai.UpdateTable(inputID, inputQtyOut);
+
+                confirmbyid_label.Text = "The item has been update.";
             } else {
-
-            }
-
-            AddItem ai = new AddItem();
-            ai.UpdateTable(inputID, inputQtyOut);
+                confirmbyid_label.Text = "One of the fields has not been filled.";
+            }           
 
         }        
         

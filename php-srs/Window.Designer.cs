@@ -80,8 +80,8 @@
             this.stockadditem_p = new System.Windows.Forms.Panel();
             this.additem_stockup_b = new System.Windows.Forms.Button();
             this.back_stockadditem_b = new System.Windows.Forms.Button();
-            
-
+                        
+            this.confirmbyid_label = new System.Windows.Forms.Label();
 
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
@@ -572,6 +572,16 @@
             this.confirm_label.Size = new System.Drawing.Size(600, 18);
             this.confirm_label.Text = " ";
             this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            //confirmbyid_label
+            //
+            this.confirmbyid_label.AutoSize = false;
+            this.confirmbyid_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmbyid_label.Location = new System.Drawing.Point(5, 70);
+            this.confirmbyid_label.Name = "confirmbyid_label";
+            this.confirmbyid_label.Size = new System.Drawing.Size(600, 18);
+            this.confirmbyid_label.Text = " ";
+            this.confirmbyid_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridStock
             // 
@@ -667,6 +677,8 @@
         private System.Windows.Forms.Label label_stocktable_id;
         private System.Windows.Forms.Label label_stocktable_name;
         private System.Windows.Forms.Label label_stocktable_attr;
+        private System.Windows.Forms.Label confirmbyid_label;
+        
 
         //updatestock
         private System.Windows.Forms.Label addiditem_stockup_l;
