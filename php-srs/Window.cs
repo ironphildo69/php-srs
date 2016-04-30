@@ -36,7 +36,8 @@ namespace php_srs
         //Reports
         private void button3_Click(object sender, EventArgs e)
         {
-
+            mainmenu_p.Visible = false;
+            report_p.Visible = true;
         }
 
         //log out

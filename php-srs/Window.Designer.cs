@@ -80,7 +80,8 @@
             this.stockadditem_p = new System.Windows.Forms.Panel();
             this.additem_stockup_b = new System.Windows.Forms.Button();
             this.back_stockadditem_b = new System.Windows.Forms.Button();
-            
+            this.report_p = new System.Windows.Forms.Panel();       //amjad
+
 
 
             this.mainmenu_p.SuspendLayout();
@@ -223,6 +224,15 @@
             this.mainmenu_p.Controls.Add(this.report_b);
             this.mainmenu_p.Location = new System.Drawing.Point(0, 240);
             this.mainmenu_p.Name = "mainmenu_p";
+            this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
+            //
+            // report_p (amjad)
+            //
+            this.mainmenu_p.BackColor = System.Drawing.Color.Transparent;
+            this.mainmenu_p.Controls.Add(this.record_l);
+            this.stockitem_p.Controls.Add(this.back_b);
+            this.mainmenu_p.Location = new System.Drawing.Point(0, 240);
+            this.mainmenu_p.Name = "report_p";
             this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
             // 
             // stockitem_p
@@ -631,7 +641,8 @@
             this.Controls.Add(this.stocktable_p);
             this.Controls.Add(this.stockitemview_p);
             this.Controls.Add(this.stocktableupdate_p);
-            this.Controls.Add(this.stockadditem_p);            
+            this.Controls.Add(this.stockadditem_p);
+            this.Controls.Add(this.report_p);       //amjad
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.heading_img);
             this.DoubleBuffered = true;
@@ -711,7 +722,8 @@
         private System.Windows.Forms.Panel stocktable_p;
         private System.Windows.Forms.Panel stocktableupdate_p;
         private System.Windows.Forms.Panel stockadditem_p;
-        
+        private System.Windows.Forms.Panel report_p;        //amjad
+
 
         //ListBox
         private System.Windows.Forms.ListBox attribute_lst;
