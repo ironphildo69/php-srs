@@ -40,14 +40,28 @@ namespace php_srs
         public void UpdateTable(string name, int quantity)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            int newQty = 0;
+            string qty = "";
+            string selectQuery = "SELECT Name, Quantity FROM StockTable WHERE Name = '" + name + "'";
+
             php_srsConnection.Open();
 
             CreateTable();
+            
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader rdr = selectCommand.ExecuteReader();
 
-            //string updateQuery = "UPDATE StockTable SET ";
+            while (rdr.Read())
+            {
+                qty = "" + rdr["Quantity"];
+            }
 
-            //SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
-            //insertCommand.ExecuteNonQuery();
+            newQty = int.Parse(qty) + quantity;
+
+            string updateQuery = "UPDATE StockTable SET Quantity = " + newQty + " WHERE Name = '" + name + "'";
+
+            SQLiteCommand insertCommand = new SQLiteCommand(updateQuery, php_srsConnection);
+            insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
         }
