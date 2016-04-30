@@ -39,8 +39,8 @@ namespace php_srs
 
             while (readResults.Read())
             {
-                //readResults["Name"]
-                //readResults["Password"]
+                //readResults["Name"] = userName;
+                //readResults["Password"] = pass;
 
             }
             
@@ -118,7 +118,7 @@ namespace php_srs
 
                         case 5:
                             //relevant methods will be called depending on the users selection
-                            CSV.CSVMenu();
+                            //CSV.CSVMenu();
                             break;
 
                         case 6:
