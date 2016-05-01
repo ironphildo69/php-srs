@@ -165,6 +165,59 @@ namespace php_srs
             return results;
         }
 
+        public string GetName(string id)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            AddItem ai = new AddItem();
+
+            string selectQuery = "SELECT Name FROM StockTable WHERE ID = " + id;
+            string name = "";
+
+            php_srsConnection.Open(); //Opens the connection            
+
+            ai.CreateTable();
+
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader readResults = selectCommand.ExecuteReader();
+
+            while (readResults.Read())
+            {
+                name = "" + readResults["Name"];
+            }
+
+            php_srsConnection.Close();
+
+            return name;
+        }
+
+        public double GetPrice(string id)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            AddItem ai = new AddItem();
+            string selectQuery = "SELECT Price FROM StockTable WHERE ID = " + id;
+            string priceString = "";
+            double price = 0;
+
+            php_srsConnection.Open(); //Opens the connection           
+
+            ai.CreateTable();
+
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader readResults = selectCommand.ExecuteReader();
+
+            while (readResults.Read())
+            {
+                //priceString = "" + readResults["Price"];
+                price = (double) readResults["Price"];
+            }
+
+            //price = double.Parse(priceString);
+
+            php_srsConnection.Close();
+
+            return price;
+        }
+
         public void SelectFromTableCLI(string selectQuery)
         {
             Console.WriteLine("________________________________________________________________________________________________________");

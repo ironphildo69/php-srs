@@ -11,12 +11,12 @@ namespace php_srs
     class AddSalesRecord
     {
 
-        public static void CreateTable()
+        public void CreateTable()
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
             
-            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID INTEGER PRIMARY KEY, Name varchar(30), User varchar(20), Quantity int, Price real, Date varchar(10))";
+            string createTableQuery = "CREATE TABLE IF NOT EXISTS SalesRecords (ID INTEGER PRIMARY KEY, Item varchar(20), Quantity int, Price real, User varchar(20), Date varchar(10), Time varchar(10))";
 
             SQLiteCommand createMedicineTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createMedicineTable.ExecuteNonQuery();
@@ -24,14 +24,14 @@ namespace php_srs
             php_srsConnection.Close();  
         }       
 
-        public static void InsertIntoTable(string name, string description, string attribute, int quantity)
+        public void InsertIntoTable(string item, int quantity, double price, string user, string date, string time)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             php_srsConnection.Open();
 
-            CreateTable();
+            CreateTable();            
 
-            string insertQuery = "INSERT INTO SalesRecords (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description + "', '" + attribute + "', " + quantity + ")";
+            string insertQuery = "INSERT INTO SalesRecords (Item, Quantity, Price, User, Date, Time) VALUES ('" + item + "', " + quantity + ", " + price + ", '" + user + "', '" + date + "', '" + time + "')";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
 
@@ -40,7 +40,7 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public static void AddSalesRecords()
+        public void AddSalesRecords()
         {
             //Console.WriteLine("ID: ");
             //int responseID = int.Parse(Console.ReadLine());
@@ -63,7 +63,7 @@ namespace php_srs
             Console.Write("Quantity: ");
             int responseQuantity = int.Parse(Console.ReadLine());
 
-            InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
+            //InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
 
             Console.WriteLine("The information has been added to the database.");
             Console.Clear();
