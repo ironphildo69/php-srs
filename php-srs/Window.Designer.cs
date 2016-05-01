@@ -178,6 +178,51 @@
             this.quit_b.Text = "Quit";
             this.quit_b.UseVisualStyleBackColor = true;
             this.quit_b.Click += new System.EventHandler(this.button5_Click);
+            //
+            // back_report_b
+            //
+            this.back_report_b.Location = new System.Drawing.Point(195, 170);
+            this.back_report_b.Name = "back_report_b";
+            this.back_report_b.Size = new System.Drawing.Size(250, 50);
+            this.back_report_b.Text = "Back";
+            this.back_report_b.UseVisualStyleBackColor = true;
+            this.back_report_b.Click += new System.EventHandler(this.back_report_b_Click);
+            //
+            // back_reportCSVsales_b
+            //
+            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 20);
+            this.back_reportCSVsales_b.Name = "back_reportCSVsales_b";
+            this.back_reportCSVsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVsales_b.Text = "CSV - Sales";
+            this.back_reportCSVsales_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVsales_b.Click += new System.EventHandler(this.back_reportCSVsales_b_Click);
+            //
+            // back_reportCSVstock_b
+            //
+            this.back_reportCSVstock_b.Location = new System.Drawing.Point(345, 20);
+            this.back_reportCSVstock_b.Name = "back_reportCSVstock_b";
+            this.back_reportCSVstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVstock_b.Text = "CSV - Stock";
+            this.back_reportCSVstock_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVstock_b.Click += new System.EventHandler(this.back_reportCSVstock_b_Click);
+            //
+            // back_reportsales_b
+            //
+            this.back_reportsales_b.Location = new System.Drawing.Point(70, 95);
+            this.back_reportsales_b.Name = "back_reportsales_b";
+            this.back_reportsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportsales_b.Text = "Sales Report";
+            this.back_reportsales_b.UseVisualStyleBackColor = true;
+            this.back_reportsales_b.Click += new System.EventHandler(this.back_reportsales_b_Click);
+            //
+            // back_reportstock_b
+            //
+            this.back_reportstock_b.Location = new System.Drawing.Point(345, 95);
+            this.back_reportstock_b.Name = "back_reportstock_b";
+            this.back_reportstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportstock_b.Text = "Stock Report";
+            this.back_reportstock_b.UseVisualStyleBackColor = true;
+            this.back_reportstock_b.Click += new System.EventHandler(this.back_reportstock_b_Click);
             // 
             // updatestock_b
             // 
