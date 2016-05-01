@@ -7,6 +7,8 @@ namespace php_srs
 {
     class Program
     {
+        private string currentUser = "";
+        
         //Database creation logic, checks if file exists.
         public static bool createDatabase()
         {
@@ -25,21 +27,31 @@ namespace php_srs
 
             }
             return true;
-        }        
+        }
+
+        public void setUser(string user)
+        {
+            currentUser = user;
+        }
+
+        public string getUser()
+        {
+            return currentUser;
+        }
 
         public static void Main(string[] args)
         {
             //Pre initalisation logic
 
             userLogin ul = new userLogin();
-
-            //ul.runUserLogin();
-
+            createDatabase();
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Login());            
             Application.Run(new Window());
 
-            createDatabase();
+
 
             int value = 0;
 

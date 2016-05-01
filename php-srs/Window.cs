@@ -505,8 +505,8 @@ namespace php_srs
             this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2 - 150;
             this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2 - 150;
             this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 - 150;
-            this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - (217);
-            this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 - (83);
+            this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - 217;
+            this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 - 83;
 
             //smenu report
             this.back_report_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2 ;
@@ -586,8 +586,10 @@ namespace php_srs
             this.sales_datagrid.Left = (this.ClientSize.Width - this.sales_datagrid.Width) / 2;
             this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
             this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
-            
 
+            Program program = new Program();
+
+            this.loginstatus_l.Text = "Currently logged in as: " + program.getUser();
 
 
 

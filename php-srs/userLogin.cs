@@ -33,45 +33,52 @@ namespace php_srs
         }
 
         //Runs query to check if provided ID matchs whats in the database.
-        private bool checkUserLoginTable(string username, string password)
+        public bool checkUserLoginTable(string username, string password)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            
             php_srsConnection.Open();   //Opens the connection
 
             userLogin ul = new userLogin();
-
             ul.createUserLoginTable();
 
-            string query = "SELECT * FROM UserLogin"; //Acquires the SQL SELECT statement from the reference
+            //string query = "SELECT * FROM UserLogin"; //Acquires the SQL SELECT statement from the reference
+            //string sqlStatement = "SELECT * FROM UserLogin WHERE Name = '" + username + "' AND Password = '" + password + "'";
 
-            String sqlStatement = "Select * from UserLogin Where Name='" + username + "' AND Password='" + password + "'";
-            SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);
-            SQLiteDataReader readResults = selectCommand.ExecuteReader();
+            string sqlStatement = "SELECT COUNT(*) FROM UserLogin WHERE Name = '" + username + "' AND Password = '" + password + "'";
 
-            string adminCheck = (string) readResults["Name"] + (string) readResults["Password"];
+            SQLiteCommand selectCommand = new SQLiteCommand(sqlStatement, php_srsConnection);
+
+            //SQLiteDataReader readResults = selectCommand.ExecuteReader();
+
+            int readResults = System.Convert.ToInt32(selectCommand.ExecuteScalar());
+
+            //string adminCheck = (string) readResults["Name"] + (string) readResults["Password"];
             //Console.Write(adminCheck + "\n"); //Debug
 
-            string userCheck = (string) readResults["Name"] + (string) readResults["Password"];
-
+            //while (readResults.Read())
+            //{
+            //    user = "" + readResults["Name"];
+            //    pass = "" + readResults["Password"];
+            //}
+            
             php_srsConnection.Close();
 
-            if (userCheck == username + password)
+            if (readResults == 1)
             {
-                Console.WriteLine("Success!");
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
 
         }
+
         //creates the table and if it exists should update the default credientials incase they have changed.
         public void createUserLoginTable()
         {
             //All this needs refactoring
             string defaultUser = "admin";
-            string defaultPassword = "passtest";
+            string defaultPassword = "admin";
             string defaultRole = "administrator";
             string userLoginTable = "UserLogin";
             
@@ -83,7 +90,8 @@ namespace php_srs
             SQLiteCommand createUserLoginTable = new SQLiteCommand(createTableQuery, php_srsConnection);
             createUserLoginTable.ExecuteNonQuery();
 
-            string insertQuery = "UPDATE " + userLoginTable + " SET (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "') WHERE Name='" + defaultUser + "'";
+            //string updateQuery = "UPDATE UserLogin SET (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "') WHERE Name='" + defaultUser + "'";
+            string insertQuery = "INSERT INTO UserLogin (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "')";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             //insertCommand.ExecuteNonQuery();
 
@@ -91,7 +99,7 @@ namespace php_srs
         } 
 
         //checks user permisions level and loads this in. Unfinished.
-        private bool userCheckPerms(String username)
+        public bool userCheckPerms(String username)
         {
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");

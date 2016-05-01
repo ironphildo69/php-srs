@@ -41,7 +41,6 @@ namespace php_srs
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             int newQty = 0;
-            string qty = "";
             string selectQuery = "SELECT Name, Quantity FROM StockTable WHERE Name = '" + name + "'";
 
             php_srsConnection.Open();

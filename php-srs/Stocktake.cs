@@ -95,26 +95,6 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        //public int CountQuery(string countQuery)
-        //{
-        //    var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
-        //    int result = 0;
-
-        //    php_srsConnection.Open(); //Opens the connection
-
-        //    AddItem ai = new AddItem();
-
-        //    ai.CreateTable();
-
-        //    SQLiteCommand selectCommand = new SQLiteCommand(countQuery, php_srsConnection);  //Sets up the query to be used with the database
-            
-        //    result = Convert.ToInt32(selectCommand.ExecuteScalar());
-
-        //    php_srsConnection.Close();
-
-        //    return result;
-        //}
-
         public List<string> GetNameRows(string selectQuery)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
