@@ -308,9 +308,9 @@
             this.record_l.AutoSize = false;
             this.record_l.Location = new System.Drawing.Point(400, 20);
             this.record_l.Name = "record_l";
-            this.record_l.Size = new System.Drawing.Size(100, 80);
+            this.record_l.Size = new System.Drawing.Size(250, 100);
             this.record_l.TabIndex = 0;
-            this.record_l.Text = " ";
+            this.record_l.Text = "";
             // 
             // mainmenu_p
             // 

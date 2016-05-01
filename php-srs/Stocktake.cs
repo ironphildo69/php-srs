@@ -95,25 +95,25 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public int CountQuery(string countQuery)
-        {
-            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
-            int result = 0;
+        //public int CountQuery(string countQuery)
+        //{
+        //    var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+        //    int result = 0;
 
-            php_srsConnection.Open(); //Opens the connection
+        //    php_srsConnection.Open(); //Opens the connection
 
-            AddItem ai = new AddItem();
+        //    AddItem ai = new AddItem();
 
-            ai.CreateTable();
+        //    ai.CreateTable();
 
-            SQLiteCommand selectCommand = new SQLiteCommand(countQuery, php_srsConnection);  //Sets up the query to be used with the database
+        //    SQLiteCommand selectCommand = new SQLiteCommand(countQuery, php_srsConnection);  //Sets up the query to be used with the database
             
-            result = Convert.ToInt32(selectCommand.ExecuteScalar());
+        //    result = Convert.ToInt32(selectCommand.ExecuteScalar());
 
-            php_srsConnection.Close();
+        //    php_srsConnection.Close();
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public List<string> GetNameRows(string selectQuery)
         {
@@ -195,7 +195,6 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             AddItem ai = new AddItem();
             string selectQuery = "SELECT Price FROM StockTable WHERE ID = " + id;
-            string priceString = "";
             double price = 0;
 
             php_srsConnection.Open(); //Opens the connection           
@@ -207,15 +206,36 @@ namespace php_srs
 
             while (readResults.Read())
             {
-                //priceString = "" + readResults["Price"];
                 price = (double) readResults["Price"];
             }
-
-            //price = double.Parse(priceString);
 
             php_srsConnection.Close();
 
             return price;
+        }
+
+        public int GetQuantity(string id)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            AddItem ai = new AddItem();
+            string selectQuery = "SELECT Quantity FROM StockTable WHERE ID = " + id;
+            int quantity = 0;
+
+            php_srsConnection.Open(); //Opens the connection           
+
+            ai.CreateTable();
+
+            SQLiteCommand selectCommand = new SQLiteCommand(selectQuery, php_srsConnection);
+            SQLiteDataReader readResults = selectCommand.ExecuteReader();
+
+            while (readResults.Read())
+            {
+                quantity = (int)readResults["Quantity"];
+            }
+
+            php_srsConnection.Close();
+
+            return quantity;
         }
 
         public void SelectFromTableCLI(string selectQuery)

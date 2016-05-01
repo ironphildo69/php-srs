@@ -24,6 +24,7 @@ namespace php_srs
         private void button1_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
+            record_l.Text = "";
             stockitem_p.Visible = true;
         }
 
@@ -31,6 +32,7 @@ namespace php_srs
         private void button2_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
+            record_l.Text = "";
             salesrecords_p.Visible = true;
         }
 
@@ -38,6 +40,7 @@ namespace php_srs
         private void button3_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
+            record_l.Text = "";
             report_p.Visible = true;
         }
 
@@ -456,14 +459,29 @@ namespace php_srs
             salesview_p.Visible = false;
             mainmenu_p.Visible = true;
         }
-        
+
         private void mainmenu_p_VisibleChanged(object sender, EventArgs e)
-        {            
+        {
             //change record
 
+            StockTake st = new StockTake();
 
+            List<string> rows = st.GetNameRows("SELECT * FROM StockTable");
 
-        }        
+            int quantity;
+            string name;
+
+            for (int i = 0; i < rows.Count(); i++)
+            {
+                name = st.GetName("" + (i + 1));
+                quantity = st.GetQuantity("" + (i + 1));
+
+                if (quantity < 500)
+                {
+                    record_l.Text += name + " only has " + quantity + " remaining!\n";
+                }
+            }
+        }
 
         //window
         private void window_Resize(object sender, EventArgs e)
@@ -555,6 +573,10 @@ namespace php_srs
             this.sales_datagrid.Left = (this.ClientSize.Width - this.sales_datagrid.Width) / 2;
             this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
             this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
+            
+
+
+
 
         }
     }
