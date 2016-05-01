@@ -114,7 +114,7 @@
 
             this.CSVsales_l = new System.Windows.Forms.Label();
             this.CSVstock_l = new System.Windows.Forms.Label();
-            
+
 
 
 
@@ -309,12 +309,12 @@
             // 
             // record_l
             // 
-            this.record_l.AutoSize = true;
+            this.record_l.AutoSize = false;
             this.record_l.Location = new System.Drawing.Point(400, 20);
             this.record_l.Name = "record_l";
-            this.record_l.Size = new System.Drawing.Size(97, 13);
+            this.record_l.Size = new System.Drawing.Size(100, 80);
             this.record_l.TabIndex = 0;
-            this.record_l.Text = "Record Information";
+            this.record_l.Text = " ";
             // 
             // mainmenu_p
             // 
@@ -329,6 +329,8 @@
             this.mainmenu_p.Name = "mainmenu_p";
             this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
             this.mainmenu_p.TabIndex = 0;
+            this.mainmenu_p.VisibleChanged += new System.EventHandler(this.mainmenu_p_VisibleChanged);
+
             //
             // report_p 
             //
@@ -341,7 +343,7 @@
             this.report_p.Location = new System.Drawing.Point(0, 240);
             this.report_p.Name = "report_p";
             this.report_p.Size = new System.Drawing.Size(1680, 1080);
-            //
+            // 
             //CSVsales_l
             //
             this.CSVsales_l.AutoSize = true;

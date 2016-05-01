@@ -469,6 +469,14 @@ namespace php_srs
             salesview_p.Visible = false;
             mainmenu_p.Visible = true;
         }
+        
+        private void mainmenu_p_VisibleChanged(object sender, EventArgs e)
+        {            
+            //change record
+
+
+
+        }        
 
         //window
         private void window_Resize(object sender, EventArgs e)
