@@ -37,7 +37,7 @@ namespace php_srs
             php_srsConnection.Close();
         }
 
-        public void UpdateTable(string name, int quantity)
+        public void UpdateTableByName(string name, int quantity, int minusCheck)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
             int newQty = 0;
@@ -53,10 +53,15 @@ namespace php_srs
 
             while (rdr.Read())
             {
-                qty = "" + rdr["Quantity"];
+                newQty = (int) rdr["Quantity"];
             }
 
-            newQty = int.Parse(qty) + quantity;
+            if (minusCheck == 0)
+            {
+                newQty += quantity;
+            } else {
+                newQty -= quantity;
+            }
 
             string updateQuery = "UPDATE StockTable SET Quantity = " + newQty + " WHERE Name = '" + name + "'";
 
@@ -64,7 +69,7 @@ namespace php_srs
             insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
-        }
+        }        
 
         public void InsertIntoTableCLI(string name, string description, string attribute, int quantity)
         {                

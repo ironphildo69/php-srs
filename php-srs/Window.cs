@@ -176,7 +176,7 @@ namespace php_srs
                 inputQtyOut = value1;
 
                 AddItem ai = new AddItem();
-                ai.UpdateTable(inputID, inputQtyOut);
+                ai.UpdateTableByName(inputID, inputQtyOut, 0);
 
                 confirmbyid_label.Text = "The item has been updated.";
             } else {
@@ -227,12 +227,14 @@ namespace php_srs
 
         private void back_reportCSVsales_b_Click(object sender, EventArgs e)
         {
-
+            CSV salesCSV = new CSV();
+            salesCSV.WriteStockSalesToFile();
         }
 
         private void back_reportCSVstock_b_Click(object sender, EventArgs e)
         {
-
+            CSV stockCSV = new CSV();
+            stockCSV.WriteStockTakeToFile();
         }
 
         private void back_reportsales_b_Click(object sender, EventArgs e)
@@ -261,9 +263,24 @@ namespace php_srs
         {
             stockitemview_p.Visible = false;
             
-            string inputID = "" + id_stockview_list.SelectedItem.ToString();
-            string inputName = "" + name_stockview_list.SelectedItem.ToString();
-            string inputAttr = "" + attribute_lst.SelectedItem.ToString();
+            string inputID = "";
+            string inputName = "";
+            string inputAttr = "";
+
+            if (id_stockview_list.SelectedIndex != 0)
+            {
+                inputID = id_stockview_list.GetItemText(id_stockview_list.SelectedItem);
+            }
+
+            if (name_stockview_list.SelectedIndex != 0)
+            {
+                inputName = name_stockview_list.GetItemText(name_stockview_list.SelectedItem);
+            }
+
+            if (attribute_lst.SelectedIndex != 0)
+            {
+                inputAttr = attribute_lst.GetItemText(attribute_lst.SelectedItem);
+            }
                         
             StockTake st = new StockTake();
             
@@ -337,6 +354,8 @@ namespace php_srs
         {
             salesrecords_p.Visible = false;
 
+            salesitems_list.Items.Clear();
+
             salesitems_list.Items.Insert(0, "");
 
             StockTake st = new StockTake();
@@ -351,8 +370,12 @@ namespace php_srs
 
         private void viewrecord_b_Click(object sender, EventArgs e)
         {
-            //stocktable_p.Visible = false;
-            //mainmenu_p.Visible = true;
+            salesrecords_p.Visible = false;
+
+            StockSales ss = new StockSales();
+            ss.SelectFromTable("SELECT * FROM SalesRecords", sales_datagrid);
+            
+            salesview_p.Visible = true;            
         }
 
         private void salesrecordback_b_Click(object sender, EventArgs e)
@@ -363,18 +386,76 @@ namespace php_srs
 
         //Make sale
         private void sales_enter_b_Click(object sender, EventArgs e)
-        {
-             
+        {            
+            string date = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+            string time = DateTime.Now.Hour + ":" + DateTime.Now.Minute.ToString();
+
+            int item = salesitems_list.SelectedIndex;
+            string itemString = "" + item;
+            string inputQty = sales_qty_t.Text;
+            int outputQty;
+            string name = "";
+            double price = 0;
+
+            if (item > 0)
+            {
+                StockTake st = new StockTake();
+                name = st.GetName(itemString);
+                price = st.GetPrice(itemString);
+
+                if (int.TryParse(inputQty, out outputQty))
+                {
+                    price = price * outputQty;
+
+                    AddItem ai = new AddItem();
+                    ai.UpdateTableByName(name, outputQty, 1);
+
+                    AddSalesRecord asr = new AddSalesRecord();
+                    asr.InsertIntoTable(name, outputQty, price, "Admin", date, time);
+
+                    makesale_p.Visible = false;
+
+                    successbox_t.Text = "You have succesfully purchased " + outputQty + " " + name + "'s for $" + price + ".";
+
+                    confirmsale_p.Visible = true;
+
+                } else {
+                    confirmsale_l.Text = "Quantity can only be numeric.";
+                }
+
+            } else {
+                confirmsale_l.Text = "You have not yet chosen an item.";
+            }
+
+            sales_qty_t.Clear();
+            confirmsale_l.Text = " ";
+            salesitems_list.ClearSelected();            
         }
 
         //back 
         private void sales_back_b_Click(object sender, EventArgs e)
         {
             makesale_p.Visible = false;
+            sales_qty_t.Clear();
             salesitems_list.ClearSelected();
+            confirmsale_l.Text = " ";
             salesrecords_p.Visible = true;
         }
 
+        //continue from confirm sale
+        private void continuesale_b_Click(object sender, EventArgs e)
+        {
+            confirmsale_p.Visible = false;
+            successbox_t.Clear();
+            salesrecords_p.Visible = true;
+        }
+
+        //back from salestable
+        private void back_salesview_b_Click(object sender, EventArgs e)
+        {
+            salesview_p.Visible = false;
+            mainmenu_p.Visible = true;
+        }
 
         //window
         private void window_Resize(object sender, EventArgs e)
@@ -430,7 +511,7 @@ namespace php_srs
             //smenu viewstock
             this.allstock_b.Left = (this.ClientSize.Width - this.viewcurrentstock_b.Width) / 2 - 150;
             this.enter1_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
-            this.back2_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2 + 150;
+            this.back2_b.Left = (this.ClientSize.Width - this.back_b.Width) / 2;
             this.label_stocktable_id.Left = (this.ClientSize.Width - this.label_stocktable_id.Width) / 2 - 150;
             this.label_stocktable_name.Left = (this.ClientSize.Width - this.label_stocktable_name.Width) / 2 - 150;
             this.label_stocktable_attr.Left = (this.ClientSize.Width - this.label_stocktable_attr.Width) / 2 - 150;
@@ -441,6 +522,7 @@ namespace php_srs
             //smenu stocktable
             this.back_stocktable_b.Left = (this.ClientSize.Width - this.back_stocktable_b.Width) / 2;
             this.dataGridStock.Left = (this.ClientSize.Width - this.dataGridStock.Width) / 2;
+            this.stockviewhead_l.Left = (this.ClientSize.Width - this.stockviewhead_l.Width) / 2;
 
             //smenu salesrecords
             this.makesales_b.Left = (this.ClientSize.Width - this.makesales_b.Width) / 2;
@@ -453,6 +535,18 @@ namespace php_srs
             this.sales_qty_t.Left = (this.ClientSize.Width - this.sales_qty_t.Width) / 2 + 88;
             this.sales_enter_b.Left = (this.ClientSize.Width - this.sales_enter_b.Width) / 2;
             this.sales_back_b.Left = (this.ClientSize.Width - this.sales_back_b.Width) / 2;
+            this.confirmsale_l.Left = (this.ClientSize.Width - this.confirmsale_l.Width) / 2;
+            
+
+            //smenu confirm
+            this.confirmation_l.Left = (this.ClientSize.Width - this.confirmation_l.Width) / 2;
+            this.successbox_t.Left = (this.ClientSize.Width - this.successbox_t.Width) / 2;
+            this.continuesale_b.Left = (this.ClientSize.Width - this.continuesale_b.Width) / 2;
+
+            //smenu salestable
+            this.sales_datagrid.Left = (this.ClientSize.Width - this.sales_datagrid.Width) / 2;
+            this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
+            this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
 
         }
     }
