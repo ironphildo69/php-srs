@@ -232,8 +232,8 @@ namespace php_srs
 
         private void back_reportCSVsales_b_Click(object sender, EventArgs e)
         {
-            //CSV salesCSV = new CSV();
-            //salesCSV.WriteStockSalesToFile();
+            CSV salesCSV = new CSV();
+            salesCSV.WriteStockSalesToFile();
             this.CSVsales_l.Visible = true;
             this.CSVstock_l.Visible = false;
             
@@ -242,8 +242,8 @@ namespace php_srs
 
         private void back_reportCSVstock_b_Click(object sender, EventArgs e)
         {
-            //CSV stockCSV = new CSV();
-            //stockCSV.WriteStockTakeToFile();
+            CSV stockCSV = new CSV();
+            stockCSV.WriteStockTakeToFile();
             this.CSVsales_l.Visible = false;
             this.CSVstock_l.Visible = true;
             

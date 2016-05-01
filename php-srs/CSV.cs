@@ -10,48 +10,6 @@ namespace php_srs
 {
     class CSV
     {
-        /*public static void CSVMenu()
-        {
-            Console.Clear();
-
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine("*                                                         *");
-            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
-            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine("*                                                         *");
-            Console.WriteLine("* 1:  CSV of StockTake                                    *");
-            Console.WriteLine("* 2:  CSV of StockSales                                   *");
-            Console.WriteLine("* 3:  Back                                                *");
-            Console.WriteLine("*                                                         *");
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine("Please select an option [1 - 3]:  ");
-
-            string selectionStockSales = Console.ReadLine();
-
-            int value = 0;
-
-            if (int.TryParse(selectionStockSales, out value))
-            {
-                switch (value)
-                {
-                    case 1:
-                        Console.Clear();
-                        WriteStockTakeToFile();                        
-                        break;
-
-                    case 2:
-                        Console.Clear();
-                        WriteStockSalesToFile();
-                        break;
-
-                    default:
-                        Console.Clear();
-                        break;
-                }
-            }
-        }*/
-
         public void WriteStockSalesToFile()
         {
             TextWriter tw = new StreamWriter("CSV-StockSales.txt");
@@ -69,8 +27,8 @@ namespace php_srs
             SQLiteDataReader readResults = selectCommand.ExecuteReader();   //Reads the results of the query into something that can be easily manipulated
             while (readResults.Read())
             {
-                tw.WriteLine(readResults["ID"] + ", " + readResults["Name"] + ", " + readResults["Description"] + ", " + readResults["Attribute"] + ", " +
-                    readResults["Quantity"] + ", " + readResults["Date"] + "\n");
+                tw.WriteLine(readResults["ID"] + ", " + readResults["Item"] + ", " + readResults["Quantity"] + ", " + readResults["Price"] + ", " +
+                    readResults["User"] + ", " + readResults["Date"] + ", " + readResults["Time"] + " \n");
             }
 
             tw.Close();
