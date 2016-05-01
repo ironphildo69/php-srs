@@ -12,7 +12,7 @@ namespace php_srs
     {
         private void saleReport()
         {
-            TextWriter tw = new StreamWriter("CSV-StockSales.txt");
+            TextWriter tw = new StreamWriter("StockSales-Report.txt");
             double total = 0.0;
 
             tw.WriteLine("PEOPLE HEALTH PHARMACY - SALES REPORTING SYSTEM\n");
