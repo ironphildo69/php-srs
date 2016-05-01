@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
+using System.Data;
+using System.Windows.Forms;
 
 namespace php_srs
 {
     class StockSales
     {
-        public static void StockSalesMenu()
+        public void StockSalesMenu()
         {
             Console.Clear();
 
@@ -75,7 +77,33 @@ namespace php_srs
             }
         }
 
-        public static void SelectFromTable(string selectQuery)
+        public void SelectFromTable(string selectQuery, DataGridView dataGridStock)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
+            string query = selectQuery; //Acquires the SQL SELECT statement from the reference
+
+            try
+            {
+                php_srsConnection.Open(); //Opens the connection
+
+                AddSalesRecord asr = new AddSalesRecord();
+                asr.CreateTable();
+
+                DataSet ds = new DataSet();
+                var sqliteDA = new SQLiteDataAdapter(selectQuery, php_srsConnection);
+
+                sqliteDA.Fill(ds);
+                dataGridStock.DataSource = ds.Tables[0].DefaultView;
+            }
+            catch
+            {
+                throw;
+            }
+            
+            php_srsConnection.Close();  //Closes the connection
+        }
+
+        public void SelectFromTableCLI(string selectQuery)
         {
             Console.WriteLine("_______________________________________________________________________________________________________________________");
             Console.WriteLine(String.Format("{0,5}|{1,20}|{2,50}|{3,10}|{4,10}|{5,10}", "ID", "Name", "Description", "Attribute", "Quantity", "Date")); //Formats the string to look more presentable in the command line.
@@ -102,14 +130,15 @@ namespace php_srs
             Console.Clear();
         }
 
-        public static void StockSalesAll()
+        public void StockSalesAll()
         {
             Console.Clear();
             Console.WriteLine("ALL STOCK: ");
-            SelectFromTable("SELECT * FROM SalesRecords");
+
+            SelectFromTableCLI("SELECT * FROM SalesRecords");
         }
 
-        public static void StockSalesID()
+        public void StockSalesID()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -127,7 +156,7 @@ namespace php_srs
             {
                 Console.Clear();
                 Console.WriteLine("ID SPECIFIED STOCK: ");
-                SelectFromTable("SELECT * FROM SalesRecords WHERE" + idValue);
+                SelectFromTableCLI("SELECT * FROM SalesRecords WHERE" + idValue);
 
             } else {
                 Console.Clear();
@@ -135,7 +164,7 @@ namespace php_srs
             }
         }
 
-        public static void StockSalesName()
+        public void StockSalesName()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -149,10 +178,10 @@ namespace php_srs
 
             Console.Clear();
             Console.WriteLine("NAME SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + nameValue + "'");
+            SelectFromTableCLI("SELECT * FROM SalesRecords WHERE Name = '" + nameValue + "'");
         }
 
-        public static void StockSalesAttribute()
+        public void StockSalesAttribute()
         {
             Console.Clear();
             Console.WriteLine("***********************************************************");
@@ -166,10 +195,10 @@ namespace php_srs
 
             Console.Clear();
             Console.WriteLine("ATTRIBUTE SPECIFIED STOCK: ");
-            SelectFromTable("SELECT * FROM SalesRecords WHERE Name = '" + attrValue + "'");
+            SelectFromTableCLI("SELECT * FROM SalesRecords WHERE Name = '" + attrValue + "'");
         }
 
-        public static void StockSalesDate()
+        public void StockSalesDate()
         {
             Console.Clear();
             Console.WriteLine("Unavailable at this time.");

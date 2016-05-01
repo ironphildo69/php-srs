@@ -94,6 +94,18 @@
             this.salesitems_list = new System.Windows.Forms.ListBox();
             this.sales_qty_l = new System.Windows.Forms.Label();
             this.choosestock_l = new System.Windows.Forms.Label();
+            this.confirmsale_p = new System.Windows.Forms.Panel();
+            this.continuesale_b = new System.Windows.Forms.Button();
+            this.successbox_t = new System.Windows.Forms.TextBox();
+            this.confirmation_l = new System.Windows.Forms.Label();
+            this.salesview_p = new System.Windows.Forms.Panel();
+            this.sales_datagrid = new System.Windows.Forms.DataGridView();
+            this.back_salesview_b = new System.Windows.Forms.Button();
+            this.salesviewhead_l = new System.Windows.Forms.Label();
+            this.stockviewhead_l = new System.Windows.Forms.Label();
+            this.confirmsale_l = new System.Windows.Forms.Label();
+            
+
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
             this.stockitemview_p.SuspendLayout();
@@ -103,6 +115,9 @@
             this.stockadditem_p.SuspendLayout();
             this.salesrecords_p.SuspendLayout();
             this.makesale_p.SuspendLayout();
+            this.confirmsale_p.SuspendLayout();
+            this.salesview_p.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sales_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // stockitem_b
@@ -157,7 +172,7 @@
             // 
             // updatestock_b
             // 
-            this.updatestock_b.Location = new System.Drawing.Point(275, 20);
+            this.updatestock_b.Location = new System.Drawing.Point(275, 95);
             this.updatestock_b.Name = "updatestock_b";
             this.updatestock_b.Size = new System.Drawing.Size(250, 50);
             this.updatestock_b.TabIndex = 2;
@@ -271,7 +286,7 @@
             // 
             // additem_stockup_b
             // 
-            this.additem_stockup_b.Location = new System.Drawing.Point(70, 95);
+            this.additem_stockup_b.Location = new System.Drawing.Point(70, 20);
             this.additem_stockup_b.Name = "additem_stockup_b";
             this.additem_stockup_b.Size = new System.Drawing.Size(250, 50);
             this.additem_stockup_b.TabIndex = 3;
@@ -304,7 +319,7 @@
             "",
             "Tablet",
             "Syrup",
-            "Spray"});
+            "Lozenge"});
             this.attribute_lst.Location = new System.Drawing.Point(275, 170);
             this.attribute_lst.Name = "attribute_lst";
             this.attribute_lst.Size = new System.Drawing.Size(250, 43);
@@ -391,6 +406,7 @@
             this.stocktable_p.BackColor = System.Drawing.Color.Transparent;
             this.stocktable_p.Controls.Add(this.back_stocktable_b);
             this.stocktable_p.Controls.Add(this.dataGridStock);
+            this.stocktable_p.Controls.Add(this.stockviewhead_l);            
             this.stocktable_p.Location = new System.Drawing.Point(0, 240);
             this.stocktable_p.Name = "stocktable_p";
             this.stocktable_p.Size = new System.Drawing.Size(1680, 1080);
@@ -399,7 +415,7 @@
             // 
             // back_stocktable_b
             // 
-            this.back_stocktable_b.Location = new System.Drawing.Point(70, 320);
+            this.back_stocktable_b.Location = new System.Drawing.Point(70, 370);
             this.back_stocktable_b.Name = "back_stocktable_b";
             this.back_stocktable_b.Size = new System.Drawing.Size(250, 50);
             this.back_stocktable_b.TabIndex = 0;
@@ -415,7 +431,7 @@
             this.dataGridStock.AllowUserToResizeRows = false;
             this.dataGridStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStock.Location = new System.Drawing.Point(30, 20);
+            this.dataGridStock.Location = new System.Drawing.Point(30, 75);
             this.dataGridStock.Name = "dataGridStock";
             this.dataGridStock.ReadOnly = true;
             this.dataGridStock.Size = new System.Drawing.Size(800, 290);
@@ -527,7 +543,7 @@
             this.attr_stockup_list.Items.AddRange(new object[] {
             "Tablet",
             "Syrup",
-            "Spray"});
+            "Lozenge"});
             this.attr_stockup_list.Location = new System.Drawing.Point(275, 152);
             this.attr_stockup_list.Name = "attr_stockup_list";
             this.attr_stockup_list.Size = new System.Drawing.Size(250, 30);
@@ -745,6 +761,7 @@
             this.makesale_p.Controls.Add(this.salesitems_list);
             this.makesale_p.Controls.Add(this.sales_qty_l);
             this.makesale_p.Controls.Add(this.choosestock_l);
+            this.makesale_p.Controls.Add(this.confirmsale_l);            
             this.makesale_p.Location = new System.Drawing.Point(0, 240);
             this.makesale_p.Name = "makesale_p";
             this.makesale_p.Size = new System.Drawing.Size(1680, 1080);
@@ -769,20 +786,22 @@
             this.sales_enter_b.TabIndex = 4;
             this.sales_enter_b.Text = "Enter";
             this.sales_enter_b.UseVisualStyleBackColor = true;
+            this.sales_enter_b.Click += new System.EventHandler(this.sales_enter_b_Click);
             // 
             // sales_qty_t
             // 
-            this.sales_qty_t.Location = new System.Drawing.Point(67, 170);
+            this.sales_qty_t.Location = new System.Drawing.Point(67, 208);
             this.sales_qty_t.Name = "sales_qty_t";
             this.sales_qty_t.Size = new System.Drawing.Size(225, 20);
             this.sales_qty_t.TabIndex = 3;
             // 
             // salesitems_list
             // 
+            this.salesitems_list.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salesitems_list.FormattingEnabled = true;
-            this.salesitems_list.Location = new System.Drawing.Point(67, 95);
+            this.salesitems_list.Location = new System.Drawing.Point(67, 90);
             this.salesitems_list.Name = "salesitems_list";
-            this.salesitems_list.Size = new System.Drawing.Size(400, 50);
+            this.salesitems_list.Size = new System.Drawing.Size(400, 95);
             this.salesitems_list.TabIndex = 2;
             // 
             // sales_qty_l
@@ -790,7 +809,7 @@
             this.sales_qty_l.BackColor = System.Drawing.Color.LightBlue;
             this.sales_qty_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sales_qty_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sales_qty_l.Location = new System.Drawing.Point(25, 170);
+            this.sales_qty_l.Location = new System.Drawing.Point(25, 208);
             this.sales_qty_l.Name = "sales_qty_l";
             this.sales_qty_l.Size = new System.Drawing.Size(150, 21);
             this.sales_qty_l.TabIndex = 1;
@@ -809,6 +828,125 @@
             this.choosestock_l.Text = "Choose an Item to Sell from the list below";
             this.choosestock_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // confirmsale_p
+            // 
+            this.confirmsale_p.BackColor = System.Drawing.Color.Transparent;
+            this.confirmsale_p.Controls.Add(this.continuesale_b);
+            this.confirmsale_p.Controls.Add(this.successbox_t);
+            this.confirmsale_p.Controls.Add(this.confirmation_l);
+            this.confirmsale_p.Location = new System.Drawing.Point(0, 240);
+            this.confirmsale_p.Name = "confirmsale_p";
+            this.confirmsale_p.Size = new System.Drawing.Size(1680, 1080);
+            this.confirmsale_p.TabIndex = 10;
+            this.confirmsale_p.Visible = false;
+            // 
+            // continuesale_b
+            // 
+            this.continuesale_b.Location = new System.Drawing.Point(68, 245);
+            this.continuesale_b.Name = "continuesale_b";
+            this.continuesale_b.Size = new System.Drawing.Size(250, 50);
+            this.continuesale_b.TabIndex = 2;
+            this.continuesale_b.Text = "Continue";
+            this.continuesale_b.UseVisualStyleBackColor = true;
+            this.continuesale_b.Click += new System.EventHandler(this.continuesale_b_Click);
+            // 
+            // successbox_t
+            // 
+            this.successbox_t.BackColor = System.Drawing.SystemColors.Control;
+            this.successbox_t.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.successbox_t.Location = new System.Drawing.Point(68, 95);
+            this.successbox_t.MinimumSize = new System.Drawing.Size(400, 100);
+            this.successbox_t.Multiline = true;
+            this.successbox_t.Name = "successbox_t";
+            this.successbox_t.ReadOnly = true;
+            this.successbox_t.Size = new System.Drawing.Size(400, 120);
+            this.successbox_t.TabIndex = 1;
+            // 
+            // confirmation_l
+            // 
+            this.confirmation_l.BackColor = System.Drawing.Color.LightBlue;
+            this.confirmation_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.confirmation_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmation_l.Location = new System.Drawing.Point(41, 20);
+            this.confirmation_l.Name = "confirmation_l";
+            this.confirmation_l.Size = new System.Drawing.Size(400, 50);
+            this.confirmation_l.TabIndex = 0;
+            this.confirmation_l.Text = "Confirmation of Purchase";
+            this.confirmation_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // salesview_p
+            // 
+            this.salesview_p.BackColor = System.Drawing.Color.Transparent;
+            this.salesview_p.Controls.Add(this.salesviewhead_l);
+            this.salesview_p.Controls.Add(this.back_salesview_b);
+            this.salesview_p.Controls.Add(this.sales_datagrid);
+            this.salesview_p.Location = new System.Drawing.Point(0, 240);
+            this.salesview_p.Name = "salesview_p";
+            this.salesview_p.Size = new System.Drawing.Size(1680, 1080);
+            this.salesview_p.TabIndex = 11;
+            this.salesview_p.Visible = false;
+            // 
+            // sales_datagrid
+            // 
+            this.sales_datagrid.AllowUserToAddRows = false;
+            this.sales_datagrid.AllowUserToDeleteRows = false;
+            this.sales_datagrid.AllowUserToOrderColumns = true;
+            this.sales_datagrid.AllowUserToResizeRows = false;
+            this.sales_datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.sales_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.sales_datagrid.Location = new System.Drawing.Point(30, 75);
+            this.sales_datagrid.Name = "sales_datagrid";
+            this.sales_datagrid.ReadOnly = true;
+            this.sales_datagrid.Size = new System.Drawing.Size(800, 290);
+            this.sales_datagrid.TabIndex = 0;
+            // 
+            // back_salesview_b
+            // 
+            this.back_salesview_b.Location = new System.Drawing.Point(90, 370);
+            this.back_salesview_b.Name = "back_salesview_b";
+            this.back_salesview_b.Size = new System.Drawing.Size(250, 50);
+            this.back_salesview_b.TabIndex = 1;
+            this.back_salesview_b.Text = "Back";
+            this.back_salesview_b.UseVisualStyleBackColor = true;
+            this.back_salesview_b.Click += new System.EventHandler(this.back_salesview_b_Click);
+            // 
+            // salesviewhead_l
+            // 
+            this.salesviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesviewhead_l.AutoSize = false;
+            this.salesviewhead_l.BackColor = System.Drawing.Color.LightBlue;
+            this.salesviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.salesviewhead_l.Location = new System.Drawing.Point(32, 20);
+            this.salesviewhead_l.Name = "salesviewhead_l";
+            this.salesviewhead_l.Size = new System.Drawing.Size(400, 50);
+            this.salesviewhead_l.TabIndex = 2;
+            this.salesviewhead_l.Text = "Sales Records";
+            this.salesviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // stockviewhead_l
+            // 
+            this.stockviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockviewhead_l.AutoSize = false;
+            this.stockviewhead_l.BackColor = System.Drawing.Color.LightBlue;
+            this.stockviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stockviewhead_l.Location = new System.Drawing.Point(32, 20);
+            this.stockviewhead_l.Name = "salesviewhead_l";
+            this.stockviewhead_l.Size = new System.Drawing.Size(400, 50);
+            this.stockviewhead_l.TabIndex = 2;
+            this.stockviewhead_l.Text = "Current Products in Stock";
+            this.stockviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // confirmsale_l
+            // 
+            this.confirmsale_l.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmsale_l.Location = new System.Drawing.Point(5, 70);
+            this.confirmsale_l.Name = "confirmsale_l";
+            this.confirmsale_l.Size = new System.Drawing.Size(600, 18);
+            this.confirmsale_l.TabIndex = 6;
+            this.confirmsale_l.Text = " ";
+            this.confirmsale_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -816,6 +954,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.salesview_p);
+            this.Controls.Add(this.confirmsale_p);
             this.Controls.Add(this.makesale_p);
             this.Controls.Add(this.salesrecords_p);
             this.Controls.Add(this.mainmenu_p);
@@ -847,6 +987,11 @@
             this.salesrecords_p.ResumeLayout(false);
             this.makesale_p.ResumeLayout(false);
             this.makesale_p.PerformLayout();
+            this.confirmsale_p.ResumeLayout(false);
+            this.confirmsale_p.PerformLayout();
+            this.salesview_p.ResumeLayout(false);
+            this.salesview_p.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sales_datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -877,6 +1022,9 @@
         private System.Windows.Forms.Label id_l;
         private System.Windows.Forms.Label id_qty_l;
         private System.Windows.Forms.Label confirm_label;
+        private System.Windows.Forms.Label stockviewhead_l;
+
+        private System.Windows.Forms.Label confirmsale_l;
         
 
         //Buttons
@@ -941,5 +1089,13 @@
         private System.Windows.Forms.ListBox salesitems_list;
         private System.Windows.Forms.Label sales_qty_l;
         private System.Windows.Forms.Label choosestock_l;
+        private System.Windows.Forms.Panel confirmsale_p;
+        private System.Windows.Forms.TextBox successbox_t;
+        private System.Windows.Forms.Label confirmation_l;
+        private System.Windows.Forms.Button continuesale_b;
+        private System.Windows.Forms.Panel salesview_p;
+        private System.Windows.Forms.Label salesviewhead_l;
+        private System.Windows.Forms.Button back_salesview_b;
+        private System.Windows.Forms.DataGridView sales_datagrid;
     }
 }

@@ -95,12 +95,14 @@ namespace php_srs
                         case 1:
                             //relevant methods will be called depending on the users selection
                             Console.Clear();
-                            AddSalesRecord.AddSalesRecords();
+                            AddSalesRecord asr = new AddSalesRecord();
+                            asr.AddSalesRecords();
                             break;
 
                         case 2:
                             //relevant methods will be called depending on the users selection
-                            StockSales.StockSalesMenu();
+                            StockSales ss = new StockSales();
+                            ss.StockSalesMenu();
                             break;
 
                         case 3:
