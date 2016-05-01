@@ -28,6 +28,8 @@ namespace php_srs
         {
             //Pre initalisation logic
 
+            userLogin.runUserLogin();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Window());
