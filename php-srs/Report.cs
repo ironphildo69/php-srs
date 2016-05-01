@@ -33,6 +33,7 @@ namespace php_srs
                 total = total + (double) readResults["Price"];
             }
 
+            tw.WriteLine("Total Sales to Date: " + total + "\n");
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
         }
