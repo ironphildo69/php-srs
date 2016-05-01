@@ -18,7 +18,10 @@ namespace php_srs
             {
                 //Put Table Creation Here + other database operations
                 SQLiteConnection.CreateFile("php-srs_database.sqlite");
-                userLogin.createUserLoginTable();
+
+                userLogin ul = new userLogin();
+                    
+                ul.createUserLoginTable();
 
             }
             return true;
@@ -28,14 +31,15 @@ namespace php_srs
         {
             //Pre initalisation logic
 
-            userLogin.runUserLogin();
+            userLogin ul = new userLogin();
+
+            //ul.runUserLogin();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Window());
 
             createDatabase();
-            //userLogin.runUserLogin();
 
             int value = 0;
 

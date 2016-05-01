@@ -12,30 +12,35 @@ namespace php_srs
     class userLogin
     {
         //Initalises Login Code Methods, all code for logins should be initialised here.
-        public static void runUserLogin()
+        public void runUserLogin()
         {
+            userLogin ul = new userLogin();
             Console.WriteLine("Please Enter your Username:");
             string username = Console.ReadLine();
             Console.WriteLine("Please Enter your Password:");
             string password = Console.ReadLine();
-
-
-            if (checkUserLoginTable(username, password) == true)
+            
+            if (ul.checkUserLoginTable(username, password) == true)
             {
                 Console.WriteLine("Successfully Authenticated!");
             }
             else
             {
                 Console.WriteLine("Your Login Details are incorrect. Please Contact your System Administrator for more Details.");
-                runUserLogin();
-            }
-        
+                
+                ul.runUserLogin();
+            }        
         }
+
         //Runs query to check if provided ID matchs whats in the database.
-        private static bool checkUserLoginTable(string username, string password)
+        private bool checkUserLoginTable(string username, string password)
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
+
+            userLogin ul = new userLogin();
+
+            ul.createUserLoginTable();
 
             string query = "SELECT * FROM UserLogin"; //Acquires the SQL SELECT statement from the reference
 
@@ -43,7 +48,7 @@ namespace php_srs
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);
             SQLiteDataReader readResults = selectCommand.ExecuteReader();
 
-            string adminCheck = (string) readResults["Name"] + (string)readResults["Password"];
+            string adminCheck = (string) readResults["Name"] + (string) readResults["Password"];
             //Console.Write(adminCheck + "\n"); //Debug
 
             string userCheck = (string) readResults["Name"] + (string) readResults["Password"];
@@ -62,7 +67,7 @@ namespace php_srs
 
         }
         //creates the table and if it exists should update the default credientials incase they have changed.
-        public static void createUserLoginTable()
+        public void createUserLoginTable()
         {
             //All this needs refactoring
             string defaultUser = "admin";
@@ -86,7 +91,7 @@ namespace php_srs
         } 
 
         //checks user permisions level and loads this in. Unfinished.
-        private static bool userCheckPerms(String username)
+        private bool userCheckPerms(String username)
         {
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -107,8 +112,5 @@ namespace php_srs
                 return false;
             }
         }
-
     }
-
-
 }
