@@ -20,18 +20,18 @@ namespace php_srs
             string password = Console.ReadLine();
 
 
-            if (checkUserLoginTable(username, password) == true)
+            /*if (checkUserLoginTable(username, password) == true)
             {
                 Console.WriteLine("Successfully Authenticated!");
             }
             else
             {
                 Console.WriteLine("Your Login Details are incorrect. Please Contact your System Administrator for more Details.");
-            }
+            }*/
         
         }
         //Runs query to check if provided ID matchs whats in the database.
-        private static bool checkUserLoginTable(string username, string password)
+        /*private static bool checkUserLoginTable(string username, string password)
         {
             String sqlStatement = "Select * from UserLogin Where Name='" + username + "' AND Password='" + password + "'";
             SQLiteDataReader readResults = Program.phpsrsDBQuery(sqlStatement);
@@ -53,7 +53,7 @@ namespace php_srs
                 return false;
             }
 
-        }
+        }*/
         //creates the table and if it exists should update the default credientials incase they have changed.
         public static void createUserLoginTable()
         {
