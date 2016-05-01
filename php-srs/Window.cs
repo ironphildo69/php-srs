@@ -222,29 +222,42 @@ namespace php_srs
         {
             report_p.Visible = false;
             mainmenu_p.Visible = true;
-            
+            this.CSVsales_l.Visible = false;
+            this.CSVstock_l.Visible = false;
+
         }
 
         private void back_reportCSVsales_b_Click(object sender, EventArgs e)
         {
-            CSV salesCSV = new CSV();
-            salesCSV.WriteStockSalesToFile();
+            //CSV salesCSV = new CSV();
+            //salesCSV.WriteStockSalesToFile();
+            this.CSVsales_l.Visible = true;
+            this.CSVstock_l.Visible = false;
+            
+
         }
 
         private void back_reportCSVstock_b_Click(object sender, EventArgs e)
         {
-            CSV stockCSV = new CSV();
-            stockCSV.WriteStockTakeToFile();
+            //CSV stockCSV = new CSV();
+            //stockCSV.WriteStockTakeToFile();
+            this.CSVsales_l.Visible = false;
+            this.CSVstock_l.Visible = true;
+            
         }
 
         private void back_reportsales_b_Click(object sender, EventArgs e)
         {
-
+            this.CSVsales_l.Visible = false;
+            this.CSVstock_l.Visible = false;
+            
         }
 
         private void back_reportstock_b_Click(object sender, EventArgs e)
         {
-
+            this.CSVsales_l.Visible = false;
+            this.CSVstock_l.Visible = false;
+            
         }
         
 
@@ -471,8 +484,8 @@ namespace php_srs
 
             //smenu report
             this.back_report_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2 ;
-            this.back_reportCSVsales_b.Left = (this.ClientSize.Width - this.back_reportCSVsales_b.Width) / 2 + 150;
-            this.back_reportCSVstock_b.Left = (this.ClientSize.Width - this.back_reportCSVstock_b.Width) / 2 - 150;
+            this.back_reportCSVsales_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2;
+            this.back_reportCSVstock_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2;
             this.back_reportsales_b.Left = (this.ClientSize.Width - this.back_reportsales_b.Width) / 2 + 150;
             this.back_reportstock_b.Left = (this.ClientSize.Width - this.back_reportstock_b.Width) / 2 - 150;
 

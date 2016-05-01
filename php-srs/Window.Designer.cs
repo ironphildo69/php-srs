@@ -112,6 +112,10 @@
             this.back_reportsales_b = new System.Windows.Forms.Button();
             this.back_reportstock_b = new System.Windows.Forms.Button();
 
+            this.CSVsales_l = new System.Windows.Forms.Label();
+            this.CSVstock_l = new System.Windows.Forms.Label();
+            
+
 
 
 
@@ -190,7 +194,7 @@
             //
             // back_reportCSVsales_b
             //
-            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 20);
+            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 95);
             this.back_reportCSVsales_b.Name = "back_reportCSVsales_b";
             this.back_reportCSVsales_b.Size = new System.Drawing.Size(250, 50);
             this.back_reportCSVsales_b.Text = "CSV - Sales";
@@ -328,16 +332,37 @@
             //
             // report_p 
             //
-            
             this.report_p.BackColor = System.Drawing.Color.Transparent;
             this.report_p.Controls.Add(this.back_report_b);
             this.report_p.Controls.Add(this.back_reportCSVsales_b);
             this.report_p.Controls.Add(this.back_reportCSVstock_b);
-            this.report_p.Controls.Add(this.back_reportsales_b);
-            this.report_p.Controls.Add(this.back_reportstock_b);
+            //this.report_p.Controls.Add(this.back_reportsales_b);
+            //this.report_p.Controls.Add(this.back_reportstock_b);
             this.report_p.Location = new System.Drawing.Point(0, 240);
             this.report_p.Name = "report_p";
             this.report_p.Size = new System.Drawing.Size(1680, 1080);
+            //
+            //CSVsales_l
+            //
+            this.CSVsales_l.AutoSize = true;
+            this.CSVsales_l.BackColor = System.Drawing.Color.Transparent;
+            this.CSVsales_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CSVsales_l.Location = new System.Drawing.Point(5, 25);
+            this.CSVsales_l.Name = "CSVsales_l";
+            this.CSVsales_l.Size = new System.Drawing.Size(198, 16);
+            this.CSVsales_l.Text = "System Status : Sales Records Successfully Exported to CSV-StockSales.txt";
+            this.CSVsales_l.Visible = false;
+            //
+            //CSVstock_l
+            //
+            this.CSVstock_l.AutoSize = true;
+            this.CSVstock_l.BackColor = System.Drawing.Color.Transparent;
+            this.CSVstock_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CSVstock_l.Location = new System.Drawing.Point(5, 25);
+            this.CSVstock_l.Name = "CSVstock_l";
+            this.CSVstock_l.Size = new System.Drawing.Size(198, 5);
+            this.CSVstock_l.Text = "System Status : Stock Records Successfully Exported to CSV-StockTake.txt";
+            this.CSVstock_l.Visible = false;
             // 
             // stockitem_p
             // 
@@ -1058,6 +1083,8 @@
             this.Controls.Add(this.stockadditem_p);
             this.Controls.Add(this.report_p);       
             this.Controls.Add(this.loginstatus_l);
+            this.Controls.Add(this.CSVsales_l);
+            this.Controls.Add(this.CSVstock_l);
             this.Controls.Add(this.heading_img);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1196,5 +1223,11 @@
         private System.Windows.Forms.Label salesviewhead_l;
         private System.Windows.Forms.Button back_salesview_b;
         private System.Windows.Forms.DataGridView sales_datagrid;
+
+
+        //System status labels for the report section
+        private System.Windows.Forms.Label CSVsales_l;
+        private System.Windows.Forms.Label CSVstock_l;
+        
     }
 }
