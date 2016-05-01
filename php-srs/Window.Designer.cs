@@ -94,6 +94,25 @@
             this.salesitems_list = new System.Windows.Forms.ListBox();
             this.sales_qty_l = new System.Windows.Forms.Label();
             this.choosestock_l = new System.Windows.Forms.Label();
+            this.confirmsale_p = new System.Windows.Forms.Panel();
+            this.salesview_p = new System.Windows.Forms.Panel();
+            this.sales_datagrid = new System.Windows.Forms.DataGridView();
+            this.report_p = new System.Windows.Forms.Panel();
+            this.continuesale_b = new System.Windows.Forms.Button();
+            this.successbox_t = new System.Windows.Forms.TextBox();
+            this.confirmation_l = new System.Windows.Forms.Label();
+            this.back_salesview_b = new System.Windows.Forms.Button();
+            this.salesviewhead_l = new System.Windows.Forms.Label();
+            this.stockviewhead_l = new System.Windows.Forms.Label();
+            this.confirmsale_l = new System.Windows.Forms.Label();
+            this.back_report_b = new System.Windows.Forms.Button();
+
+            this.back_reportCSVsales_b = new System.Windows.Forms.Button();
+            this.back_reportCSVstock_b = new System.Windows.Forms.Button();
+            this.back_reportsales_b = new System.Windows.Forms.Button();
+            this.back_reportstock_b = new System.Windows.Forms.Button();
+
+
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
             this.stockitemview_p.SuspendLayout();
@@ -837,7 +856,7 @@
             this.salesitems_list.FormattingEnabled = true;
             this.salesitems_list.Location = new System.Drawing.Point(67, 90);
             this.salesitems_list.Name = "salesitems_list";
-            this.salesitems_list.Size = new System.Drawing.Size(400, 95);
+            this.salesitems_list.Size = new System.Drawing.Size(400, 110);
             this.salesitems_list.TabIndex = 2;
             // 
             // sales_qty_l
@@ -1060,6 +1079,8 @@
         private System.Windows.Forms.Label stockviewhead_l;
 
         private System.Windows.Forms.Label confirmsale_l;
+
+        private System.Windows.Forms.Label confirmbyid_label;
         
 
         //Buttons
@@ -1097,6 +1118,9 @@
         private System.Windows.Forms.Panel stocktable_p;
         private System.Windows.Forms.Panel stocktableupdate_p;
         private System.Windows.Forms.Panel stockadditem_p;
+        private System.Windows.Forms.Panel salesrecords_p;
+
+        private System.Windows.Forms.Panel report_p;
 
 
         //ListBox
