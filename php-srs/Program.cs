@@ -24,34 +24,6 @@ namespace php_srs
             return true;
         }        
 
-        //Global Query String for PHP-SRS Database
-        public static SQLiteDataReader phpsrsDBQuery(string sqlStatement)
-        {
-            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
-            php_srsConnection.Open();
-
-            SQLiteCommand sqlQuery = new SQLiteCommand(sqlStatement, php_srsConnection);
-
-            SQLiteDataReader readResults = sqlQuery.ExecuteReader();
-
-            string userName;
-            string pass;
-
-            while (readResults.Read())
-            {
-                //readResults["Name"] = userName;
-                //readResults["Password"] = pass;
-
-            }
-            
-            //test strings against input
-
-            php_srsConnection.Close();
-
-            return readResults;
-
-        }
-        
         public static void Main(string[] args)
         {
             //Pre initalisation logic
