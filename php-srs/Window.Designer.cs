@@ -710,16 +710,6 @@
             this.confirm_label.Text = " ";
             this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            //confirmbyid_label
-            //
-            this.confirmbyid_label.AutoSize = false;
-            this.confirmbyid_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmbyid_label.Location = new System.Drawing.Point(5, 70);
-            this.confirmbyid_label.Name = "confirmbyid_label";
-            this.confirmbyid_label.Size = new System.Drawing.Size(600, 18);
-            this.confirmbyid_label.Text = " ";
-            this.confirmbyid_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // dataGridStock
             // 
             this.dataGridStock.AllowUserToAddRows = false;
@@ -1078,7 +1068,11 @@
         private System.Windows.Forms.Label id_l;
         private System.Windows.Forms.Label id_qty_l;
         private System.Windows.Forms.Label confirm_label;
-        
+
+        private System.Windows.Forms.Label confirmbyid_label;
+        private System.Windows.Forms.Label confirmsale_l;
+        private System.Windows.Forms.Label stockviewhead_l;
+
 
         //Buttons
         private System.Windows.Forms.Button stockitem_b;
