@@ -329,7 +329,10 @@
             "",
             "Tablet",
             "Syrup",
-            "Lozenge"});
+            "Lozenge",
+            "First-Aid",
+            "Nutrition",
+            "Accessories"});
             this.attribute_lst.Location = new System.Drawing.Point(275, 185);
             this.attribute_lst.Name = "attribute_lst";
             this.attribute_lst.Size = new System.Drawing.Size(250, 43);
@@ -368,7 +371,7 @@
             this.label_stocktable_attr.Name = "label_stocktable_attr";
             this.label_stocktable_attr.Size = new System.Drawing.Size(100, 25);
             this.label_stocktable_attr.TabIndex = 6;
-            this.label_stocktable_attr.Text = "Item Attribute: ";
+            this.label_stocktable_attr.Text = "Item Type: ";
             this.label_stocktable_attr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // id_stockview_list
@@ -577,7 +580,10 @@
             this.attr_stockup_list.Items.AddRange(new object[] {
             "Tablet",
             "Syrup",
-            "Lozenge"});
+            "Lozenge",
+            "First-Aid",
+            "Nutrition",
+            "Accessories"});
             this.attr_stockup_list.Location = new System.Drawing.Point(275, 152);
             this.attr_stockup_list.Name = "attr_stockup_list";
             this.attr_stockup_list.Size = new System.Drawing.Size(250, 30);
@@ -664,7 +670,7 @@
             this.attr_stockup_l.Name = "attr_stockup_l";
             this.attr_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.attr_stockup_l.TabIndex = 3;
-            this.attr_stockup_l.Text = "Attribute: ";
+            this.attr_stockup_l.Text = "Type: ";
             this.attr_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // qty_stockup_l
