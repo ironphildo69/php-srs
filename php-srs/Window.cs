@@ -528,11 +528,11 @@ namespace php_srs
             //mainmenu
             this.heading_img.Left = (this.ClientSize.Width - this.heading_img.Width) / 2;
             this.record_l.Left = (this.ClientSize.Width - this.record_l.Width) / 2 + 150;
-            this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2 - 150;
-            this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2 - 150;
-            this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 - 150;
-            this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - 217;
-            this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 - 83;
+            this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2 ;
+            this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2 ;
+            this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 ;
+            this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - 65;
+            this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 + 65;
 
             //smenu report
             this.back_report_b.Left = (this.ClientSize.Width - this.back_report_b.Width) / 2 ;
