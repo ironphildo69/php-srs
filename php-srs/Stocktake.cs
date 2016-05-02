@@ -89,7 +89,7 @@ namespace php_srs
             string selectQuery = "SELECT Name FROM StockTable WHERE ID = " + id;
             string name = "";
 
-            php_srsConnection.Open(); //Opens the connection            
+            php_srsConnection.Open(); //Opens the connection
 
             ai.CreateTable();
 
