@@ -154,6 +154,8 @@ namespace php_srs
                         AddItem ai = new AddItem();
                         ai.InsertIntoTable(inputName, inputDesc, inputAttr, inputQtyOut, inputPrcOut);
                         MessageBox.Show("The item has been added", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        changeAlert();
                         //confirm_label.Text = "The item has been added.";
                     } else {
                         MessageBox.Show("The Price value must be a number. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -450,7 +452,8 @@ namespace php_srs
                     AddSalesRecord asr = new AddSalesRecord();
                     asr.InsertIntoTable(name, outputQty, price, user, date, time);
 
-                    makesale_p.Visible = false;                   
+                    makesale_p.Visible = false;
+                    changeAlert();
                     successbox_t.Text = "You have succesfully sold " + outputQty + " " + name + "'s for $" + price + ".";
                     confirmsale_p.Visible = true;
 
