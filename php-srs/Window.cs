@@ -527,7 +527,6 @@ namespace php_srs
         {
             //mainmenu
             this.heading_img.Left = (this.ClientSize.Width - this.heading_img.Width) / 2;
-            this.record_l.Left = (this.ClientSize.Width - this.record_l.Width) / 2 + 150;
             this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2 ;
             this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2 ;
             this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 ;

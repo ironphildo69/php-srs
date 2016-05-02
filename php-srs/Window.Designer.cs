@@ -259,12 +259,14 @@
             // record_l
             // 
             this.record_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.record_l.BackColor = System.Drawing.Color.Transparent;
             this.record_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.record_l.Location = new System.Drawing.Point(5, 25);
             this.record_l.Name = "record_l";
             this.record_l.Size = new System.Drawing.Size(250, 100);
             this.record_l.TabIndex = 0;
-            this.record_l.Text = "AJKLfsdfkjb ad";
+            this.record_l.Text = " ";
+            this.record_l.Visible = true;
             // 
             // mainmenu_p
             // 
@@ -277,8 +279,7 @@
             this.mainmenu_p.Location = new System.Drawing.Point(0, 240);
             this.mainmenu_p.Name = "mainmenu_p";
             this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
-            this.mainmenu_p.TabIndex = 0;
-            this.mainmenu_p.VisibleChanged += new System.EventHandler(this.mainmenu_p_VisibleChanged);
+            this.mainmenu_p.TabIndex = 0;            
             // 
             // stockitem_p
             // 
@@ -1079,6 +1080,7 @@
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.heading_img);
             this.Controls.Add(this.record_l);
+            this.VisibleChanged += new System.EventHandler(this.mainmenu_p_VisibleChanged);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
