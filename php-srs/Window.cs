@@ -113,7 +113,6 @@ namespace php_srs
             confirm_label.Text = " ";
             stockitem_p.Visible = false;            
         }
-
         
 
         //Panel 3 submenu stockupdate
@@ -133,10 +132,9 @@ namespace php_srs
 
             if (inputName == "" || inputDesc == "" || inputAttr == "" || inputPrice == "" || inputQty == "")
             {
-                confirm_label.Text = "One of the fields has not been filled.";
-            } else {
-                
-
+                MessageBox.Show("One of the fields has not been filled.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //confirm_label.Text = "One of the fields has not been filled.";
+            } else {  
                 if (int.TryParse(inputQty, out value1))
                 {
                     inputQtyOut = value1;
@@ -147,16 +145,15 @@ namespace php_srs
 
                         AddItem ai = new AddItem();
                         ai.InsertIntoTable(inputName, inputDesc, inputAttr, inputQtyOut, inputPrcOut);
-                        confirm_label.Text = "The item has been added.";
+                        MessageBox.Show("The item has been added", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //confirm_label.Text = "The item has been added.";
+                    } else {
+                        MessageBox.Show("The Price value must be a number. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        //confirm_label.Text = "The Price Value was not correct. Please try again.";
                     }
-                    else
-                    {
-                        confirm_label.Text = "The Price Value was not correct. Please try again.";
-                    }
-                }
-                else
-                {
-                    confirm_label.Text = "The Quantity Value was not correct. Please try again.";
+                } else {
+                    MessageBox.Show("The Quantity value must be a number. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //confirm_label.Text = "The Quantity Value was not correct. Please try again.";
                 }
             }
 
@@ -176,16 +173,26 @@ namespace php_srs
             int value1;
             int inputQtyOut = 0;
 
-            if (int.TryParse(inputQty, out value1))
+            if (inputID == "" || inputQty == "")
             {
-                inputQtyOut = value1;
+                MessageBox.Show("Nothing has been entered. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else {
+                if (int.TryParse(inputQty, out value1))
+                {
+                    inputQtyOut = value1;
 
-                AddItem ai = new AddItem();
-                ai.UpdateTableByName(inputID, inputQtyOut, 0);
+                    AddItem ai = new AddItem();
+                    ai.UpdateTableByName(inputID, inputQtyOut, 0);
 
-                confirmbyid_label.Text = "The item has been updated.";
-            } else {
-                confirmbyid_label.Text = "Quantity needs numeric input only.";
+                    MessageBox.Show("The item has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //confirmbyid_label.Text = "The item has been updated.";
+                } else {
+                    MessageBox.Show("The Quantity Value must be a number. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    //confirmbyid_label.Text = "Quantity needs numeric input only.";
+                }
             }
             
             qtyid_stockup_t.Clear();
@@ -227,8 +234,8 @@ namespace php_srs
         {
             report_p.Visible = false;
             mainmenu_p.Visible = true;
-            this.CSVsales_l.Visible = false;
-            this.CSVstock_l.Visible = false;
+            //this.CSVsales_l.Visible = false;
+            //this.CSVstock_l.Visible = false;
 
         }
 
@@ -236,9 +243,11 @@ namespace php_srs
         {
             CSV salesCSV = new CSV();
             salesCSV.WriteStockSalesToFile();
-            this.CSVsales_l.Visible = true;
-            this.CSVstock_l.Visible = false;
-            
+
+            MessageBox.Show("Sales Records Successfully Exported to CSV-StockSales.txt.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //this.CSVsales_l.Visible = true;
+            //this.CSVstock_l.Visible = false;
+
 
         }
 
@@ -246,8 +255,9 @@ namespace php_srs
         {
             CSV stockCSV = new CSV();
             stockCSV.WriteStockTakeToFile();
-            this.CSVsales_l.Visible = false;
-            this.CSVstock_l.Visible = true;
+            MessageBox.Show("Stock Records Successfully Exported to CSV-StockSales.txt.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //this.CSVsales_l.Visible = false;
+            //this.CSVstock_l.Visible = true;
             
         }
 
@@ -263,8 +273,7 @@ namespace php_srs
             this.CSVsales_l.Visible = false;
             this.CSVstock_l.Visible = false;
             
-        }
-        
+        }        
 
         //Submenu stockview
         //show all current stock
@@ -429,20 +438,20 @@ namespace php_srs
                     ai.UpdateTableByName(name, outputQty, 1);
 
                     AddSalesRecord asr = new AddSalesRecord();
-                    asr.InsertIntoTable(name, outputQty, price, "Admin", date, time);
+                    asr.InsertIntoTable(name, outputQty, price, user, date, time);
 
-                    makesale_p.Visible = false;
-
-                    successbox_t.Text = "You have succesfully purchased " + outputQty + " " + name + "'s for $" + price + ".";
-
+                    makesale_p.Visible = false;                   
+                    successbox_t.Text = "You have succesfully sold " + outputQty + " " + name + "'s for $" + price + ".";
                     confirmsale_p.Visible = true;
 
                 } else {
-                    confirmsale_l.Text = "Quantity can only be numeric.";
+                    MessageBox.Show("The Quantity value must be a number. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //confirmsale_l.Text = "Quantity can only be numeric.";
                 }
 
             } else {
-                confirmsale_l.Text = "You have not yet chosen an item.";
+                MessageBox.Show("You have not yet chosen an Item from the list. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //confirmsale_l.Text = "You have not yet chosen an item.";
             }
 
             sales_qty_t.Clear();

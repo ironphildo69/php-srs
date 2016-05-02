@@ -914,7 +914,7 @@
             this.confirmation_l.Name = "confirmation_l";
             this.confirmation_l.Size = new System.Drawing.Size(400, 50);
             this.confirmation_l.TabIndex = 0;
-            this.confirmation_l.Text = "Confirmation of Purchase";
+            this.confirmation_l.Text = "Confirmation of Sale";
             this.confirmation_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // salesview_p
