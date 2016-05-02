@@ -35,6 +35,7 @@ namespace php_srs
         {
             Window win = new Window();
             win.setUser(cu.getUser());
+            win.changeAlert();
             Application.Run(win);        
         }   
     }

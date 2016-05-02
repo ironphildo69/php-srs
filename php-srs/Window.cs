@@ -43,7 +43,6 @@ namespace php_srs
         private void button1_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
-            record_l.Text = "";
             stockitem_p.Visible = true;
         }
 
@@ -51,7 +50,6 @@ namespace php_srs
         private void button2_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
-            record_l.Text = "";
             salesrecords_p.Visible = true;
         }
 
@@ -59,7 +57,6 @@ namespace php_srs
         private void button3_Click(object sender, EventArgs e)
         {
             mainmenu_p.Visible = false;
-            record_l.Text = "";
             report_p.Visible = true;
         }
 
@@ -186,7 +183,7 @@ namespace php_srs
 
             if (inputID == "" || inputQty == "")
             {
-                MessageBox.Show("Nothing has been entered. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Nothing has been chosen or entered. \nPlease try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else {
                 if (int.TryParse(inputQty, out value1))
@@ -197,6 +194,8 @@ namespace php_srs
                     ai.UpdateTableByName(inputID, inputQtyOut, 0);
 
                     MessageBox.Show("The item has been updated.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    changeAlert();
 
                     //confirmbyid_label.Text = "The item has been updated.";
                 } else {
@@ -494,12 +493,13 @@ namespace php_srs
             salesview_p.Visible = false;
             mainmenu_p.Visible = true;
         }        
-
-        private void mainmenu_p_VisibleChanged(object sender, EventArgs e)
+        
+        public void changeAlert()
         {
-            //change record
             StockTake st = new StockTake();
             List<string> rows = st.GetNameRows("SELECT * FROM StockTable");
+
+            record_l.Text = "";
 
             int quantity;
             string name;
@@ -508,7 +508,6 @@ namespace php_srs
             {
                 record_l.Text = "There are no critical items.";
             }
-
 
             for (int i = 0; i < rows.Count(); i++)
             {
@@ -527,9 +526,9 @@ namespace php_srs
         {
             //mainmenu
             this.heading_img.Left = (this.ClientSize.Width - this.heading_img.Width) / 2;
-            this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2 ;
-            this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2 ;
-            this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2 ;
+            this.stockitem_b.Left = (this.ClientSize.Width - this.stockitem_b.Width) / 2;
+            this.salesrecord_b.Left = (this.ClientSize.Width - this.salesrecord_b.Width) / 2;
+            this.report_b.Left = (this.ClientSize.Width - this.report_b.Width) / 2;
             this.logout_b.Left = (this.ClientSize.Width - this.logout_b.Width) / 2 - 65;
             this.quit_b.Left = (this.ClientSize.Width - this.quit_b.Width) / 2 + 65;
 
