@@ -9,29 +9,8 @@ using php_srs;
 
 namespace php_srs
 {
-    class userLogin
-    {
-        //Initalises Login Code Methods, all code for logins should be initialised here.
-        public void runUserLogin()
-        {
-            userLogin ul = new userLogin();
-            Console.WriteLine("Please Enter your Username:");
-            string username = Console.ReadLine();
-            Console.WriteLine("Please Enter your Password:");
-            string password = Console.ReadLine();
-            
-            if (ul.checkUserLoginTable(username, password) == true)
-            {
-                Console.WriteLine("Successfully Authenticated!");
-            }
-            else
-            {
-                Console.WriteLine("Your Login Details are incorrect. Please Contact your System Administrator for more Details.");
-                
-                ul.runUserLogin();
-            }        
-        }
-
+    class UserLogin
+    {   
         //Runs query to check if provided ID matchs whats in the database.
         public bool checkUserLoginTable(string username, string password)
         {
@@ -39,7 +18,7 @@ namespace php_srs
             
             php_srsConnection.Open();   //Opens the connection
 
-            userLogin ul = new userLogin();
+            UserLogin ul = new UserLogin();
             ul.createUserLoginTable();
 
             //string query = "SELECT * FROM UserLogin"; //Acquires the SQL SELECT statement from the reference

@@ -19,7 +19,7 @@ namespace php_srs
 
         private void enter_b_Click(object sender, EventArgs e)
         {
-            userLogin ul = new userLogin();
+            UserLogin ul = new UserLogin();
             Program program = new Program();
             string username = userlog_t.Text;
             string password = passlog_t.Text;

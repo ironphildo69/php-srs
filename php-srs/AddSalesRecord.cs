@@ -10,7 +10,6 @@ namespace php_srs
 {
     class AddSalesRecord
     {
-
         public void CreateTable()
         {
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
@@ -35,39 +34,7 @@ namespace php_srs
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
             insertCommand.ExecuteNonQuery();
 
-            
-
             php_srsConnection.Close();
         }
-
-        public void AddSalesRecords()
-        {
-            //Console.WriteLine("ID: ");
-            //int responseID = int.Parse(Console.ReadLine());
-            Console.WriteLine(" ");
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine("*                                                         *");
-            Console.WriteLine("*******           PEOPLE HEALTH PHARMACY            *******");
-            Console.WriteLine("*******           SALES REPORTING SYSTEM            *******");
-            Console.WriteLine("***********************************************************");
-
-            Console.Write("Name: ");
-            string responseName = Console.ReadLine();
-
-            Console.Write("Description: ");
-            string responseDescription = Console.ReadLine();
-
-            Console.Write("Attribute: ");
-            string responseAttribute = Console.ReadLine();
-
-            Console.Write("Quantity: ");
-            int responseQuantity = int.Parse(Console.ReadLine());
-
-            //InsertIntoTable(responseName, responseDescription, responseAttribute, responseQuantity);
-
-            Console.WriteLine("The information has been added to the database.");
-            Console.Clear();
-        }
-
     }
 }

@@ -68,45 +68,6 @@ namespace php_srs
             insertCommand.ExecuteNonQuery();
 
             php_srsConnection.Close();
-        }        
-
-        public void InsertIntoTableCLI(string name, string description, string attribute, int quantity)
-        {                
-            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
-            php_srsConnection.Open();
-
-            CreateTable();
-
-            string insertQuery = "INSERT INTO StockTable (Name, Description, Attribute, Quantity) VALUES ('" + name + "', '" + description + 
-                "', '" + attribute + "', " + quantity + ")";
-            SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
-            insertCommand.ExecuteNonQuery();
-
-            php_srsConnection.Close();
-        }
-
-        public void AddStock()
-        {            
-            //Console.WriteLine("ID: ");
-            //int responseID = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Name: ");
-            string responseName = Console.ReadLine();
-
-            Console.Write("Description: ");
-            string responseDescription = Console.ReadLine();
-
-            Console.Write("Attribute: ");
-            string responseAttribute = Console.ReadLine();
-
-            Console.Write("Quantity: ");
-            int responseQuantity = int.Parse(Console.ReadLine());
-
-            InsertIntoTableCLI(responseName, responseDescription, responseAttribute, responseQuantity);
-
-            Console.WriteLine("The information has been added to the database.");
-            Console.Clear();
-        }
-
+        }  
     }
 }

@@ -36,8 +36,6 @@ namespace php_srs
 
             tw.Close();
             php_srsConnection.Close();  //Closes the connection
-
-            //Console.WriteLine("Text file created in 'CSV-StockSales.txt'");
         }
 
         public void WriteStockTakeToFile()
@@ -62,9 +60,7 @@ namespace php_srs
             }
             
             tw.Close();
-            php_srsConnection.Close();  //Closes the connection
-
-            //Console.WriteLine("Text file created in 'CSV-StockTake.txt'");
+            php_srsConnection.Close();  //Closes the connection            
         }      
     }
 }
