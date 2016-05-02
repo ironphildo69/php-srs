@@ -249,24 +249,26 @@
             // 
             this.loginstatus_l.AutoSize = true;
             this.loginstatus_l.BackColor = System.Drawing.Color.Transparent;
-            this.loginstatus_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginstatus_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginstatus_l.Location = new System.Drawing.Point(5, 5);
             this.loginstatus_l.Name = "loginstatus_l";
-            this.loginstatus_l.Size = new System.Drawing.Size(198, 16);
+            this.loginstatus_l.Size = new System.Drawing.Size(217, 16);
             this.loginstatus_l.TabIndex = 6;
             this.loginstatus_l.Text = "Currently Logged in as: Admin";
             // 
             // record_l
             // 
-            this.record_l.Location = new System.Drawing.Point(400, 20);
+            this.record_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.record_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.record_l.Location = new System.Drawing.Point(5, 25);
             this.record_l.Name = "record_l";
             this.record_l.Size = new System.Drawing.Size(250, 100);
             this.record_l.TabIndex = 0;
+            this.record_l.Text = "AJKLfsdfkjb ad";
             // 
             // mainmenu_p
             // 
             this.mainmenu_p.BackColor = System.Drawing.Color.Transparent;
-            this.mainmenu_p.Controls.Add(this.record_l);
             this.mainmenu_p.Controls.Add(this.quit_b);
             this.mainmenu_p.Controls.Add(this.stockitem_b);
             this.mainmenu_p.Controls.Add(this.logout_b);
@@ -978,7 +980,7 @@
             // 
             // back_report_b
             // 
-            this.back_report_b.Location = new System.Drawing.Point(195, 170);
+            this.back_report_b.Location = new System.Drawing.Point(195, 320);
             this.back_report_b.Name = "back_report_b";
             this.back_report_b.Size = new System.Drawing.Size(250, 50);
             this.back_report_b.TabIndex = 0;
@@ -1056,7 +1058,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1008, 729);            
             this.Controls.Add(this.salesview_p);
             this.Controls.Add(this.confirmsale_p);
             this.Controls.Add(this.makesale_p);
@@ -1069,9 +1071,8 @@
             this.Controls.Add(this.stockadditem_p);
             this.Controls.Add(this.report_p);
             this.Controls.Add(this.loginstatus_l);
-            this.Controls.Add(this.CSVsales_l);
-            this.Controls.Add(this.CSVstock_l);
             this.Controls.Add(this.heading_img);
+            this.Controls.Add(this.record_l);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1920, 1080);

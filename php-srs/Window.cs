@@ -27,6 +27,17 @@ namespace php_srs
             loginstatus_l.Text = "Currently logged in as: " + user;
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // Activate double buffering at the form level.  All child controls will be double buffered as well.
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         //Panel 1 mainmenu
         //Stock Items
         private void button1_Click(object sender, EventArgs e)
@@ -482,18 +493,22 @@ namespace php_srs
         {
             salesview_p.Visible = false;
             mainmenu_p.Visible = true;
-        }
+        }        
 
         private void mainmenu_p_VisibleChanged(object sender, EventArgs e)
         {
             //change record
-
             StockTake st = new StockTake();
-
             List<string> rows = st.GetNameRows("SELECT * FROM StockTable");
 
             int quantity;
             string name;
+
+            if (rows.Count() == 0)
+            {
+                record_l.Text = "There are no critical items.";
+            }
+
 
             for (int i = 0; i < rows.Count(); i++)
             {
