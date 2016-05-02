@@ -43,6 +43,7 @@
             this.back2_b = new System.Windows.Forms.Button();
             this.loginstatus_l = new System.Windows.Forms.Label();
             this.record_l = new System.Windows.Forms.Label();
+            this.record_heading_l = new System.Windows.Forms.Label();
             this.mainmenu_p = new System.Windows.Forms.Panel();
             this.stockitem_p = new System.Windows.Forms.Panel();
             this.additem_stockup_b = new System.Windows.Forms.Button();
@@ -258,12 +259,24 @@
             // 
             // record_l
             // 
+            this.record_l.AutoSize = true;
             this.record_l.BackColor = System.Drawing.Color.Transparent;
             this.record_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.record_l.Location = new System.Drawing.Point(5, 25);
+            this.record_l.Location = new System.Drawing.Point(5, 85);
             this.record_l.Name = "record_l";
             this.record_l.Size = new System.Drawing.Size(250, 100);
             this.record_l.TabIndex = 0;
+            // 
+            // record_heading_l
+            // 
+            this.record_heading_l.AutoSize = true;
+            this.record_heading_l.BackColor = System.Drawing.Color.Transparent;
+            this.record_heading_l.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.record_heading_l.Location = new System.Drawing.Point(5, 55);
+            this.record_heading_l.Name = "record_heading_l";
+            this.record_heading_l.Size = new System.Drawing.Size(250, 100);
+            this.record_heading_l.TabIndex = 0;
+            this.record_heading_l.Text = "Stock Warnings : ";
             // 
             // mainmenu_p
             // 
@@ -1077,6 +1090,7 @@
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.heading_img);
             this.Controls.Add(this.record_l);
+            this.Controls.Add(this.record_heading_l);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
@@ -1113,6 +1127,7 @@
         //main
         private System.Windows.Forms.Label loginstatus_l;
         private System.Windows.Forms.Label record_l;
+        private System.Windows.Forms.Label record_heading_l;
 
         //viewstock
         private System.Windows.Forms.Label label_stocktable_id;

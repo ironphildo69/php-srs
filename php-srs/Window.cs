@@ -519,7 +519,7 @@ namespace php_srs
 
                 if (quantity < 500)
                 {
-                    record_l.Text += name + " only has " + quantity + " remaining!\n";
+                    record_l.Text += name + " only has " + quantity + " items in stock !\n";
                 }
             }
         }
@@ -613,7 +613,11 @@ namespace php_srs
             //smenu salestable
             this.sales_datagrid.Left = (this.ClientSize.Width - this.sales_datagrid.Width) / 2;
             this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
-            this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;            
+            this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
+
+            //record updates on window
+            //this.record_heading_l.Left = (this.ClientSize.Width - this.record_heading_l.Width) / 2;
+            //this.record_l.Left = (this.ClientSize.Width - this.record_l.Width) / 2;
         }
     }
 }
