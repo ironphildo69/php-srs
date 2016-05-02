@@ -53,12 +53,14 @@
             this.label_stocktable_attr = new System.Windows.Forms.Label();
             this.id_stockview_list = new System.Windows.Forms.ListBox();
             this.name_stockview_list = new System.Windows.Forms.ListBox();
+            this.specificitemhead_l = new System.Windows.Forms.Label();
             this.textbox_id = new System.Windows.Forms.TextBox();
             this.textbox_name = new System.Windows.Forms.TextBox();
             this.heading_img = new System.Windows.Forms.Panel();
             this.stocktable_p = new System.Windows.Forms.Panel();
             this.back_stocktable_b = new System.Windows.Forms.Button();
             this.dataGridStock = new System.Windows.Forms.DataGridView();
+            this.stockviewhead_l = new System.Windows.Forms.Label();
             this.stocktableupdate_p = new System.Windows.Forms.Panel();
             this.back_stocktableupdate_b = new System.Windows.Forms.Button();
             this.addiditem_stockup_l = new System.Windows.Forms.Label();
@@ -94,31 +96,23 @@
             this.salesitems_list = new System.Windows.Forms.ListBox();
             this.sales_qty_l = new System.Windows.Forms.Label();
             this.choosestock_l = new System.Windows.Forms.Label();
+            this.confirmsale_l = new System.Windows.Forms.Label();
             this.confirmsale_p = new System.Windows.Forms.Panel();
-            this.salesview_p = new System.Windows.Forms.Panel();
-            this.sales_datagrid = new System.Windows.Forms.DataGridView();
-            this.report_p = new System.Windows.Forms.Panel();
             this.continuesale_b = new System.Windows.Forms.Button();
             this.successbox_t = new System.Windows.Forms.TextBox();
             this.confirmation_l = new System.Windows.Forms.Label();
-            this.back_salesview_b = new System.Windows.Forms.Button();
+            this.salesview_p = new System.Windows.Forms.Panel();
             this.salesviewhead_l = new System.Windows.Forms.Label();
-            this.stockviewhead_l = new System.Windows.Forms.Label();
-            this.confirmsale_l = new System.Windows.Forms.Label();
+            this.back_salesview_b = new System.Windows.Forms.Button();
+            this.sales_datagrid = new System.Windows.Forms.DataGridView();
+            this.report_p = new System.Windows.Forms.Panel();
             this.back_report_b = new System.Windows.Forms.Button();
-
             this.back_reportCSVsales_b = new System.Windows.Forms.Button();
             this.back_reportCSVstock_b = new System.Windows.Forms.Button();
             this.back_reportsales_b = new System.Windows.Forms.Button();
             this.back_reportstock_b = new System.Windows.Forms.Button();
-
             this.CSVsales_l = new System.Windows.Forms.Label();
             this.CSVstock_l = new System.Windows.Forms.Label();
-
-
-
-
-
             this.mainmenu_p.SuspendLayout();
             this.stockitem_p.SuspendLayout();
             this.stockitemview_p.SuspendLayout();
@@ -131,6 +125,7 @@
             this.confirmsale_p.SuspendLayout();
             this.salesview_p.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sales_datagrid)).BeginInit();
+            this.report_p.SuspendLayout();
             this.SuspendLayout();
             // 
             // stockitem_b
@@ -182,51 +177,6 @@
             this.quit_b.Text = "Quit";
             this.quit_b.UseVisualStyleBackColor = true;
             this.quit_b.Click += new System.EventHandler(this.button5_Click);
-            //
-            // back_report_b
-            //
-            this.back_report_b.Location = new System.Drawing.Point(195, 170);
-            this.back_report_b.Name = "back_report_b";
-            this.back_report_b.Size = new System.Drawing.Size(250, 50);
-            this.back_report_b.Text = "Back";
-            this.back_report_b.UseVisualStyleBackColor = true;
-            this.back_report_b.Click += new System.EventHandler(this.back_report_b_Click);
-            //
-            // back_reportCSVsales_b
-            //
-            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 95);
-            this.back_reportCSVsales_b.Name = "back_reportCSVsales_b";
-            this.back_reportCSVsales_b.Size = new System.Drawing.Size(250, 50);
-            this.back_reportCSVsales_b.Text = "CSV - Sales";
-            this.back_reportCSVsales_b.UseVisualStyleBackColor = true;
-            this.back_reportCSVsales_b.Click += new System.EventHandler(this.back_reportCSVsales_b_Click);
-            //
-            // back_reportCSVstock_b
-            //
-            this.back_reportCSVstock_b.Location = new System.Drawing.Point(345, 20);
-            this.back_reportCSVstock_b.Name = "back_reportCSVstock_b";
-            this.back_reportCSVstock_b.Size = new System.Drawing.Size(250, 50);
-            this.back_reportCSVstock_b.Text = "CSV - Stock";
-            this.back_reportCSVstock_b.UseVisualStyleBackColor = true;
-            this.back_reportCSVstock_b.Click += new System.EventHandler(this.back_reportCSVstock_b_Click);
-            //
-            // back_reportsales_b
-            //
-            this.back_reportsales_b.Location = new System.Drawing.Point(70, 95);
-            this.back_reportsales_b.Name = "back_reportsales_b";
-            this.back_reportsales_b.Size = new System.Drawing.Size(250, 50);
-            this.back_reportsales_b.Text = "Sales Report";
-            this.back_reportsales_b.UseVisualStyleBackColor = true;
-            this.back_reportsales_b.Click += new System.EventHandler(this.back_reportsales_b_Click);
-            //
-            // back_reportstock_b
-            //
-            this.back_reportstock_b.Location = new System.Drawing.Point(345, 95);
-            this.back_reportstock_b.Name = "back_reportstock_b";
-            this.back_reportstock_b.Size = new System.Drawing.Size(250, 50);
-            this.back_reportstock_b.Text = "Stock Report";
-            this.back_reportstock_b.UseVisualStyleBackColor = true;
-            this.back_reportstock_b.Click += new System.EventHandler(this.back_reportstock_b_Click);
             // 
             // updatestock_b
             // 
@@ -284,10 +234,9 @@
             this.enter1_b.Text = "Enter";
             this.enter1_b.UseVisualStyleBackColor = true;
             this.enter1_b.Click += new System.EventHandler(this.enter1_b_Click);
-
-            //
+            // 
             // back2_b
-            //
+            // 
             this.back2_b.Location = new System.Drawing.Point(275, 320);
             this.back2_b.Name = "back2_b";
             this.back2_b.Size = new System.Drawing.Size(250, 50);
@@ -295,7 +244,7 @@
             this.back2_b.Text = "Back";
             this.back2_b.UseVisualStyleBackColor = true;
             this.back2_b.Click += new System.EventHandler(this.back2_b_Click);
-            //
+            // 
             // loginstatus_l
             // 
             this.loginstatus_l.AutoSize = true;
@@ -305,16 +254,14 @@
             this.loginstatus_l.Name = "loginstatus_l";
             this.loginstatus_l.Size = new System.Drawing.Size(198, 16);
             this.loginstatus_l.TabIndex = 6;
-            this.loginstatus_l.Text = "Currently Logged in as: Admin";            
+            this.loginstatus_l.Text = "Currently Logged in as: Admin";
             // 
             // record_l
             // 
-            this.record_l.AutoSize = false;
             this.record_l.Location = new System.Drawing.Point(400, 20);
             this.record_l.Name = "record_l";
             this.record_l.Size = new System.Drawing.Size(250, 100);
             this.record_l.TabIndex = 0;
-            this.record_l.Text = "";
             // 
             // mainmenu_p
             // 
@@ -330,41 +277,6 @@
             this.mainmenu_p.Size = new System.Drawing.Size(1680, 1080);
             this.mainmenu_p.TabIndex = 0;
             this.mainmenu_p.VisibleChanged += new System.EventHandler(this.mainmenu_p_VisibleChanged);
-
-            //
-            // report_p 
-            //
-            this.report_p.BackColor = System.Drawing.Color.Transparent;
-            this.report_p.Controls.Add(this.back_report_b);
-            this.report_p.Controls.Add(this.back_reportCSVsales_b);
-            this.report_p.Controls.Add(this.back_reportCSVstock_b);
-            //this.report_p.Controls.Add(this.back_reportsales_b);
-            //this.report_p.Controls.Add(this.back_reportstock_b);
-            this.report_p.Location = new System.Drawing.Point(0, 240);
-            this.report_p.Name = "report_p";
-            this.report_p.Size = new System.Drawing.Size(1680, 1080);
-            // 
-            //CSVsales_l
-            //
-            this.CSVsales_l.AutoSize = true;
-            this.CSVsales_l.BackColor = System.Drawing.Color.Transparent;
-            this.CSVsales_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CSVsales_l.Location = new System.Drawing.Point(5, 25);
-            this.CSVsales_l.Name = "CSVsales_l";
-            this.CSVsales_l.Size = new System.Drawing.Size(198, 16);
-            this.CSVsales_l.Text = "System Status : Sales Records Successfully Exported to CSV-StockSales.txt";
-            this.CSVsales_l.Visible = false;
-            //
-            //CSVstock_l
-            //
-            this.CSVstock_l.AutoSize = true;
-            this.CSVstock_l.BackColor = System.Drawing.Color.Transparent;
-            this.CSVstock_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CSVstock_l.Location = new System.Drawing.Point(5, 25);
-            this.CSVstock_l.Name = "CSVstock_l";
-            this.CSVstock_l.Size = new System.Drawing.Size(198, 5);
-            this.CSVstock_l.Text = "System Status : Stock Records Successfully Exported to CSV-StockTake.txt";
-            this.CSVstock_l.Visible = false;
             // 
             // stockitem_p
             // 
@@ -377,7 +289,7 @@
             this.stockitem_p.Name = "stockitem_p";
             this.stockitem_p.Size = new System.Drawing.Size(1680, 1080);
             this.stockitem_p.TabIndex = 1;
-            this.stockitem_p.Visible = false;            
+            this.stockitem_p.Visible = false;
             // 
             // additem_stockup_b
             // 
@@ -401,6 +313,7 @@
             this.stockitemview_p.Controls.Add(this.label_stocktable_attr);
             this.stockitemview_p.Controls.Add(this.id_stockview_list);
             this.stockitemview_p.Controls.Add(this.name_stockview_list);
+            this.stockitemview_p.Controls.Add(this.specificitemhead_l);
             this.stockitemview_p.Location = new System.Drawing.Point(0, 240);
             this.stockitemview_p.Name = "stockitemview_p";
             this.stockitemview_p.Size = new System.Drawing.Size(1680, 1080);
@@ -415,7 +328,7 @@
             "Tablet",
             "Syrup",
             "Lozenge"});
-            this.attribute_lst.Location = new System.Drawing.Point(275, 170);
+            this.attribute_lst.Location = new System.Drawing.Point(275, 185);
             this.attribute_lst.Name = "attribute_lst";
             this.attribute_lst.Size = new System.Drawing.Size(250, 43);
             this.attribute_lst.TabIndex = 3;
@@ -425,7 +338,7 @@
             this.label_stocktable_name.BackColor = System.Drawing.Color.LightBlue;
             this.label_stocktable_name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_stocktable_name.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_stocktable_name.Location = new System.Drawing.Point(5, 95);
+            this.label_stocktable_name.Location = new System.Drawing.Point(5, 130);
             this.label_stocktable_name.Name = "label_stocktable_name";
             this.label_stocktable_name.Size = new System.Drawing.Size(100, 25);
             this.label_stocktable_name.TabIndex = 4;
@@ -437,7 +350,7 @@
             this.label_stocktable_id.BackColor = System.Drawing.Color.LightBlue;
             this.label_stocktable_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_stocktable_id.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_stocktable_id.Location = new System.Drawing.Point(5, 20);
+            this.label_stocktable_id.Location = new System.Drawing.Point(5, 75);
             this.label_stocktable_id.Name = "label_stocktable_id";
             this.label_stocktable_id.Size = new System.Drawing.Size(100, 25);
             this.label_stocktable_id.TabIndex = 5;
@@ -449,7 +362,7 @@
             this.label_stocktable_attr.BackColor = System.Drawing.Color.LightBlue;
             this.label_stocktable_attr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_stocktable_attr.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_stocktable_attr.Location = new System.Drawing.Point(5, 170);
+            this.label_stocktable_attr.Location = new System.Drawing.Point(5, 185);
             this.label_stocktable_attr.Name = "label_stocktable_attr";
             this.label_stocktable_attr.Size = new System.Drawing.Size(100, 25);
             this.label_stocktable_attr.TabIndex = 6;
@@ -459,7 +372,7 @@
             // id_stockview_list
             // 
             this.id_stockview_list.FormattingEnabled = true;
-            this.id_stockview_list.Location = new System.Drawing.Point(275, 20);
+            this.id_stockview_list.Location = new System.Drawing.Point(275, 75);
             this.id_stockview_list.Name = "id_stockview_list";
             this.id_stockview_list.Size = new System.Drawing.Size(250, 43);
             this.id_stockview_list.TabIndex = 7;
@@ -467,10 +380,22 @@
             // name_stockview_list
             // 
             this.name_stockview_list.FormattingEnabled = true;
-            this.name_stockview_list.Location = new System.Drawing.Point(275, 95);
+            this.name_stockview_list.Location = new System.Drawing.Point(275, 130);
             this.name_stockview_list.Name = "name_stockview_list";
             this.name_stockview_list.Size = new System.Drawing.Size(250, 43);
             this.name_stockview_list.TabIndex = 8;
+            // 
+            // specificitemhead_l
+            // 
+            this.specificitemhead_l.BackColor = System.Drawing.Color.LightBlue;
+            this.specificitemhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.specificitemhead_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.specificitemhead_l.Location = new System.Drawing.Point(5, 20);
+            this.specificitemhead_l.Name = "specificitemhead_l";
+            this.specificitemhead_l.Size = new System.Drawing.Size(400, 50);
+            this.specificitemhead_l.TabIndex = 0;
+            this.specificitemhead_l.Text = "Use the lists below to find a Specific Item: ";
+            this.specificitemhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textbox_id
             // 
@@ -501,7 +426,7 @@
             this.stocktable_p.BackColor = System.Drawing.Color.Transparent;
             this.stocktable_p.Controls.Add(this.back_stocktable_b);
             this.stocktable_p.Controls.Add(this.dataGridStock);
-            this.stocktable_p.Controls.Add(this.stockviewhead_l);            
+            this.stocktable_p.Controls.Add(this.stockviewhead_l);
             this.stocktable_p.Location = new System.Drawing.Point(0, 240);
             this.stocktable_p.Name = "stocktable_p";
             this.stocktable_p.Size = new System.Drawing.Size(1680, 1080);
@@ -532,13 +457,25 @@
             this.dataGridStock.Size = new System.Drawing.Size(800, 290);
             this.dataGridStock.TabIndex = 1;
             // 
+            // stockviewhead_l
+            // 
+            this.stockviewhead_l.BackColor = System.Drawing.Color.LightBlue;
+            this.stockviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stockviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockviewhead_l.Location = new System.Drawing.Point(32, 20);
+            this.stockviewhead_l.Name = "stockviewhead_l";
+            this.stockviewhead_l.Size = new System.Drawing.Size(400, 50);
+            this.stockviewhead_l.TabIndex = 2;
+            this.stockviewhead_l.Text = "Current Products in Stock";
+            this.stockviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // stocktableupdate_p
             // 
             this.stocktableupdate_p.BackColor = System.Drawing.Color.Transparent;
             this.stocktableupdate_p.Controls.Add(this.back_stocktableupdate_b);
             this.stocktableupdate_p.Controls.Add(this.addiditem_stockup_l);
             this.stocktableupdate_p.Controls.Add(this.id_l);
-            this.stocktableupdate_p.Controls.Add(this.id_qty_l);     
+            this.stocktableupdate_p.Controls.Add(this.id_qty_l);
             this.stocktableupdate_p.Controls.Add(this.qtyid_stockup_t);
             this.stocktableupdate_p.Controls.Add(this.id_stockup_list);
             this.stocktableupdate_p.Controls.Add(this.enterid_stockup_b);
@@ -558,9 +495,9 @@
             this.back_stocktableupdate_b.Text = "Back";
             this.back_stocktableupdate_b.UseVisualStyleBackColor = true;
             this.back_stocktableupdate_b.Click += new System.EventHandler(this.back_stocktableupdate_b_Click);
-            //
+            // 
             // addiditem_stockup_l
-            //
+            // 
             this.addiditem_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.addiditem_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addiditem_stockup_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -570,7 +507,7 @@
             this.addiditem_stockup_l.TabIndex = 1;
             this.addiditem_stockup_l.Text = "Update Stock of an item by Name";
             this.addiditem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // id_l
             // 
             this.id_l.BackColor = System.Drawing.Color.LightBlue;
@@ -596,7 +533,7 @@
             this.id_qty_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // qtyid_stockup_t
-            //
+            // 
             this.qtyid_stockup_t.AcceptsReturn = true;
             this.qtyid_stockup_t.AcceptsTab = true;
             this.qtyid_stockup_t.Location = new System.Drawing.Point(275, 131);
@@ -679,9 +616,9 @@
             this.price_stockup_t.Name = "price_stockup_t";
             this.price_stockup_t.Size = new System.Drawing.Size(250, 20);
             this.price_stockup_t.TabIndex = 10;
-            //
+            // 
             // addnewitem_stockup_l
-            //
+            // 
             this.addnewitem_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.addnewitem_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addnewitem_stockup_l.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -691,9 +628,9 @@
             this.addnewitem_stockup_l.TabIndex = 0;
             this.addnewitem_stockup_l.Text = "Add a new item: ";
             this.addnewitem_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // name_stockup_l
-            //
+            // 
             this.name_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.name_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.name_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -703,9 +640,9 @@
             this.name_stockup_l.TabIndex = 1;
             this.name_stockup_l.Text = "Name: ";
             this.name_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // desc_stockup_l
-            //
+            // 
             this.desc_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.desc_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.desc_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -715,9 +652,9 @@
             this.desc_stockup_l.TabIndex = 2;
             this.desc_stockup_l.Text = "Description: ";
             this.desc_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // attr_stockup_l
-            //
+            // 
             this.attr_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.attr_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.attr_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -727,9 +664,9 @@
             this.attr_stockup_l.TabIndex = 3;
             this.attr_stockup_l.Text = "Attribute: ";
             this.attr_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // qty_stockup_l
-            //
+            // 
             this.qty_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.qty_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.qty_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -739,9 +676,9 @@
             this.qty_stockup_l.TabIndex = 4;
             this.qty_stockup_l.Text = "Quantity: ";
             this.qty_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // price_stockup_l
-            //
+            // 
             this.price_stockup_l.BackColor = System.Drawing.Color.LightBlue;
             this.price_stockup_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.price_stockup_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -750,10 +687,10 @@
             this.price_stockup_l.Size = new System.Drawing.Size(100, 21);
             this.price_stockup_l.TabIndex = 5;
             this.price_stockup_l.Text = "Price: ";
-            this.price_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;            
-            //
+            this.price_stockup_l.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // confirm_label
-            //
+            // 
             this.confirm_label.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirm_label.Location = new System.Drawing.Point(5, 70);
             this.confirm_label.Name = "confirm_label";
@@ -761,9 +698,9 @@
             this.confirm_label.TabIndex = 6;
             this.confirm_label.Text = " ";
             this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // enter_stockup_b
-            //
+            // 
             this.enter_stockup_b.Location = new System.Drawing.Point(70, 255);
             this.enter_stockup_b.Name = "enter_stockup_b";
             this.enter_stockup_b.Size = new System.Drawing.Size(250, 50);
@@ -771,34 +708,10 @@
             this.enter_stockup_b.Text = "Enter";
             this.enter_stockup_b.UseVisualStyleBackColor = true;
             this.enter_stockup_b.Click += new System.EventHandler(this.enter_stockup_b_Click);
-            //
-            //confirm_label
-            //
-            this.confirm_label.AutoSize = false;
-            this.confirm_label.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirm_label.Location = new System.Drawing.Point(5, 70);
-            this.confirm_label.Name = "confirm_label";
-            this.confirm_label.Size = new System.Drawing.Size(600, 18);
-            this.confirm_label.Text = " ";
-            this.confirm_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridStock
-            // 
-            this.dataGridStock.AllowUserToAddRows = false;
-            this.dataGridStock.AllowUserToDeleteRows = false;
-            this.dataGridStock.AllowUserToOrderColumns = true;
-            this.dataGridStock.AllowUserToResizeColumns = true;
-            this.dataGridStock.AllowUserToResizeRows = false;
-            this.dataGridStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStock.Location = new System.Drawing.Point(30, 20);
-            this.dataGridStock.Name = "dataGridStock";
-            this.dataGridStock.ReadOnly = true;
-            this.dataGridStock.Size = new System.Drawing.Size(800, 290);
             // 
             // stockadditem_p
             // 
-            this.stockadditem_p.BackColor = System.Drawing.Color.Transparent;            
+            this.stockadditem_p.BackColor = System.Drawing.Color.Transparent;
             this.stockadditem_p.Controls.Add(this.addnewitem_stockup_l);
             this.stockadditem_p.Controls.Add(this.name_stockup_l);
             this.stockadditem_p.Controls.Add(this.desc_stockup_l);
@@ -818,9 +731,9 @@
             this.stockadditem_p.Size = new System.Drawing.Size(1680, 1080);
             this.stockadditem_p.TabIndex = 5;
             this.stockadditem_p.Visible = false;
-            //
+            // 
             // back_stockadditem_b
-            //
+            // 
             this.back_stockadditem_b.Location = new System.Drawing.Point(70, 320);
             this.back_stockadditem_b.Name = "back_stockadditem_b";
             this.back_stockadditem_b.Size = new System.Drawing.Size(250, 50);
@@ -880,7 +793,7 @@
             this.makesale_p.Controls.Add(this.salesitems_list);
             this.makesale_p.Controls.Add(this.sales_qty_l);
             this.makesale_p.Controls.Add(this.choosestock_l);
-            this.makesale_p.Controls.Add(this.confirmsale_l);            
+            this.makesale_p.Controls.Add(this.confirmsale_l);
             this.makesale_p.Location = new System.Drawing.Point(0, 240);
             this.makesale_p.Name = "makesale_p";
             this.makesale_p.Size = new System.Drawing.Size(1680, 1080);
@@ -918,9 +831,10 @@
             // 
             this.salesitems_list.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salesitems_list.FormattingEnabled = true;
+            this.salesitems_list.ItemHeight = 16;
             this.salesitems_list.Location = new System.Drawing.Point(67, 90);
             this.salesitems_list.Name = "salesitems_list";
-            this.salesitems_list.Size = new System.Drawing.Size(400, 110);
+            this.salesitems_list.Size = new System.Drawing.Size(400, 100);
             this.salesitems_list.TabIndex = 2;
             // 
             // sales_qty_l
@@ -946,6 +860,16 @@
             this.choosestock_l.TabIndex = 0;
             this.choosestock_l.Text = "Choose an Item to Sell from the list below";
             this.choosestock_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // confirmsale_l
+            // 
+            this.confirmsale_l.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmsale_l.Location = new System.Drawing.Point(5, 70);
+            this.confirmsale_l.Name = "confirmsale_l";
+            this.confirmsale_l.Size = new System.Drawing.Size(600, 18);
+            this.confirmsale_l.TabIndex = 6;
+            this.confirmsale_l.Text = " ";
+            this.confirmsale_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // confirmsale_p
             // 
@@ -1005,6 +929,28 @@
             this.salesview_p.TabIndex = 11;
             this.salesview_p.Visible = false;
             // 
+            // salesviewhead_l
+            // 
+            this.salesviewhead_l.BackColor = System.Drawing.Color.LightBlue;
+            this.salesviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.salesviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salesviewhead_l.Location = new System.Drawing.Point(32, 20);
+            this.salesviewhead_l.Name = "salesviewhead_l";
+            this.salesviewhead_l.Size = new System.Drawing.Size(400, 50);
+            this.salesviewhead_l.TabIndex = 2;
+            this.salesviewhead_l.Text = "Sales Records";
+            this.salesviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // back_salesview_b
+            // 
+            this.back_salesview_b.Location = new System.Drawing.Point(90, 370);
+            this.back_salesview_b.Name = "back_salesview_b";
+            this.back_salesview_b.Size = new System.Drawing.Size(250, 50);
+            this.back_salesview_b.TabIndex = 1;
+            this.back_salesview_b.Text = "Back";
+            this.back_salesview_b.UseVisualStyleBackColor = true;
+            this.back_salesview_b.Click += new System.EventHandler(this.back_salesview_b_Click);
+            // 
             // sales_datagrid
             // 
             this.sales_datagrid.AllowUserToAddRows = false;
@@ -1019,52 +965,90 @@
             this.sales_datagrid.Size = new System.Drawing.Size(800, 290);
             this.sales_datagrid.TabIndex = 0;
             // 
-            // back_salesview_b
+            // report_p
             // 
-            this.back_salesview_b.Location = new System.Drawing.Point(90, 370);
-            this.back_salesview_b.Name = "back_salesview_b";
-            this.back_salesview_b.Size = new System.Drawing.Size(250, 50);
-            this.back_salesview_b.TabIndex = 1;
-            this.back_salesview_b.Text = "Back";
-            this.back_salesview_b.UseVisualStyleBackColor = true;
-            this.back_salesview_b.Click += new System.EventHandler(this.back_salesview_b_Click);
+            this.report_p.BackColor = System.Drawing.Color.Transparent;
+            this.report_p.Controls.Add(this.back_report_b);
+            this.report_p.Controls.Add(this.back_reportCSVsales_b);
+            this.report_p.Controls.Add(this.back_reportCSVstock_b);
+            this.report_p.Location = new System.Drawing.Point(0, 240);
+            this.report_p.Name = "report_p";
+            this.report_p.Size = new System.Drawing.Size(1680, 1080);
+            this.report_p.TabIndex = 12;
             // 
-            // salesviewhead_l
+            // back_report_b
             // 
-            this.salesviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salesviewhead_l.AutoSize = false;
-            this.salesviewhead_l.BackColor = System.Drawing.Color.LightBlue;
-            this.salesviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.salesviewhead_l.Location = new System.Drawing.Point(32, 20);
-            this.salesviewhead_l.Name = "salesviewhead_l";
-            this.salesviewhead_l.Size = new System.Drawing.Size(400, 50);
-            this.salesviewhead_l.TabIndex = 2;
-            this.salesviewhead_l.Text = "Sales Records";
-            this.salesviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.back_report_b.Location = new System.Drawing.Point(195, 170);
+            this.back_report_b.Name = "back_report_b";
+            this.back_report_b.Size = new System.Drawing.Size(250, 50);
+            this.back_report_b.TabIndex = 0;
+            this.back_report_b.Text = "Back";
+            this.back_report_b.UseVisualStyleBackColor = true;
+            this.back_report_b.Click += new System.EventHandler(this.back_report_b_Click);
             // 
-            // stockviewhead_l
+            // back_reportCSVsales_b
             // 
-            this.stockviewhead_l.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockviewhead_l.AutoSize = false;
-            this.stockviewhead_l.BackColor = System.Drawing.Color.LightBlue;
-            this.stockviewhead_l.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stockviewhead_l.Location = new System.Drawing.Point(32, 20);
-            this.stockviewhead_l.Name = "salesviewhead_l";
-            this.stockviewhead_l.Size = new System.Drawing.Size(400, 50);
-            this.stockviewhead_l.TabIndex = 2;
-            this.stockviewhead_l.Text = "Current Products in Stock";
-            this.stockviewhead_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.back_reportCSVsales_b.Location = new System.Drawing.Point(70, 95);
+            this.back_reportCSVsales_b.Name = "back_reportCSVsales_b";
+            this.back_reportCSVsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVsales_b.TabIndex = 1;
+            this.back_reportCSVsales_b.Text = "CSV Sales";
+            this.back_reportCSVsales_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVsales_b.Click += new System.EventHandler(this.back_reportCSVsales_b_Click);
             // 
-            // confirmsale_l
+            // back_reportCSVstock_b
             // 
-            this.confirmsale_l.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmsale_l.Location = new System.Drawing.Point(5, 70);
-            this.confirmsale_l.Name = "confirmsale_l";
-            this.confirmsale_l.Size = new System.Drawing.Size(600, 18);
-            this.confirmsale_l.TabIndex = 6;
-            this.confirmsale_l.Text = " ";
-            this.confirmsale_l.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            this.back_reportCSVstock_b.Location = new System.Drawing.Point(345, 20);
+            this.back_reportCSVstock_b.Name = "back_reportCSVstock_b";
+            this.back_reportCSVstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportCSVstock_b.TabIndex = 2;
+            this.back_reportCSVstock_b.Text = "CSV Stock";
+            this.back_reportCSVstock_b.UseVisualStyleBackColor = true;
+            this.back_reportCSVstock_b.Click += new System.EventHandler(this.back_reportCSVstock_b_Click);
+            // 
+            // back_reportsales_b
+            // 
+            this.back_reportsales_b.Location = new System.Drawing.Point(70, 95);
+            this.back_reportsales_b.Name = "back_reportsales_b";
+            this.back_reportsales_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportsales_b.TabIndex = 0;
+            this.back_reportsales_b.Text = "Sales Report";
+            this.back_reportsales_b.UseVisualStyleBackColor = true;
+            this.back_reportsales_b.Click += new System.EventHandler(this.back_reportsales_b_Click);
+            // 
+            // back_reportstock_b
+            // 
+            this.back_reportstock_b.Location = new System.Drawing.Point(345, 95);
+            this.back_reportstock_b.Name = "back_reportstock_b";
+            this.back_reportstock_b.Size = new System.Drawing.Size(250, 50);
+            this.back_reportstock_b.TabIndex = 0;
+            this.back_reportstock_b.Text = "Stock Report";
+            this.back_reportstock_b.UseVisualStyleBackColor = true;
+            this.back_reportstock_b.Click += new System.EventHandler(this.back_reportstock_b_Click);
+            // 
+            // CSVsales_l
+            // 
+            this.CSVsales_l.AutoSize = true;
+            this.CSVsales_l.BackColor = System.Drawing.Color.Transparent;
+            this.CSVsales_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CSVsales_l.Location = new System.Drawing.Point(5, 25);
+            this.CSVsales_l.Name = "CSVsales_l";
+            this.CSVsales_l.Size = new System.Drawing.Size(484, 16);
+            this.CSVsales_l.TabIndex = 13;
+            this.CSVsales_l.Text = "System Status : Sales Records Successfully Exported to CSV-StockSales.txt";
+            this.CSVsales_l.Visible = false;
+            // 
+            // CSVstock_l
+            // 
+            this.CSVstock_l.AutoSize = true;
+            this.CSVstock_l.BackColor = System.Drawing.Color.Transparent;
+            this.CSVstock_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CSVstock_l.Location = new System.Drawing.Point(5, 25);
+            this.CSVstock_l.Name = "CSVstock_l";
+            this.CSVstock_l.Size = new System.Drawing.Size(479, 16);
+            this.CSVstock_l.TabIndex = 14;
+            this.CSVstock_l.Text = "System Status : Stock Records Successfully Exported to CSV-StockTake.txt";
+            this.CSVstock_l.Visible = false;
             // 
             // Window
             // 
@@ -1083,7 +1067,7 @@
             this.Controls.Add(this.stockitemview_p);
             this.Controls.Add(this.stocktableupdate_p);
             this.Controls.Add(this.stockadditem_p);
-            this.Controls.Add(this.report_p);       
+            this.Controls.Add(this.report_p);
             this.Controls.Add(this.loginstatus_l);
             this.Controls.Add(this.CSVsales_l);
             this.Controls.Add(this.CSVstock_l);
@@ -1097,7 +1081,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.SizeChanged += new System.EventHandler(this.window_Resize);
             this.mainmenu_p.ResumeLayout(false);
-            this.mainmenu_p.PerformLayout();
             this.stockitem_p.ResumeLayout(false);
             this.stockitemview_p.ResumeLayout(false);
             this.stocktable_p.ResumeLayout(false);
@@ -1112,8 +1095,8 @@
             this.confirmsale_p.ResumeLayout(false);
             this.confirmsale_p.PerformLayout();
             this.salesview_p.ResumeLayout(false);
-            this.salesview_p.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sales_datagrid)).EndInit();
+            this.report_p.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1146,6 +1129,9 @@
         private System.Windows.Forms.Label confirmbyid_label;
         private System.Windows.Forms.Label confirmsale_l;
         private System.Windows.Forms.Label stockviewhead_l;
+
+        private System.Windows.Forms.Label specificitemhead_l;
+        
 
 
         //Buttons
@@ -1230,6 +1216,5 @@
         //System status labels for the report section
         private System.Windows.Forms.Label CSVsales_l;
         private System.Windows.Forms.Label CSVstock_l;
-        
     }
 }

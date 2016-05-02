@@ -554,9 +554,10 @@ namespace php_srs
             this.label_stocktable_id.Left = (this.ClientSize.Width - this.label_stocktable_id.Width) / 2 - 150;
             this.label_stocktable_name.Left = (this.ClientSize.Width - this.label_stocktable_name.Width) / 2 - 150;
             this.label_stocktable_attr.Left = (this.ClientSize.Width - this.label_stocktable_attr.Width) / 2 - 150;
-            this.id_stockview_list.Left = (this.ClientSize.Width - this.id_stockview_list.Width) / 2 + 150;
-            this.name_stockview_list.Left = (this.ClientSize.Width - this.name_stockview_list.Width) / 2 + 150;
-            this.attribute_lst.Left = (this.ClientSize.Width - this.attribute_lst.Width) / 2 + 150;
+            this.id_stockview_list.Left = (this.ClientSize.Width - this.id_stockview_list.Width) / 2 + 75;
+            this.name_stockview_list.Left = (this.ClientSize.Width - this.name_stockview_list.Width) / 2 + 75;
+            this.attribute_lst.Left = (this.ClientSize.Width - this.attribute_lst.Width) / 2 + 75;
+            this.specificitemhead_l.Left = (this.ClientSize.Width - this.specificitemhead_l.Width) / 2;
 
             //smenu stocktable
             this.back_stocktable_b.Left = (this.ClientSize.Width - this.back_stocktable_b.Width) / 2;
@@ -587,12 +588,7 @@ namespace php_srs
             this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
             this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
 
-            Program program = new Program();
-
-            this.loginstatus_l.Text = "Currently logged in as: " + program.getUser();
-
-
-
+            
         }
     }
 }

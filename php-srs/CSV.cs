@@ -13,6 +13,7 @@ namespace php_srs
         public void WriteStockSalesToFile()
         {
             TextWriter tw = new StreamWriter("CSV-StockSales.txt");
+            AddSalesRecord asr = new AddSalesRecord();
 
             tw.WriteLine("PEOPLE HEALTH PHARMACY - SALES REPORTING SYSTEM\n");
             tw.WriteLine("ALL SALES RECORDS\n");
@@ -21,6 +22,8 @@ namespace php_srs
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;"); //Prepares the connection to the database
             php_srsConnection.Open();   //Opens the connection
 
+            asr.CreateTable();
+                        
             string query = "SELECT * FROM SalesRecords"; //Acquires the SQL SELECT statement from the reference
 
             SQLiteCommand selectCommand = new SQLiteCommand(query, php_srsConnection);  //Sets up the query to be used with the database
