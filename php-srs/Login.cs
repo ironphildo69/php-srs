@@ -12,15 +12,21 @@ namespace php_srs
 {
     public partial class Login : Form
     {
+        private string user;
+
         public Login()
         {
             InitializeComponent();
+        }
+        
+        public string getUser()
+        {
+            return user;
         }
 
         private void enter_b_Click(object sender, EventArgs e)
         {
             UserLogin ul = new UserLogin();
-            Program program = new Program();
             string username = userlog_t.Text;
             string password = passlog_t.Text;
 
@@ -28,19 +34,15 @@ namespace php_srs
 
             if (check)
             {
-                //quit login
-                //open window?
-                program.setUser(username);
+                user = username; 
                 this.Close();
 
             } else {
-                //Please try again
-                error_l.Text = "Username or Password incorrect. Please try again.";
+                MessageBox.Show("Username or Password incorrect. Please try again.", "Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
             userlog_t.Clear();
             passlog_t.Clear();
-            error_l.Text = "";
         }
 
         private void quit_b_Click(object sender, EventArgs e)

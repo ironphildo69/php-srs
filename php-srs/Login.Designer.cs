@@ -37,7 +37,6 @@
             this.passlog_t = new System.Windows.Forms.TextBox();
             this.enter_b = new System.Windows.Forms.Button();
             this.userlog_t = new System.Windows.Forms.TextBox();
-            this.error_l = new System.Windows.Forms.Label();
             this.login_p.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +75,6 @@
             // login_p
             // 
             this.login_p.BackColor = System.Drawing.Color.Transparent;
-            this.login_p.Controls.Add(this.error_l);
             this.login_p.Controls.Add(this.quit_b);
             this.login_p.Controls.Add(this.passlog_t);
             this.login_p.Controls.Add(this.enter_b);
@@ -123,14 +121,6 @@
             this.userlog_t.Size = new System.Drawing.Size(125, 20);
             this.userlog_t.TabIndex = 2;
             // 
-            // error_l
-            // 
-            this.error_l.AutoSize = true;
-            this.error_l.Location = new System.Drawing.Point(248, 78);
-            this.error_l.Name = "error_l";
-            this.error_l.Size = new System.Drawing.Size(0, 13);
-            this.error_l.TabIndex = 5;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +151,5 @@
         private System.Windows.Forms.TextBox userlog_t;
         private System.Windows.Forms.Button enter_b;
         private System.Windows.Forms.Button quit_b;
-        private System.Windows.Forms.Label error_l;
     }
 }

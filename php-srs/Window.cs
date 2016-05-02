@@ -13,10 +13,18 @@ namespace php_srs
 {
     public partial class Window : Form
     {
+        private string user = "";
+
         public Window()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        public void setUser(string user)
+        {
+            this.user = user;
+            loginstatus_l.Text = "Currently logged in as: " + user;
         }
 
         //Panel 1 mainmenu
@@ -47,7 +55,7 @@ namespace php_srs
         //log out
         private void button4_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         //quit
@@ -56,13 +64,7 @@ namespace php_srs
             System.Environment.Exit(1);
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //Panel 2 submenu stockitem_p
-
         //update stock
         private void updatestock_b_Click(object sender, EventArgs e)
         {
@@ -586,9 +588,7 @@ namespace php_srs
             //smenu salestable
             this.sales_datagrid.Left = (this.ClientSize.Width - this.sales_datagrid.Width) / 2;
             this.back_salesview_b.Left = (this.ClientSize.Width - this.back_salesview_b.Width) / 2;
-            this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;
-
-            
+            this.salesviewhead_l.Left = (this.ClientSize.Width - this.salesviewhead_l.Width) / 2;            
         }
     }
 }

@@ -49,7 +49,6 @@ namespace php_srs
             } else {
                 return false;
             }
-
         }
 
         //creates the table and if it exists should update the default credientials incase they have changed.
