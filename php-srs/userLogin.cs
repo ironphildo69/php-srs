@@ -71,13 +71,41 @@ namespace php_srs
             //string updateQuery = "UPDATE UserLogin SET (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "') WHERE Name='" + defaultUser + "'";
             string insertQuery = "INSERT INTO UserLogin (Name, Password, Role) VALUES ('" + defaultUser + "', '" + defaultPassword + "', '" + defaultRole + "')";
             SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, php_srsConnection);
-            //insertCommand.ExecuteNonQuery();
-
+            
+            if (CheckName(defaultUser))
+            {
+                insertCommand.ExecuteNonQuery();
+            }
+            
             php_srsConnection.Close();
         } 
 
+        public bool CheckName(string user)
+        {
+            var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
+            string name = "";
+            php_srsConnection.Open();
+
+            string queryCount = "SELECT Name FROM UserLogin WHERE Name = '" + user + "'";
+            SQLiteCommand queryCommand = new SQLiteCommand(queryCount, php_srsConnection);
+            SQLiteDataReader rdr = queryCommand.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                name = "" + rdr["Name"];
+            }
+
+            php_srsConnection.Close();
+
+            if (name == user)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //checks user permisions level and loads this in. Unfinished.
-        public bool userCheckPerms(String username)
+        public bool userCheckPerms(string username)
         {
 
             var php_srsConnection = new SQLiteConnection("Data Source=php-srs_database.sqlite;Version=3;");
