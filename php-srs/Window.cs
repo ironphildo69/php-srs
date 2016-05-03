@@ -517,9 +517,9 @@ namespace php_srs
                 name = st.GetName("" + (i + 1));
                 quantity = st.GetQuantity("" + (i + 1));
 
-                if (quantity < 500)
+                if (quantity < 100)
                 {
-                    record_l.Text += name + " only has " + quantity + " items in stock !\n";
+                    record_l.Text += name + " only has " + quantity + " items in stock!\n";
                 }
             }
         }

@@ -250,7 +250,7 @@
             // 
             this.loginstatus_l.AutoSize = true;
             this.loginstatus_l.BackColor = System.Drawing.Color.Transparent;
-            this.loginstatus_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginstatus_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginstatus_l.Location = new System.Drawing.Point(5, 5);
             this.loginstatus_l.Name = "loginstatus_l";
             this.loginstatus_l.Size = new System.Drawing.Size(217, 16);
@@ -262,21 +262,22 @@
             this.record_l.AutoSize = true;
             this.record_l.BackColor = System.Drawing.Color.Transparent;
             this.record_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.record_l.Location = new System.Drawing.Point(5, 85);
+            this.record_l.Location = new System.Drawing.Point(5, 45);
             this.record_l.Name = "record_l";
-            this.record_l.Size = new System.Drawing.Size(250, 100);
+            this.record_l.Size = new System.Drawing.Size(250, 150);
             this.record_l.TabIndex = 0;
+            this.record_l.BringToFront();
             // 
             // record_heading_l
             // 
-            this.record_heading_l.AutoSize = true;
+            this.record_heading_l.AutoSize = false;
             this.record_heading_l.BackColor = System.Drawing.Color.Transparent;
-            this.record_heading_l.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.record_heading_l.Location = new System.Drawing.Point(5, 55);
+            this.record_heading_l.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.record_heading_l.Location = new System.Drawing.Point(5, 25);
             this.record_heading_l.Name = "record_heading_l";
             this.record_heading_l.Size = new System.Drawing.Size(250, 100);
             this.record_heading_l.TabIndex = 0;
-            this.record_heading_l.Text = "Stock Warnings : ";
+            this.record_heading_l.Text = "Critical Stock Warnings: ";
             // 
             // mainmenu_p
             // 
@@ -436,6 +437,7 @@
             this.heading_img.Name = "heading_img";
             this.heading_img.Size = new System.Drawing.Size(1000, 500);
             this.heading_img.TabIndex = 7;
+            this.heading_img.SendToBack();
             // 
             // stocktable_p
             // 
@@ -1087,10 +1089,10 @@
             this.Controls.Add(this.stocktableupdate_p);
             this.Controls.Add(this.stockadditem_p);
             this.Controls.Add(this.report_p);
-            this.Controls.Add(this.loginstatus_l);
-            this.Controls.Add(this.heading_img);
+            this.Controls.Add(this.loginstatus_l);            
             this.Controls.Add(this.record_l);
             this.Controls.Add(this.record_heading_l);
+            this.Controls.Add(this.heading_img);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
